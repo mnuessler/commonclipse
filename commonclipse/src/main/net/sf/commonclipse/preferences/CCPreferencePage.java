@@ -19,9 +19,18 @@ package net.sf.commonclipse.preferences;
 import net.sf.commonclipse.CCMessages;
 import net.sf.commonclipse.CCPlugin;
 
+import org.eclipse.jdt.internal.ui.util.TabFolderLayout;
+import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.preference.BooleanFieldEditor;
-import org.eclipse.jface.preference.FieldEditorPreferencePage;
+import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.jface.preference.RadioGroupFieldEditor;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.TabFolder;
+import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
@@ -38,7 +47,7 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
  * @version $Revision$ ($Author$)
  */
 
-public class CCPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage
+public class CCPreferencePage extends TabbedFieldEditorPreferencePage implements IWorkbenchPreferencePage
 {
 
     /**
@@ -56,6 +65,10 @@ public class CCPreferencePage extends FieldEditorPreferencePage implements IWork
      */
     public void createFieldEditors()
     {
+
+        // see JavaEditorPreferencePage
+        addTab("toString");
+
         addField(new RadioGroupFieldEditor(
             CCPlugin.P_TOSTRING_BEAN,
             CCMessages.getString("preference.tostringtype"), 1, new String[][]{ //$NON-NLS-1$
@@ -84,6 +97,8 @@ public class CCPreferencePage extends FieldEditorPreferencePage implements IWork
 
         addField(new SpacerFieldEditor(getFieldEditorParent()));
 
+        addTab("general");
+
         addField(new BooleanFieldEditor(CCPlugin.P_TOSTRING_SUPER, CCMessages
             .getString("preference.appendsuper.tostring"), getFieldEditorParent())); //$NON-NLS-1$
         addField(new BooleanFieldEditor(CCPlugin.P_HASHCODE_SUPER, CCMessages
@@ -97,8 +112,7 @@ public class CCPreferencePage extends FieldEditorPreferencePage implements IWork
 
         addField(new SpacerFieldEditor(getFieldEditorParent()));
 
-        addField(new BooleanFieldEditor(CCPlugin.P_FINALPARAMETERS, CCMessages
-            .getString("preference.finalparameters"), //$NON-NLS-1$
+        addField(new BooleanFieldEditor(CCPlugin.P_FINALPARAMETERS, CCMessages.getString("preference.finalparameters"), //$NON-NLS-1$
             getFieldEditorParent()));
 
         addField(new BooleanFieldEditor(CCPlugin.P_EQUALS_INSTANCECHECK, CCMessages
@@ -112,6 +126,8 @@ public class CCPreferencePage extends FieldEditorPreferencePage implements IWork
             getFieldEditorParent()));
 
         addField(new SpacerFieldEditor(getFieldEditorParent()));
+
+        addTab("exclude");
 
         AddRemoveListFieldEditor excludedEditor = new AddRemoveListFieldEditor(CCPlugin.P_EXCLUDE, CCMessages
             .getString("preference.excluded"), //$NON-NLS-1$
