@@ -54,7 +54,7 @@
                id="cb.HashCode">
          </action>
          <action
-               label="%action.hashcode"
+               label="%action.equals"
                icon="icons/equals.gif"
                class="net.sf.commonclipse.popup.actions.JavaTypeObjectAction"
                menubarPath="cb.menu/actionGroup"
