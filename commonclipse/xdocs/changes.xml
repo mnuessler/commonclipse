@@ -5,7 +5,7 @@
     <author email="fgiust(at)sourceforge.net">Fabrizio Giustina</author>
   </properties>
   <body>
-    <release version="1.1" date="July 10, 2004" description="First Eclipse 3.0 only release">
+    <release version="1.1.0" date="July 10, 2004" description="First Eclipse 3.0 only release">
       <action dev="fgiust" type="update">Updated to use the new Eclipse 3.0 API. This version requires Eclipse 3 and 
         will not run on the 2.x series</action>
       <action dev="fgiust" type="fix">Generated methods are now properly formatted according user preferences (using 
