@@ -22,8 +22,11 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Preferences;
 import org.eclipse.jdt.core.Flags;
 import org.eclipse.jdt.core.IBuffer;
@@ -68,6 +71,33 @@ public abstract class Generator
     public void generate(IType type, Shell shell)
     {
 
+        ICompilationUnit cu = (ICompilationUnit) type.getAncestor(IJavaElement.COMPILATION_UNIT);
+
+        // first check if file is writable
+        IResource resource;
+        try
+        {
+            resource = cu.getCorrespondingResource();
+        }
+        catch (JavaModelException e)
+        {
+            MessageDialog.openError(shell, CCMessages.getString("Generator.errortitle"), e.getMessage()); //$NON-NLS-1$
+            return;
+        }
+        if (resource != null && resource.isReadOnly())
+        {
+            IStatus status = ResourcesPlugin.getWorkspace().validateEdit(new IFile[]{(IFile) resource}, shell);
+
+            if (!status.isOK())
+            {
+                MessageDialog.openError(shell, CCMessages.getString("Generator.errortitle"), CCMessages //$NON-NLS-1$
+                    .getString("Generator.readonly")); //$NON-NLS-1$
+                return;
+            }
+        }
+
+        resource = null;
+
         if (!validate(type, shell))
         {
             return;
@@ -79,9 +109,9 @@ public abstract class Generator
         {
 
             IProgressMonitor monitor = progressDialog.getProgressMonitor();
-            generateMethod(type, shell, monitor);
+            generateMethod(type, cu, shell, monitor);
         }
-        catch (Exception ex)
+        catch (JavaModelException ex)
         {
             MessageDialog.openError(shell, CCMessages.getString("Generator.errortitle"), ex.getMessage()); //$NON-NLS-1$
         }
@@ -136,34 +166,15 @@ public abstract class Generator
      * <li>call addImports</li>
      * </ul>.
      * @param type IType
+     * @param cu compilation unit
      * @param shell Shell for messages
      * @param monitor progress monitor, updated during processing
      * @throws JavaModelException any exception in method generation
      */
-    public void generateMethod(IType type, Shell shell, IProgressMonitor monitor) throws JavaModelException
+    public void generateMethod(IType type, ICompilationUnit cu, Shell shell, IProgressMonitor monitor)
+        throws JavaModelException
     {
         String className = type.getElementName();
-        ICompilationUnit cu = (ICompilationUnit) type.getAncestor(IJavaElement.COMPILATION_UNIT);
-
-        // first check if file is writable
-        IResource resource;
-        try
-        {
-            resource = cu.getCorrespondingResource();
-        }
-        catch (JavaModelException e)
-        {
-            MessageDialog.openError(shell, CCMessages.getString("Generator.errortitle"), e.getMessage());
-            return;
-        }
-        if (resource != null && resource.isReadOnly())
-        {
-            MessageDialog.openError(shell, CCMessages.getString("Generator.errortitle"), CCMessages
-                .getString("Generator.readonly"));
-            return;
-        }
-
-        resource = null;
 
         String title = MessageFormat.format(CCMessages.getString("Generator.generating"), new Object[]{className}); //$NON-NLS-1$
         monitor.beginTask(title, 100);
@@ -216,6 +227,7 @@ public abstract class Generator
      * @param elem Java element
      * @param cu compilation unit
      * @return indentation level
+     * @throws JavaModelException model exception when trying to access source
      */
     public int getIndentUsed(IJavaElement elem, ICompilationUnit cu) throws JavaModelException
     {
@@ -228,8 +240,7 @@ public abstract class Generator
                 int offset = ((ISourceReference) elem).getSourceRange().getOffset();
                 int i = offset;
                 // find beginning of line
-                char c = buf.getChar(i - 1);
-                while (i > 0 && c != '\n' && c != '\r')
+                while (i > 0 && !isLineDelimiterChar(buf.getChar(i - 1)))
                 {
                     i--;
                 }
@@ -238,6 +249,16 @@ public abstract class Generator
             }
         }
         return 0;
+    }
+
+    /**
+     * Line delimiter chars are '\n' and '\r'.
+     * @param ch char
+     * @return <code>true</code> if ch is '\n' or '\r'
+     */
+    private boolean isLineDelimiterChar(char ch)
+    {
+        return ch == '\n' || ch == '\r';
     }
 
     /**
@@ -261,7 +282,7 @@ public abstract class Generator
                 result++;
                 blanks = 0;
             }
-            else if (Character.isWhitespace(c) && c != '\n' && c != '\r')
+            else if (Character.isWhitespace(c) && !(c == '\n' || c == '\r'))
             {
                 blanks++;
                 if (blanks == tabWidth)
