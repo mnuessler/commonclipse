@@ -2,7 +2,7 @@
 
 <project name="Commonclipse">
   <title>Commonclipse eclipse Plug-in</title>
-    <author email="fgiust AT sourceforge.net">Fabrizio Giustina</author>
+    <author email="fgiust(at)sourceforge.net">Fabrizio Giustina</author>
   <body>
     <links>
       <item href="http://maven.apache.org/" name="Maven"></item>

@@ -2,7 +2,7 @@
 <document>
   <properties>
     <title>Commonclipse configuration</title>
-    <author email="fgiust AT sourceforge.net">Fabrizio Giustina</author>
+    <author email="fgiust(at)sourceforge.net">Fabrizio Giustina</author>
   </properties>
 
   <body>
@@ -10,7 +10,7 @@
       <p>
       	Commonclipse lets you configure different aspects in generateed methods.
       	After installing the plugin you will find a new "Commonclipse" Preference 
-      	page  in "Window"->"Preferences" menu.
+      	page in "Window"->"Preferences" menu under the "Java" section.
       </p>
       
       <subsection name="toString() options">
@@ -49,15 +49,18 @@
       	all the jakarta builders support an "appendSuper()" method to add the superclass implementation
       	to the current method. You can choose to enable it for any of the supported method.
       </p>
+      <p> <strong>add an instance equality check to equals()</strong> (from version 1.1) : Add an optional check 
+        (<code>if (this == compared) return true</code>) to equals. This will speed up comparison when evaluating 
+        equals between two pointers to the same instance</p>
       <p>
       	<strong>Overwrite existing methods without confirmation</strong> :
       	If this option is not selected commonclipse will ask before deleting existing methods.
       </p>
       <p>
-      	<strong>Fields/properties to exclude from generated methods</strong> :
+      	<strong>Fields/properties not included in generated methods</strong> :
       	You can add any property you don't want to be included in methods here. For example
       	you can avoid fields defining Loggers or the standard class javabean property (Object#getClass())
-      	to appear in generated toString().
+      	to appear in generated toString(). From version 1.1 you can use ? and * wildcards in names.
       </p>
       </subsection>
       
