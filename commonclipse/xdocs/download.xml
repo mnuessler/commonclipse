@@ -8,17 +8,23 @@
 
 	<body>
 
-		<section name="Download">
+		<section name="Manual Download and installation">
 			<p>
 				You can download Commonclipse from
 				<a href="http://sourceforge.net/project/showfiles.php?group_id=95373">the SourceForge Server</a>
 				. The zipped file includes both binaries and sources.
 			</p>
-		</section>
-
-		<section name="Installation">
 			<p>
 				Unzip the downloaded zip file in your eclipse/plugins folder.
+			</p>
+		</section>
+
+		<section name="Using Eclipse Update manager">
+			<p>
+				Online updates are available on 
+				<strong>http://commonclipse.sourceforge.net</strong>. 
+				Define a site bookmark in Eclipse's Update Manager view (Eclipse 2.x), navigate to the update site via this bookmark and install the Commonclipse feature.
+				In eclipse 3 select "Help" -> "Software updates" -> "Find and Install" -> "Search for new features to install". Click "add update site" and insert the commonclipse update site URL.
 			</p>
 		</section>
 

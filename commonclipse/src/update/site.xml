@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description url="http://commonclipse.sf.net">
+      Commonclipse update site
+   </description>
+
+   <feature url="commonclipse.jar" id="net.sf.commonclipse" version="1.0.1">
+      <category name="net.sf.commonclipse"/>
+   </feature>
+   
+   <category-def name="net.sf.commonclipse" label="Commonclipse">
+      <description>
+         Commonclipse is an eclipse plugin for jakarta commons-lang users.
+      	It features automatic generation of the following methods using commons-lang builders:
+      	toString(), hashcode(), equals(Object), compareTo(Object).
+      </description>
+   </category-def>
+</site>

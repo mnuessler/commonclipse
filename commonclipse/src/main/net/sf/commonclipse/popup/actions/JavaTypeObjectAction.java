@@ -1,4 +1,4 @@
-/* ====================================================================
+/** ====================================================================
  * The Apache Software License, Version 1.1
  *
  * Copyright (c) 2000 The Apache Software Foundation.  All rights
@@ -71,8 +71,7 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
 /**
- * action called from object contribution (right click on navigator)
- * Support multiple selections.
+ * action called from object contribution (right click on navigator). Support multiple selections.
  * @author fgiust
  * @version $Revision$ ($Author$)
  */
@@ -80,17 +79,16 @@ public class JavaTypeObjectAction extends JavaTypeAction implements IObjectActio
 {
 
     /**
-     * selected objects.
-     * Can contain instances of IType or ICompilationUnit
+     * selected objects. Can contain instances of IType or ICompilationUnit
      */
     private List selected;
 
     /**
-     * new JavaTypeObjectAction
+     * new JavaTypeObjectAction.
      */
     public JavaTypeObjectAction()
     {
-        selected = null;
+        this.selected = null;
     }
 
     /**
@@ -108,11 +106,11 @@ public class JavaTypeObjectAction extends JavaTypeAction implements IObjectActio
 
         IType type = null;
 
-        if (selected != null)
+        if (this.selected != null)
         {
 
             // iterates on selection
-            Iterator selectionIterator = ((List) selected).iterator();
+            Iterator selectionIterator = this.selected.iterator();
 
             // prepare shell
             Shell shell = new Shell();
@@ -155,7 +153,7 @@ public class JavaTypeObjectAction extends JavaTypeAction implements IObjectActio
     }
 
     /**
-     * file selected from menu
+     * file selected from menu.
      * @see org.eclipse.ui.IActionDelegate#selectionChanged(IAction, ISelection)
      */
     public void selectionChanged(IAction action, ISelection selection)
@@ -165,7 +163,7 @@ public class JavaTypeObjectAction extends JavaTypeAction implements IObjectActio
             IStructuredSelection ss = (IStructuredSelection) selection;
             if (!ss.isEmpty())
             {
-                selected = ss.toList();
+                this.selected = ss.toList();
             }
         }
 

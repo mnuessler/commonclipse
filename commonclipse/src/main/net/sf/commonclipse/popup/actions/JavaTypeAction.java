@@ -1,4 +1,4 @@
-/* ====================================================================
+/** ====================================================================
  * The Apache Software License, Version 1.1
  *
  * Copyright (c) 2000 The Apache Software Foundation.  All rights
@@ -69,7 +69,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Shell;
 
 /**
- * base action delegate for action that need an IType to work
+ * base action delegate for action that need an IType to work.
  * @author fgiust
  * @version $Revision$ ($Author$)
  */
@@ -77,27 +77,27 @@ public abstract class JavaTypeAction
 {
 
     /**
-     * id for toString() generator
+     * id for toString() generator.
      */
     public static final String ACTION_TOSTRING = "cb.ToString";
 
     /**
-     * id for hashCode() generator
+     * id for hashCode() generator.
      */
     public static final String ACTION_HASHCODE = "cb.HashCode";
 
     /**
-     * id for equals() generator
+     * id for equals() generator.
      */
     public static final String ACTION_EQUALS = "cb.Equals";
 
     /**
-     * id for compareTo() generator
+     * id for compareTo() generator.
      */
     public static final String ACTION_COMPARETO = "cb.CompareTo";
 
     /**
-     * run the action on the given IType
+     * run the action on the given IType.
      * @param action activated IAction
      * @param type selected IType
      * @param shell Shell for messages

@@ -1,4 +1,4 @@
-/* ====================================================================
+/** ====================================================================
  * The Apache Software License, Version 1.1
  *
  * Copyright (c) 2000 The Apache Software Foundation.  All rights
@@ -58,7 +58,11 @@
 package net.sf.commonclipse.popup.actions;
 
 import org.eclipse.jdt.core.ICompilationUnit;
+import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.jdt.internal.ui.actions.SelectionConverter;
+import org.eclipse.jdt.internal.ui.javaeditor.JavaEditor;
 import org.eclipse.jdt.ui.IWorkingCopyManager;
 import org.eclipse.jdt.ui.JavaUI;
 import org.eclipse.jface.action.IAction;
@@ -72,7 +76,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.texteditor.ITextEditor;
 
 /**
- * action called from viewer contribution (right click on editor)
+ * action called from viewer contribution (right click on editor).
  * @author fgiust
  * @version $Revision$ ($Author$)
  */
@@ -80,7 +84,7 @@ public class JavaTypeViewerAction extends JavaTypeAction implements IEditorActio
 {
 
     /**
-     * selected editor
+     * selected editor.
      */
     private ITextEditor editor;
 
@@ -91,11 +95,31 @@ public class JavaTypeViewerAction extends JavaTypeAction implements IEditorActio
     {
         IType type = null;
 
-        if (editor != null)
+        if (this.editor != null)
         {
-            IWorkingCopyManager manager = JavaUI.getWorkingCopyManager();
-            ICompilationUnit unit = manager.getWorkingCopy(editor.getEditorInput());
-            type = unit.findPrimaryType();
+            if (this.editor instanceof JavaEditor)
+            {
+                try
+                {
+                    IJavaElement element = SelectionConverter.getElementAtOffset((JavaEditor) this.editor);
+                    if (element != null)
+                    {
+                        type = (IType) element.getAncestor(IJavaElement.TYPE);
+                    }
+                }
+                catch (JavaModelException e)
+                {
+                    // ignore, simply get the primary type
+                }
+            }
+
+            if (type == null)
+            {
+                IWorkingCopyManager manager = JavaUI.getWorkingCopyManager();
+                ICompilationUnit unit = manager.getWorkingCopy(this.editor.getEditorInput());
+
+                type = unit.findPrimaryType();
+            }
         }
 
         if (type != null)
@@ -105,7 +129,7 @@ public class JavaTypeViewerAction extends JavaTypeAction implements IEditorActio
     }
 
     /**
-     * selected editor has changed
+     * selected editor has changed.
      * @see org.eclipse.ui.IActionDelegate#selectionChanged(IAction, ISelection)
      */
     public void selectionChanged(IAction action, ISelection selection)
@@ -134,7 +158,7 @@ public class JavaTypeViewerAction extends JavaTypeAction implements IEditorActio
     {
         if (targetEditor instanceof ITextEditor)
         {
-            editor = (ITextEditor) targetEditor;
+            this.editor = (ITextEditor) targetEditor;
         }
 
     }
