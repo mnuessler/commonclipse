@@ -27,7 +27,7 @@
           </copy>
 
           <copy todir="${maven.build.dir}/dist/plugins/${pom.package}_${pom.currentVersion}" >
-             <fileset dir="${maven.base.dir}" includes="plugin*,icons/*,LICENSE.txt" />
+             <fileset dir="${maven.base.dir}" includes="plugin*,icons/*,LICENSE.txt,META-INF/*" />
           </copy>
 
         <!-- src -->
@@ -63,7 +63,7 @@
       <zip destfile="${maven.build.dir}/docs/plugins/net.sf.commonclipse_${pom.currentVersion}.jar">
             <zipfileset dir="${maven.build.dir}" includes="${maven.final.name}.jar" fullpath="commonclipse.jar" />
             <zipfileset dir="${maven.build.dir}" includes="${pom.name}-src.zip" />
-            <zipfileset dir="${maven.base.dir}" includes="plugin*,icons/*,LICENSE.txt" />
+            <zipfileset dir="${maven.base.dir}" includes="plugin*,icons/*,LICENSE.txt,META-INF/*" />
       </zip>
 
     </goal>
