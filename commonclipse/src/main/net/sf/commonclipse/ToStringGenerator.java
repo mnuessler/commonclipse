@@ -27,6 +27,7 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.jdt.core.JavaModelException;
 
+
 /**
  * Generator for toString() methods.
  * @author fgiust
@@ -95,7 +96,7 @@ public final class ToStringGenerator extends Generator
 
         buffer.append(getJavadoc());
 
-        buffer.append("    public String toString()\n" + "    {\n" + "        return new ToStringBuilder(this"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        buffer.append("    public String toString()\n    {\n        return new ToStringBuilder(this"); //$NON-NLS-1$
 
         if (CCPluginPreferences.getPreferences().useCustomToStringStyle())
         {
@@ -225,8 +226,8 @@ public final class ToStringGenerator extends Generator
 
         if (propertyName.length() > 1 && Character.isLowerCase(propertyName.charAt(1)))
         {
-            propertyName =
-                Character.toLowerCase(propertyName.charAt(0)) + propertyName.substring(1, propertyName.length());
+            propertyName = Character.toLowerCase(propertyName.charAt(0))
+                + propertyName.substring(1, propertyName.length());
         }
         else if (propertyName.length() == 1)
         {
@@ -252,10 +253,9 @@ public final class ToStringGenerator extends Generator
             {
                 return true;
             }
-            else if (
-                methodName.length() > 2
-                    && methodName.startsWith("is") //$NON-NLS-1$
-                    && ("Z".equals(method.getReturnType()) || "QBoolean;".equals(method.getReturnType()))) //$NON-NLS-1$ //$NON-NLS-2$
+            else if (methodName.length() > 2 && methodName.startsWith("is") //$NON-NLS-1$
+                && ("Z".equals(method.getReturnType()) //$NON-NLS-1$
+                || "QBoolean;".equals(method.getReturnType()))) //$NON-NLS-1$
             {
                 return true;
             }

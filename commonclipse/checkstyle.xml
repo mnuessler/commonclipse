@@ -344,7 +344,7 @@
         </module>
         <module name="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck">
             <property name="ignorePattern" value="^$"/>
-            <property name="max" value="140"/>
+            <property name="max" value="120"/>
             <property name="severity" value="warning"/>
             <property name="tabWidth" value="4"/>
         </module>

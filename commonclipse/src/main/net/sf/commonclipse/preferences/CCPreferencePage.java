@@ -16,8 +16,8 @@
  */
 package net.sf.commonclipse.preferences;
 
-import net.sf.commonclipse.CCPlugin;
 import net.sf.commonclipse.CCMessages;
+import net.sf.commonclipse.CCPlugin;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
@@ -60,7 +60,10 @@ public class CCPreferencePage extends FieldEditorPreferencePage implements IWork
             CCPlugin.P_TOSTRING_BEAN,
             CCMessages.getString("preference.tostringtype"), 1, new String[][]{ //$NON-NLS-1$
             {CCMessages.getString("preference.tostringtype.bean"), CCPlugin.TOSTRINGSTYLE_BEAN}, //$NON-NLS-1$
-                {CCMessages.getString("preference.tostringtype.fieds"), CCPlugin.TOSTRINGSTYLE_FIELDS}}, getFieldEditorParent(), true)); //$NON-NLS-1$
+                {CCMessages.getString("preference.tostringtype.fieds"), //$NON-NLS-1$
+                    CCPlugin.TOSTRINGSTYLE_FIELDS}},
+            getFieldEditorParent(),
+            true));
 
         addField(new SpacerFieldEditor(getFieldEditorParent()));
 
@@ -68,12 +71,12 @@ public class CCPreferencePage extends FieldEditorPreferencePage implements IWork
             .getString("preference.customtostringtype"), //$NON-NLS-1$
             getFieldEditorParent());
 
-        String[] toStringStyles = new String[]{"org.apache.commons.lang.builder.ToStringStyle.DEFAULT_STYLE", //$NON-NLS-1$
+        String[] styles = new String[]{"org.apache.commons.lang.builder.ToStringStyle.DEFAULT_STYLE", //$NON-NLS-1$
             "org.apache.commons.lang.builder.ToStringStyle.MULTI_LINE_STYLE", //$NON-NLS-1$
             "org.apache.commons.lang.builder.ToStringStyle.NO_FIELD_NAMES_STYLE", //$NON-NLS-1$
             "org.apache.commons.lang.builder.ToStringStyle.SIMPLE_STYLE"}; //$NON-NLS-1$
 
-        selectEditor.setPredefinedValues(toStringStyles);
+        selectEditor.setPredefinedValues(styles);
 
         selectEditor.setErrorMessage(CCMessages.getString("preference.customtostring.error")); //$NON-NLS-1$
 

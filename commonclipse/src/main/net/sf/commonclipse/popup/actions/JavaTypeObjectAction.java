@@ -98,13 +98,9 @@ public class JavaTypeObjectAction extends JavaTypeAction implements IObjectActio
                 }
                 else
                 {
-                    MessageDialog
-                        .openError(
-                            shell,
-                            CCMessages.getString("Generator.errortitle"), //$NON-NLS-1$
-                            MessageFormat
-                                .format(
-                                    CCMessages.getString("Generator.unknownobject"), new Object[]{iteratorObject.getClass().getName()})); //$NON-NLS-1$
+                    MessageDialog.openError(shell, CCMessages.getString("Generator.errortitle"), //$NON-NLS-1$
+                        MessageFormat.format(CCMessages.getString("Generator.unknownobject"), //$NON-NLS-1$
+                            new Object[]{iteratorObject.getClass().getName()}));
                 }
 
                 if (type != null)

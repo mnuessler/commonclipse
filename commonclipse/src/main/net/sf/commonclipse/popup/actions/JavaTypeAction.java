@@ -71,16 +71,16 @@ public abstract class JavaTypeAction
         {
             if (!type.isClass())
             {
-                MessageDialog
-                    .openError(
-                        new Shell(),
-                        CCMessages.getString("Generator.errortitle"), MessageFormat.format(CCMessages.getString("Generator.notaclass"), new Object[]{type.getElementName()})); //$NON-NLS-1$ //$NON-NLS-2$
+                MessageDialog.openError(new Shell(), CCMessages.getString("Generator.errortitle"), //$NON-NLS-1$
+                    MessageFormat.format(CCMessages.getString("Generator.notaclass"), //$NON-NLS-1$
+                        new Object[]{type.getElementName()}));
                 return;
             }
         }
         catch (JavaModelException e)
         {
-            MessageDialog.openError(new Shell(), CCMessages.getString("Generator.errortitle"), e.getMessage()); //$NON-NLS-1$
+            MessageDialog.openError(new Shell(), CCMessages.getString("Generator.errortitle"), //$NON-NLS-1$
+                e.getMessage());
             return;
         }
 
@@ -104,10 +104,9 @@ public abstract class JavaTypeAction
         }
         else
         {
-            MessageDialog
-                .openError(
-                    new Shell(),
-                    CCMessages.getString("Generator.errortitle"), MessageFormat.format(CCMessages.getString("Generator.unknownaction"), new Object[]{id})); //$NON-NLS-1$ //$NON-NLS-2$
+            MessageDialog.openError(new Shell(), CCMessages.getString("Generator.errortitle"), //$NON-NLS-1$
+                MessageFormat.format(CCMessages.getString("Generator.unknownaction"), //$NON-NLS-1$
+                    new Object[]{id}));
         }
 
     }

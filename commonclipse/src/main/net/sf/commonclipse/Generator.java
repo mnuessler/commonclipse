@@ -146,9 +146,9 @@ public abstract class Generator
                 }
                 catch (JavaModelException e)
                 {
-                    MessageDialog.openError(shell, CCMessages.getString("Generator.errortitle"), MessageFormat.format(//$NON-NLS-1$
-                        CCMessages.getString("Generator.unabletodelete"), //$NON-NLS-1$
-                        new Object[]{getMethodName(), e.getMessage()}));
+                    MessageDialog.openError(shell, CCMessages.getString("Generator.errortitle"), //$NON-NLS-1$
+                        MessageFormat.format(CCMessages.getString("Generator.unabletodelete"), //$NON-NLS-1$
+                            new Object[]{getMethodName(), e.getMessage()}));
                 }
             }
             return false;
@@ -176,7 +176,8 @@ public abstract class Generator
     {
         String className = type.getElementName();
 
-        String title = MessageFormat.format(CCMessages.getString("Generator.generating"), new Object[]{className}); //$NON-NLS-1$
+        String title = MessageFormat.format(CCMessages.getString("Generator.generating"), //$NON-NLS-1$
+            new Object[]{className});
         monitor.beginTask(title, 100);
         monitor.worked(10);
 
