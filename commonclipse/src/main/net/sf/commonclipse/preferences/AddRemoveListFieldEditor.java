@@ -1,4 +1,4 @@
-/* ====================================================================
+/** ====================================================================
  * The Apache Software License, Version 1.1
  *
  * Copyright (c) 2000 The Apache Software Foundation.  All rights
@@ -74,61 +74,61 @@ import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Text;
 
 /**
- * A field editor for displaying and storing a list of strings.
- * Buttons are provided for adding items to the list and removing
- * items from the list.* Implementation from http : //www.eclipse.org/articles/Article-Field-Editors/field_editors.html
+ * A field editor for displaying and storing a list of strings. Buttons are provided for adding items to the list and
+ * removing items from the list. Implementation from
+ * http://www.eclipse.org/articles/Article-Field-Editors/field_editors.html
  * @author fgiust
  * @version $Revision$ ($Author$)
  */
 public class AddRemoveListFieldEditor extends FieldEditor
 {
     /**
-     * "add" button label
+     * "add" button label.
      */
     private static final String DEFAULT_ADD_LABEL = "Add";
 
     /**
-     * "remove" button label
+     * "remove" button label.
      */
     private static final String DEFAULT_REMOVE_LABEL = "Remove";
 
     /**
-     * default separator for list items
+     * default separator for list items.
      */
     private static final String DEFAULT_SEPARATOR = ";";
 
     /**
-     * vertical dialog units per char
+     * vertical dialog units per char.
      */
     private static final int VERTICAL_DIALOG_UNITS_PER_CHAR = 8;
 
     /**
-     * list height
+     * list height.
      */
     private static final int LIST_HEIGHT_IN_CHARS = 10;
 
     /**
-     * list height in units
+     * list height in units.
      */
     private static final int LIST_HEIGHT_IN_DLUS = LIST_HEIGHT_IN_CHARS * VERTICAL_DIALOG_UNITS_PER_CHAR;
 
     /**
-     * The top-level control for the field editor
+     * The list of items.
+     */
+    List list;
+
+    /**
+     * The top-level control for the field editor.
      */
     private Composite top;
 
     /**
-     * The list of items
-     */
-    private List list;
-
-    /**
-     * The text field for inputting new list items
+     * The text field for inputting new list items.
      */
     private Text textField;
 
     /**
-     * The button for adding the contents of the text field to the list
+     * The button for adding the contents of the text field to the list.
      */
     private Button add;
 
@@ -138,14 +138,12 @@ public class AddRemoveListFieldEditor extends FieldEditor
     private Button remove;
 
     /**
-     * The string used to separate list items in a single String representation
+     * The string used to separate list items in a single String representation.
      */
     private String separator = DEFAULT_SEPARATOR;
 
     /**
-     * Creates a string field editor of unlimited width.
-     * Use the method <code>setTextLimit</code> to limit the text.
-     *
+     * Creates a string field editor of unlimited width. Use the method <code>setTextLimit</code> to limit the text.
      * @param name the name of the preference this field editor works on
      * @param labelText the label text of the field editor
      * @param parent the parent of the field editor's control
@@ -156,9 +154,7 @@ public class AddRemoveListFieldEditor extends FieldEditor
     }
 
     /**
-     * Creates a string field editor of unlimited width.
-     * Use the method <code>setTextLimit</code> to limit the text.
-     *
+     * Creates a string field editor of unlimited width. Use the method <code>setTextLimit</code> to limit the text.
      * @param name the name of the preference this field editor works on
      * @param labelText the label text of the field editor
      * @param addButtonText text for the "add" button
@@ -182,36 +178,35 @@ public class AddRemoveListFieldEditor extends FieldEditor
      */
     protected void adjustForNumColumns(int numColumns)
     {
-        ((GridData) top.getLayoutData()).horizontalSpan = numColumns;
+        ((GridData) this.top.getLayoutData()).horizontalSpan = numColumns;
     }
 
     /**
-     * @see org.eclipse.jface.preference.FieldEditor#doFillIntoGrid
-     * (Composite, int)
+     * @see org.eclipse.jface.preference.FieldEditor#doFillIntoGrid (Composite, int)
      */
     protected void doFillIntoGrid(Composite parent, int numColumns)
     {
-        top = parent;
+        this.top = parent;
 
         GridData gd = new GridData(GridData.FILL_HORIZONTAL);
         gd.horizontalSpan = numColumns;
-        top.setLayoutData(gd);
+        this.top.setLayoutData(gd);
 
-        Label label = getLabelControl(top);
+        Label label = getLabelControl(this.top);
         GridData labelData = new GridData();
         labelData.horizontalSpan = numColumns;
         label.setLayoutData(labelData);
 
-        list = new List(top, SWT.BORDER);
+        this.list = new List(this.top, SWT.BORDER);
 
         // Create a grid data that takes up the extra
         // space in the dialog and spans both columns.
         GridData listData = new GridData(GridData.FILL_HORIZONTAL);
-        listData.heightHint = convertVerticalDLUsToPixels(list, LIST_HEIGHT_IN_DLUS);
+        listData.heightHint = convertVerticalDLUsToPixels(this.list, LIST_HEIGHT_IN_DLUS);
         listData.horizontalSpan = numColumns;
 
-        list.setLayoutData(listData);
-        list.addSelectionListener(new SelectionAdapter()
+        this.list.setLayoutData(listData);
+        this.list.addSelectionListener(new SelectionAdapter()
         {
             public void widgetSelected(SelectionEvent e)
             {
@@ -221,7 +216,7 @@ public class AddRemoveListFieldEditor extends FieldEditor
 
         // Create a composite for the add and remove
         // buttons and the input text field.
-        Composite addRemoveGroup = new Composite(top, SWT.NONE);
+        Composite addRemoveGroup = new Composite(this.top, SWT.NONE);
 
         GridData addRemoveData = new GridData(GridData.FILL_HORIZONTAL);
         addRemoveData.horizontalSpan = numColumns;
@@ -243,9 +238,9 @@ public class AddRemoveListFieldEditor extends FieldEditor
         buttonGroup.setLayout(buttonLayout);
 
         // Create the add button.
-        add = new Button(buttonGroup, SWT.NONE);
-        add.setText(DEFAULT_ADD_LABEL);
-        add.addSelectionListener(new SelectionAdapter()
+        this.add = new Button(buttonGroup, SWT.NONE);
+        this.add.setText(DEFAULT_ADD_LABEL);
+        this.add.addSelectionListener(new SelectionAdapter()
         {
             public void widgetSelected(SelectionEvent e)
             {
@@ -253,34 +248,34 @@ public class AddRemoveListFieldEditor extends FieldEditor
             }
         });
         GridData addData = new GridData(GridData.FILL_HORIZONTAL);
-        addData.heightHint = convertVerticalDLUsToPixels(add, IDialogConstants.BUTTON_HEIGHT);
-        addData.widthHint = convertHorizontalDLUsToPixels(add, IDialogConstants.BUTTON_WIDTH);
-        add.setLayoutData(addData);
+        addData.heightHint = convertVerticalDLUsToPixels(this.add, IDialogConstants.BUTTON_HEIGHT);
+        addData.widthHint = convertHorizontalDLUsToPixels(this.add, IDialogConstants.BUTTON_WIDTH);
+        this.add.setLayoutData(addData);
 
         // Create the remove button.
-        remove = new Button(buttonGroup, SWT.NONE);
-        remove.setEnabled(false);
-        remove.setText(DEFAULT_REMOVE_LABEL);
-        remove.addSelectionListener(new SelectionAdapter()
+        this.remove = new Button(buttonGroup, SWT.NONE);
+        this.remove.setEnabled(false);
+        this.remove.setText(DEFAULT_REMOVE_LABEL);
+        this.remove.addSelectionListener(new SelectionAdapter()
         {
             public void widgetSelected(SelectionEvent e)
             {
-                list.remove(list.getSelectionIndex());
+                AddRemoveListFieldEditor.this.list.remove(AddRemoveListFieldEditor.this.list.getSelectionIndex());
                 selectionChanged();
             }
         });
         GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
-        removeData.heightHint = convertVerticalDLUsToPixels(remove, IDialogConstants.BUTTON_HEIGHT);
-        removeData.widthHint = convertHorizontalDLUsToPixels(remove, IDialogConstants.BUTTON_WIDTH);
-        remove.setLayoutData(removeData);
+        removeData.heightHint = convertVerticalDLUsToPixels(this.remove, IDialogConstants.BUTTON_HEIGHT);
+        removeData.widthHint = convertHorizontalDLUsToPixels(this.remove, IDialogConstants.BUTTON_WIDTH);
+        this.remove.setLayoutData(removeData);
 
         // Create the text field.
-        textField = new Text(addRemoveGroup, SWT.BORDER);
+        this.textField = new Text(addRemoveGroup, SWT.BORDER);
 
         GridData textData = new GridData(GridData.FILL_HORIZONTAL);
         textData.horizontalSpan = numColumns - 1;
         textData.verticalAlignment = GridData.BEGINNING;
-        textField.setLayoutData(textData);
+        this.textField.setLayoutData(textData);
     }
 
     /**
@@ -308,7 +303,7 @@ public class AddRemoveListFieldEditor extends FieldEditor
     private void setList(String items)
     {
         String[] itemArray = parseString(items);
-        list.setItems(itemArray);
+        this.list.setItems(itemArray);
     }
 
     /**
@@ -316,7 +311,7 @@ public class AddRemoveListFieldEditor extends FieldEditor
      */
     protected void doStore()
     {
-        String s = createListString(list.getItems());
+        String s = createListString(this.list.getItems());
         if (s != null)
         {
 
@@ -336,14 +331,14 @@ public class AddRemoveListFieldEditor extends FieldEditor
     /**
      * Adds the string in the text field to the list.
      */
-    private void add()
+    void add()
     {
-        String tag = textField.getText();
+        String tag = this.textField.getText();
         if (tag != null && tag.length() > 0)
         {
-            list.add(tag);
+            this.list.add(tag);
         }
-        textField.setText("");
+        this.textField.setText("");
     }
 
     /**
@@ -352,7 +347,7 @@ public class AddRemoveListFieldEditor extends FieldEditor
      */
     public void setAddButtonText(String text)
     {
-        add.setText(text);
+        this.add.setText(text);
     }
 
     /**
@@ -361,12 +356,12 @@ public class AddRemoveListFieldEditor extends FieldEditor
      */
     public void setRemoveButtonText(String text)
     {
-        remove.setText(text);
+        this.remove.setText(text);
     }
 
     /**
-     * Sets the string that separates items in the list when the
-     * list is stored as a single String in the preference store.
+     * Sets the string that separates items in the list when the list is stored as a single String in the preference
+     * store.
      * @param listSeparator token used as a delimiter when converting the array in a single string
      */
     public void setSeparator(String listSeparator)
@@ -386,7 +381,7 @@ public class AddRemoveListFieldEditor extends FieldEditor
         for (int i = 0; i < items.length; i++)
         {
             path.append(items[i]);
-            path.append(separator);
+            path.append(this.separator);
         }
         return path.toString();
     }
@@ -398,8 +393,8 @@ public class AddRemoveListFieldEditor extends FieldEditor
      */
     private String[] parseString(String stringList)
     {
-        StringTokenizer st = new StringTokenizer(stringList, separator); //$NON-NLS-1$
-        ArrayList v = new ArrayList();
+        StringTokenizer st = new StringTokenizer(stringList, this.separator); //$NON-NLS-1$
+        java.util.List v = new ArrayList();
         while (st.hasMoreElements())
         {
             v.add(st.nextElement());
@@ -410,9 +405,9 @@ public class AddRemoveListFieldEditor extends FieldEditor
     /**
      * Sets the enablement of the remove button depending on the selection in the list.
      */
-    private void selectionChanged()
+    void selectionChanged()
     {
-        int index = list.getSelectionIndex();
-        remove.setEnabled(index >= 0);
+        int index = this.list.getSelectionIndex();
+        this.remove.setEnabled(index >= 0);
     }
 }

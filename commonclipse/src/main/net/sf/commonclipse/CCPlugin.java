@@ -1,4 +1,4 @@
-/* ====================================================================
+/** ====================================================================
  * The Apache Software License, Version 1.1
  *
  * Copyright (c) 2000 The Apache Software Foundation.  All rights
@@ -67,64 +67,65 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
- * Main plugin class
+ * Main plugin class.
  * @author fgiust
  * @version $Revision$ ($Author$)
  */
 public class CCPlugin extends AbstractUIPlugin
 {
+
     /**
-     * "commonclipse"
+     * "commonclipse".
      */
     public static final String PLUGIN_NAME = "commonclipse";
 
     /**
-     * key for ToStringStyle name
+     * key for ToStringStyle name.
      */
     public static final String P_TOSTRING_STYLE = "tostring_style";
 
     /**
-     * key for "javabean-style toString()"
+     * key for "javabean-style toString()".
      */
     public static final String P_TOSTRING_BEAN = "tostring_bean";
 
     /**
-     * add appendSuper() in toString
+     * add appendSuper() in toString.
      */
     public static final String P_TOSTRING_SUPER = "tostring_super";
 
     /**
-     * add appendSuper() in toString
+     * add appendSuper() in toString.
      */
     public static final String P_HASHCODE_SUPER = "hashcode_super";
 
     /**
-     * add appendSuper() in toString
+     * add appendSuper() in toString.
      */
     public static final String P_EQUALS_SUPER = "equals_super";
 
     /**
-     * add appendSuper() in toString
+     * add appendSuper() in toString.
      */
     public static final String P_COMPARETO_SUPER = "compareto_super";
 
     /**
-     * esclusion list
+     * esclusion list.
      */
     public static final String P_EXCLUDE = "exclude";
 
     /**
-     * don't ask for overwriting existing methods
+     * don't ask for overwriting existing methods.
      */
     public static final String P_DONTASKONOVERWRITE = "dontask";
 
     /**
-     * value for the P_TOSTRING_BEAN properties: use javabean properties in toString()
+     * value for the P_TOSTRING_BEAN properties: use javabean properties in toString().
      */
     public static final String TOSTRINGSTYLE_BEAN = "bean";
 
     /**
-     * value for the P_TOSTRING_BEAN properties: use fields in toString()
+     * value for the P_TOSTRING_BEAN properties: use fields in toString().
      */
     public static final String TOSTRINGSTYLE_FIELDS = "fields";
 
@@ -139,7 +140,7 @@ public class CCPlugin extends AbstractUIPlugin
     private ResourceBundle resourceBundle;
 
     /**
-     * Constructor
+     * Constructor.
      * @param descriptor IPluginDescriptor
      */
     public CCPlugin(IPluginDescriptor descriptor)
@@ -148,11 +149,11 @@ public class CCPlugin extends AbstractUIPlugin
         plugin = this;
         try
         {
-            resourceBundle = ResourceBundle.getBundle("org.sape.eclipse.SapePluginResources");
+            this.resourceBundle = ResourceBundle.getBundle("org.sape.eclipse.SapePluginResources");
         }
         catch (MissingResourceException x)
         {
-            resourceBundle = null;
+            this.resourceBundle = null;
         }
     }
 
@@ -193,12 +194,12 @@ public class CCPlugin extends AbstractUIPlugin
     }
 
     /**
-     * Returns the plugin's resource bundle,
+     * Returns the plugin's resource bundle.
      * @return the plugin's resource bundle
      */
     public ResourceBundle getResourceBundle()
     {
-        return resourceBundle;
+        return this.resourceBundle;
     }
 
     /**

@@ -1,4 +1,4 @@
-/* ====================================================================
+/** ====================================================================
  * The Apache Software License, Version 1.1
  *
  * Copyright (c) 2000 The Apache Software Foundation.  All rights
@@ -58,13 +58,14 @@
 package net.sf.commonclipse;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
 
 /**
- * Provide access to parsed plugin preferences
+ * Provide access to parsed plugin preferences.
  * @author fgiust
  * @version $Revision$ ($Author$)
  */
@@ -72,47 +73,71 @@ public final class CCPluginPreferences
 {
 
     /**
-     * separator for list items
+     * separator for list items.
      */
     private static final String LIST_SEPARATOR = ";";
 
     /**
-     * the single instance of CCPluginPreferences
+     * the single instance of CCPluginPreferences.
      */
     private static CCPluginPreferences instance;
+
+    /**
+     * custom toStringStyle - fully qualified class name.
+     */
+    private String toStringFQCN;
+
+    /**
+     * custom toStringStyle - use.
+     */
+    private boolean toStringUseCustom;
+
+    /**
+     * custom toStringStyle - class and constant only.
+     */
+    private String toStringClassAndConstant;
+
+    /**
+     * list of fields not to be included in generated methods.
+     */
+    private String[] excludedFields;
+
+    /**
+     * Preference listener. This is needed to process changes to ToStringStyle and excluded fields list avoiding to
+     * parse values at each run
+     */
+    private IPropertyChangeListener preferenceListener = new IPropertyChangeListener()
+    {
+        /***************************************************************************************************************
+         * @see IPropertyChangeListener.propertyChange()
+         */
+        public void propertyChange(PropertyChangeEvent event)
+        {
+
+            if (event.getProperty().equals(CCPlugin.P_TOSTRING_STYLE))
+            {
+                evaluateToStringStyle();
+            }
+            else if (event.getProperty().equals(CCPlugin.P_EXCLUDE))
+            {
+                evaluateExclusionList();
+            }
+
+        }
+    };
 
     /**
      * private contructor. Initialize plugin preferences and set up preference listener
      */
     private CCPluginPreferences()
     {
-        CCPlugin.getDefault().getPreferenceStore().addPropertyChangeListener(preferenceListener);
+        CCPlugin.getDefault().getPreferenceStore().addPropertyChangeListener(this.preferenceListener);
         evaluateToStringStyle();
         evaluateExclusionList();
     }
 
     /**
-     * custom toStringStyle - fully qualified class name
-     */
-    private String toStringFQCN;
-
-    /**
-     * custom toStringStyle - use
-     */
-    private boolean toStringUseCustom;
-
-    /**
-     * custom toStringStyle - class and constant only
-     */
-    private String toStringClassAndConstant;
-
-    /**
-     * list of fields not to be included in generated methods
-     */
-    private String[] excludedFields;
-
-    /**
-     * returns the instance of plugin preferences
+     * returns the instance of plugin preferences.
      * @return single instance of CCPluginPreferences
      */
     public static CCPluginPreferences getPreferences()
@@ -125,9 +150,9 @@ public final class CCPluginPreferences
     }
 
     /**
-     * get the CCPlugin.P_TOSTRING_STYLE preference from the preference store and parse it
+     * Gets the CCPlugin.P_TOSTRING_STYLE preference from the preference store and parse it.
      */
-    private void evaluateToStringStyle()
+    protected void evaluateToStringStyle()
     {
         // custom toString style
         String toStringfullStyle = CCPlugin.getDefault().getPreferenceStore().getString(CCPlugin.P_TOSTRING_STYLE);
@@ -135,33 +160,33 @@ public final class CCPluginPreferences
         if (toStringfullStyle == null || toStringfullStyle.equals(""))
         {
             // not using a custom toStringStyle, set flag to false and clean up
-            toStringUseCustom = false;
-            toStringFQCN = null;
-            toStringClassAndConstant = null;
+            this.toStringUseCustom = false;
+            this.toStringFQCN = null;
+            this.toStringClassAndConstant = null;
         }
         else
         {
             // use a custom toStringStyle, set flag to true and parse needed parts
-            toStringUseCustom = true;
+            this.toStringUseCustom = true;
 
             int constantPos = toStringfullStyle.lastIndexOf(".");
             int classPos = toStringfullStyle.substring(0, constantPos).lastIndexOf(".") + 1;
 
-            toStringFQCN = toStringfullStyle.substring(0, constantPos);
-            toStringClassAndConstant = toStringfullStyle.substring(classPos, toStringfullStyle.length());
+            this.toStringFQCN = toStringfullStyle.substring(0, constantPos);
+            this.toStringClassAndConstant = toStringfullStyle.substring(classPos, toStringfullStyle.length());
         }
     }
 
     /**
-     * get the CCPlugin.P_EXCLUDE preference from the preference store and split it in an array
+     * Gets the CCPlugin.P_EXCLUDE preference from the preference store and split it in an array.
      */
-    private void evaluateExclusionList()
+    protected void evaluateExclusionList()
     {
-        excludedFields = parseString(CCPlugin.getDefault().getPreferenceStore().getString(CCPlugin.P_EXCLUDE));
+        this.excludedFields = parseString(CCPlugin.getDefault().getPreferenceStore().getString(CCPlugin.P_EXCLUDE));
     }
 
     /**
-     * append super to hashcode method?
+     * Append super to hashcode method?
      * @return <code>true</code> if appendSuper should be used
      */
     public boolean appendSuperToHashcode()
@@ -170,7 +195,7 @@ public final class CCPluginPreferences
     }
 
     /**
-     * append super to toString method?
+     * Append super to toString method?
      * @return <code>true</code> if appendSuper should be used
      */
     public boolean appendSuperToToString()
@@ -179,7 +204,7 @@ public final class CCPluginPreferences
     }
 
     /**
-     * append super to equals method?
+     * Append super to equals method?
      * @return <code>true</code> if appendSuper should be used
      */
     public boolean appendSuperToEquals()
@@ -216,7 +241,7 @@ public final class CCPluginPreferences
     }
 
     /**
-     * returns the list of excluded fields/properties
+     * Returns the list of excluded fields/properties.
      * @return list of excluded fields/properties
      */
     public String[] getExcludedFiels()
@@ -225,7 +250,7 @@ public final class CCPluginPreferences
     }
 
     /**
-     * use a custom toString style?
+     * Use a custom toString style?
      * @return <code>true</code> if a custom ToStringStyle is selected
      */
     public boolean useCustomToStringStyle()
@@ -234,7 +259,7 @@ public final class CCPluginPreferences
     }
 
     /**
-     * get the package.class part of the custom toStringStyle
+     * Gets the package.class part of the custom toStringStyle.
      * @return fully qualified class of the custom toStringStyle
      */
     public String getToStringStyleQualifiedClass()
@@ -243,7 +268,7 @@ public final class CCPluginPreferences
     }
 
     /**
-     * get the class.CONSTANT part of the custom toStringStyle
+     * Gets the class.CONSTANT part of the custom toStringStyle.
      * @return class.CONSTANT part from the custom toStringStyle
      */
     public String getToStringStyleClassAndConstant()
@@ -259,36 +284,12 @@ public final class CCPluginPreferences
     private String[] parseString(String stringList)
     {
         StringTokenizer st = new StringTokenizer(stringList, LIST_SEPARATOR);
-        ArrayList v = new ArrayList();
+        List v = new ArrayList();
         while (st.hasMoreElements())
         {
             v.add(st.nextElement());
         }
         return (String[]) v.toArray(new String[v.size()]);
     }
-
-    /**
-     * Preference listener. This is needed to process changes to ToStringStyle and excluded fields list avoiding
-     * to parse values at each run
-     */
-    private IPropertyChangeListener preferenceListener = new IPropertyChangeListener()
-    {
-        /***
-         * @see IPropertyChangeListener.propertyChange()
-         */
-        public void propertyChange(PropertyChangeEvent event)
-        {
-
-            if (event.getProperty().equals(CCPlugin.P_TOSTRING_STYLE))
-            {
-                evaluateToStringStyle();
-            }
-            else if (event.getProperty().equals(CCPlugin.P_EXCLUDE))
-            {
-                evaluateExclusionList();
-            }
-
-        }
-    };
 
 }

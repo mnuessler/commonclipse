@@ -1,4 +1,4 @@
-/* ====================================================================
+/** ====================================================================
  * The Apache Software License, Version 1.1
  *
  * Copyright (c) 2000 The Apache Software Foundation.  All rights
@@ -62,7 +62,7 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
 
 /**
- * Generator for equals(Object) methods
+ * Generator for equals(Object) methods.
  * @author fgiust
  * @version $Revision$ ($Author$)
  */
@@ -70,24 +70,24 @@ public final class EqualsGenerator extends Generator
 {
 
     /**
-     * class name for the Equals builder
+     * class name for the Equals builder.
      */
     private static final String BUILDER_CLASS = "org.apache.commons.lang.builder.EqualsBuilder";
 
     /**
-     * singleton for EqualsGenerator
+     * singleton for EqualsGenerator.
      */
     private static Generator instance = new EqualsGenerator();
 
     /**
-     * use getInstance() to obtain an instance of EqualsGenerator
+     * use getInstance() to obtain an instance of EqualsGenerator.
      */
     private EqualsGenerator()
     {
     }
 
     /**
-     * returns the EqualsGenerator instance
+     * returns the EqualsGenerator instance.
      * @return instance of EqualsGenerator
      */
     public static Generator getInstance()
@@ -164,7 +164,7 @@ public final class EqualsGenerator extends Generator
     }
 
     /**
-     * generate the method javadoc
+     * Generates the method javadoc.
      * @return String javadoc
      */
     private String getJavadoc()

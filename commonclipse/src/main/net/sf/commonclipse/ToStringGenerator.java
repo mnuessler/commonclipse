@@ -1,4 +1,4 @@
-/* ====================================================================
+/** ====================================================================
  * The Apache Software License, Version 1.1
  *
  * Copyright (c) 2000 The Apache Software Foundation.  All rights
@@ -69,7 +69,7 @@ import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.jdt.core.JavaModelException;
 
 /**
- * Generator for toString() methods
+ * Generator for toString() methods.
  * @author fgiust
  * @version $Revision$ ($Author$)
  */
@@ -77,24 +77,24 @@ public final class ToStringGenerator extends Generator
 {
 
     /**
-     * class name for the ToString buider
+     * Class name for the ToString buider.
      */
     private static final String BUILDER_CLASS = "org.apache.commons.lang.builder.ToStringBuilder";
 
     /**
-     * singleton for ToStringGenerator
+     * Singleton for ToStringGenerator.
      */
     private static Generator instance = new ToStringGenerator();
 
     /**
-     * use getInstance() to obtain an instance of ToStringGenerator
+     * Use getInstance() to obtain an instance of ToStringGenerator.
      */
     private ToStringGenerator()
     {
     }
 
     /**
-     * returns the ToStringGenerator instance
+     * Returns the ToStringGenerator instance.
      * @return instance of ToStringGenerator
      */
     public static Generator getInstance()
@@ -165,7 +165,7 @@ public final class ToStringGenerator extends Generator
     }
 
     /**
-     * iterates on javabean properties and calls getFieldAppender for all of them
+     * Iterates on javabean properties and calls getFieldAppender for all of them.
      * @param type IType
      * @return String
      * @throws JavaModelException exception in analyzing properties
@@ -214,7 +214,7 @@ public final class ToStringGenerator extends Generator
     }
 
     /**
-     * returns a Map containing all the javabean getter methods in this type and its supertypes
+     * Returns a Map containing all the javabean getter methods in this type and its supertypes.
      * @param type IType
      * @return Map containg method names - IMethod objects
      * @throws JavaModelException exception in analyzing type
@@ -246,7 +246,7 @@ public final class ToStringGenerator extends Generator
     }
 
     /**
-     * return the javabean property name from the getter method name
+     * Returns the javabean property name from the getter method name.
      * @param methodName getter method name
      * @return javabean property name (ex. "test" for "getTest()")
      */
@@ -277,7 +277,7 @@ public final class ToStringGenerator extends Generator
     }
 
     /**
-     * check if the given method is a javabean getter (start with get or is for boolean properties, no param)
+     * Checks if the given method is a javabean getter (start with get or is for boolean properties, no param).
      * @param method IMethod
      * @return <code>true</code> if the method is a javabean property accessor
      * @throws JavaModelException exception thrown in analyzing method
@@ -305,7 +305,7 @@ public final class ToStringGenerator extends Generator
     }
 
     /**
-     * generate the method javadoc
+     * Generates the method javadoc.
      * @return String javadoc
      */
     private String getJavadoc()

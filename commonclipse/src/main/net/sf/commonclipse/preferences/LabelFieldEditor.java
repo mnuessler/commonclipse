@@ -1,4 +1,4 @@
-/* ====================================================================
+/** ====================================================================
  * The Apache Software License, Version 1.1
  *
  * Copyright (c) 2000 The Apache Software Foundation.  All rights
@@ -71,7 +71,7 @@ class LabelFieldEditor extends FieldEditor
 {
 
     /**
-     * Label for this field editor
+     * Label for this field editor.
      */
     private Label label;
 
@@ -91,7 +91,7 @@ class LabelFieldEditor extends FieldEditor
      */
     protected void adjustForNumColumns(int numColumns)
     {
-        ((GridData) label.getLayoutData()).horizontalSpan = numColumns;
+        ((GridData) this.label.getLayoutData()).horizontalSpan = numColumns;
     }
 
     /**
@@ -101,7 +101,7 @@ class LabelFieldEditor extends FieldEditor
      */
     protected void doFillIntoGrid(Composite parent, int numColumns)
     {
-        label = getLabelControl(parent);
+        this.label = getLabelControl(parent);
 
         GridData gridData = new GridData();
         gridData.horizontalSpan = numColumns;
@@ -110,7 +110,7 @@ class LabelFieldEditor extends FieldEditor
         gridData.verticalAlignment = GridData.CENTER;
         gridData.grabExcessVerticalSpace = false;
 
-        label.setLayoutData(gridData);
+        this.label.setLayoutData(gridData);
     }
 
     /**

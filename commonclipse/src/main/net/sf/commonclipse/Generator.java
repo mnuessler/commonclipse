@@ -1,4 +1,4 @@
-/* ====================================================================
+/** ====================================================================
  * The Apache Software License, Version 1.1
  *
  * Copyright (c) 2000 The Apache Software Foundation.  All rights
@@ -80,7 +80,7 @@ import org.eclipse.swt.widgets.Shell;
 public abstract class Generator
 {
     /**
-     * generated the appropriate method in <code>type</code>
+     * Generates the appropriate method in <code>type</code>.
      * @param type IType
      * @param shell Shell
      */
@@ -102,7 +102,6 @@ public abstract class Generator
         }
         catch (Exception ex)
         {
-            ex.printStackTrace();
             MessageDialog.openError(shell, "Error", ex.getMessage());
         }
 
@@ -110,7 +109,7 @@ public abstract class Generator
     }
 
     /**
-     * check if a corresponding method already exists and prompt the user for replacing it
+     * Checks if a corresponding method already exists and prompt the user for replacing it.
      * @param type IType
      * @param shell Shell
      * @return <code>true</code> if the method doesn't exists or the user has choosen to overwrite it
@@ -146,26 +145,22 @@ public abstract class Generator
                         shell,
                         "Error",
                         "Unable to delete existing \"" + getMethodName() + "\" method due to: " + e.getMessage());
-                    return false;
                 }
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         return true;
     }
 
     /**
-     * generates the method by:
+     * Generates the method by:
      * <ul>
-     *   <li>call createMethod</li>
-     *   <li>format the given method</li>
-     *   <li>add it to type</li>
-     *   <li>call addImports</li>
-     * </ul>
+     * <li>call createMethod</li>
+     * <li>format the given method</li>
+     * <li>add it to type</li>
+     * <li>call addImports</li>
+     * </ul>.
      * @param type IType
      * @param shell Shell for messages
      * @param monitor progress monitor, updated during processing
@@ -200,13 +195,13 @@ public abstract class Generator
     }
 
     /**
-     * returns the generated method name
+     * Returns the generated method name.
      * @return String method name
      */
     protected abstract String getMethodName();
 
     /**
-     * create the method for the ITYPE type
+     * Creates the method for the ITYPE type.
      * @param type Itype
      * @return Method String
      * @throws JavaModelException exception in creating method
@@ -214,21 +209,21 @@ public abstract class Generator
     protected abstract String createMethod(IType type) throws JavaModelException;
 
     /**
-     * returns the existing method
+     * Returns the existing method.
      * @param type IType
      * @return IMethod
      */
     protected abstract IMethod getExistingMethod(IType type);
 
     /**
-     * adds required imports to type
+     * Adds required imports to type.
      * @param type IType
      * @throws JavaModelException exception in adding imports
      */
     protected abstract void addImports(IType type) throws JavaModelException;
 
     /**
-     * iterates on fields and call getFieldString() on any match not in the configurable excluded list
+     * Iterates on fields and call getFieldString() on any match not in the configurable excluded list.
      * @param type IType
      * @return String
      * @throws JavaModelException exception in analyzing fields
@@ -258,7 +253,7 @@ public abstract class Generator
     }
 
     /**
-     * returns a Set containing all the names of fields visible by this type
+     * Returns a Set containing all the names of fields visible by this type.
      * @param type IType
      * @return Map containg field names - IField objects
      * @throws JavaModelException exception in analyzing type
@@ -304,7 +299,7 @@ public abstract class Generator
     }
 
     /**
-     * check if a given field should be excluded from generated method
+     * Checks if a given field should be excluded from generated method.
      * @param fieldName field/property name
      * @return <code>true</code> if the field should not be included in generathed method
      */
@@ -324,7 +319,7 @@ public abstract class Generator
     }
 
     /**
-     * get the "append" statement for a field
+     * get the "append" statement for a field.
      * @param fieldName name of the field
      * @param accessor can be different for fieldname
      * @return String

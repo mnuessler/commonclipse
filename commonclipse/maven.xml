@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="rebuild-all" xmlns:m="maven" xmlns:j="jelly:core" xmlns:u="jelly:util">
-          
-<!-- ,zip:zip,site:generate -->
+
 	<goal name="rebuild-all">
 		<j:set var="goals" value="clean,jar:jar,eclipseplugin:zip,site:generate" />
 		<mkdir dir="${maven.build.dir}" />
@@ -21,6 +20,22 @@
               <zipfileset dir="${maven.base.dir}" includes="plugin.*,icons/*,LICENSE.txt" prefix="${pom.package}_${pom.currentVersion}"/>
           </zip>
     </goal>
+    
+    <preGoal name="site:sshdeploy">
+		<attainGoal name="updatesite" />
+	</preGoal>
+    
+    <goal name="updatesite">
+         <!-- copy site.xml -->
+        <copy file="${maven.src.dir}/update/site.xml" todir="${maven.build.dir}/docs" />
+		<!-- zip feature -->
+		<zip destfile="${maven.build.dir}/docs/commonclipse.jar">
+              <zipfileset dir="${maven.src.dir}/feature"/>
+        </zip>
+        <!-- copy plugin -->
+         <copy file="${maven.build.dir}/${maven.final.name}.jar" tofile="${maven.build.dir}/docs/plugins/net.sf.commonclipse_${pom.currentVersion}.jar" />
 
+    </goal>
+    
       
 </project>

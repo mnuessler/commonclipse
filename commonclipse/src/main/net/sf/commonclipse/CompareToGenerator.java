@@ -1,4 +1,4 @@
-/* ====================================================================
+/** ====================================================================
  * The Apache Software License, Version 1.1
  *
  * Copyright (c) 2000 The Apache Software Foundation.  All rights
@@ -63,7 +63,7 @@ import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.jdt.core.JavaModelException;
 
 /**
- * Generator for compareTo(Object) methods
+ * Generator for compareTo(Object) methods.
  * @author fgiust
  * @version $Revision$ ($Author$)
  */
@@ -71,24 +71,24 @@ public final class CompareToGenerator extends Generator
 {
 
     /**
-     * class name for the CompareTo builder
+     * class name for the CompareTo builder.
      */
     private static final String BUILDER_CLASS = "org.apache.commons.lang.builder.CompareToBuilder";
 
     /**
-    * singleton for CompareToGenerator
-    */
+     * singleton for CompareToGenerator.
+     */
     private static Generator instance = new CompareToGenerator();
 
     /**
-     * use getInstance() to obtain an instance of EqualsGenerator
+     * use getInstance() to obtain an instance of EqualsGenerator.
      */
     private CompareToGenerator()
     {
     }
 
     /**
-     * returns the CompareToGenerator instance
+     * returns the CompareToGenerator instance.
      * @return instance of CompareToGenerator
      */
     public static Generator getInstance()
@@ -140,7 +140,7 @@ public final class CompareToGenerator extends Generator
     }
 
     /**
-     * check if superclass implements comparable
+     * Checks if superclass implements comparable.
      * @param type IType
      * @return <code>true</code> if superclass implements comparable
      * @throws JavaModelException exception thrown when analyzing type hierarchy
@@ -185,8 +185,7 @@ public final class CompareToGenerator extends Generator
     }
 
     /**
-     * @see net.sf.commonclipse.Generator#addImports(org.eclipse.jdt.core.IType)
-     * @todo add implement Comparable
+     * @see net.sf.commonclipse.Generator#addImports(org.eclipse.jdt.core.IType) @todo add implement Comparable
      */
     protected void addImports(IType type) throws JavaModelException
     {
@@ -199,7 +198,7 @@ public final class CompareToGenerator extends Generator
     }
 
     /**
-     * generate the method javadoc
+     * Generates the method javadoc.
      * @return String javadoc
      */
     private String getJavadoc()

@@ -1,4 +1,4 @@
-/* ====================================================================
+/** ====================================================================
  * The Apache Software License, Version 1.1
  *
  * Copyright (c) 2000 The Apache Software Foundation.  All rights
@@ -57,12 +57,12 @@
  */
 package net.sf.commonclipse.preferences;
 
-import java.util.StringTokenizer;
-
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.jdt.core.JavaConventions;
 import org.eclipse.swt.widgets.Composite;
 
 /**
- * ComboFieldEditor with check for valid class.CONSTANT values
+ * ComboFieldEditor with check for valid class.CONSTANT values.
  * @author fgiust
  * @version $Revision$ ($Author$)
  */
@@ -78,37 +78,31 @@ public class ClassConstantFieldEditor extends ComboFieldEditor
     }
 
     /**
-     * Overrides default validation to check for a valid class.CONSTANT value
+     * Overrides default validation to check for a valid class.CONSTANT value.
      * @return <code>true</code> if the field value is valid, and <code>false</code> if invalid
      */
     protected boolean doCheckState()
     {
         String txt = getTextControl().getText();
 
-        if (txt != null && !txt.equals(""))
+        if (txt != null && !"".equals(txt))
         {
+            int lastDot = txt.lastIndexOf(".");
 
-            if (txt.indexOf(";") > -1)
+            if (lastDot == -1)
             {
                 return false;
             }
 
-            // split package fragments
-            StringTokenizer tokenizer = new StringTokenizer(txt, ".");
-            int count = 0;
+            // split package/class - field
+            String typeToken = txt.substring(0, lastDot);
+            String fieldToken = txt.substring(lastDot + 1);
 
-            while (tokenizer.hasMoreTokens())
-            {
-                // two adjacent dots are invalid
-                if (tokenizer.nextToken().length() == 0)
-                {
-                    return false;
-                }
-                count++;
-            }
+            // validates tokens
+            IStatus status1 = JavaConventions.validateJavaTypeName(typeToken);
+            IStatus status2 = JavaConventions.validateFieldName(fieldToken);
 
-            // should contain at least 2 dots
-            if (count < 3)
+            if ((status1.getCode() != IStatus.OK) || (status2.getCode() != IStatus.OK))
             {
                 return false;
             }

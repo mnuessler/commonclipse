@@ -16,6 +16,8 @@
       <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.jdt.core"/>
       <import plugin="org.eclipse.jdt.ui"/>
+      <import plugin="org.eclipse.ui.workbench.texteditor"/>
+      <import plugin="org.eclipse.jface.text"/>
    </requires>
 
 
@@ -159,6 +161,7 @@
          point="org.eclipse.ui.preferencePages">
       <page
             name="%plugin.preference"
+            category="org.eclipse.jdt.ui.preferences.JavaBasePreferencePage"
             class="net.sf.commonclipse.preferences.CCPreferencePage"
             id="net.sf.commonclipse.preferences.CCPreferencePage">
       </page>

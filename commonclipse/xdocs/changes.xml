@@ -7,10 +7,26 @@
 
   <body>
 
-	<release version="1.0.1" date="in CVS" description="Bugfix release">
+	<release version="1.0.1" date="January 4, 2004" description="Bugfix release">
       <action dev="fgiust" type="fix">
           Boolean javabean properties are now properly included in toString()
+      </action>    
+      <action dev="fgiust" type="update">
+          Commonclipse preference page is now placed in the "Java" category.
+      </action>     
+      <action dev="fgiust" type="fix">
+          Multiple types in the same .java file are handled on editor actions: you can now select inner or non-primary 
+          classes in java files.
+      </action>      
+      <action dev="fgiust" type="update">
+          Better check for valid custom ToStringStyle in preferences.
       </action>          
+      <action dev="fgiust" type="update">
+          Plugin dependencies updated for Eclipse 3.0 M6.
+      </action>     
+      <action dev="fgiust" type="add">
+          Added Eclipse update site for automatic installation.
+      </action>     
     </release>
     
 	<release version="1.0.0" date="November 22, 2003" description="First release">

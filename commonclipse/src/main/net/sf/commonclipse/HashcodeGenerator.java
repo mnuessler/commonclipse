@@ -1,4 +1,4 @@
-/* ====================================================================
+/** ====================================================================
  * The Apache Software License, Version 1.1
  *
  * Copyright (c) 2000 The Apache Software Foundation.  All rights
@@ -64,7 +64,7 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
 
 /**
- * Generator for hashcode() methods
+ * Generator for hashcode() methods.
  * @author fgiust
  * @version $Revision$ ($Author$)
  */
@@ -72,35 +72,35 @@ public final class HashcodeGenerator extends Generator
 {
 
     /**
-     * class name for the HashCode builder
+     * class name for the HashCode builder.
      */
     private static final String BUILDER_CLASS = "org.apache.commons.lang.builder.HashCodeBuilder";
 
     /**
-     * singleton for HashcodeGenerator
+     * singleton for HashcodeGenerator.
      */
     private static Generator instance = new HashcodeGenerator();
 
     /**
-     * use getInstance() to obtain an instance of HashcodeGenerator
+     * Random used for hashCode.
+     */
+    private Random random = new Random();
+
+    /**
+     * use getInstance() to obtain an instance of HashcodeGenerator.
      */
     private HashcodeGenerator()
     {
     }
 
     /**
-     * returns the HashcodeGenerator instance
+     * returns the HashcodeGenerator instance.
      * @return instance of HashcodeGenerator
      */
     public static Generator getInstance()
     {
         return instance;
     }
-
-    /**
-     * Random used for hashCode
-     */
-    private Random random = new Random();
 
     /**
      * @see net.sf.commonclipse.Generator#getMethodName()
@@ -115,8 +115,8 @@ public final class HashcodeGenerator extends Generator
      */
     protected String createMethod(IType type) throws JavaModelException
     {
-        int initial = random.nextInt();
-        int multiplier = random.nextInt();
+        int initial = this.random.nextInt();
+        int multiplier = this.random.nextInt();
 
         // be shure they are odd numbers
         if (initial % 2 == 0)
@@ -177,7 +177,7 @@ public final class HashcodeGenerator extends Generator
     }
 
     /**
-     * generate the method javadoc
+     * Generates the method javadoc.
      * @return String javadoc
      */
     private String getJavadoc()
