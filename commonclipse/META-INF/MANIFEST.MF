@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-Name: %plugin.name
+Bundle-SymbolicName: net.sf.commonclipse; singleton=true
+Bundle-Version: 1.1
+Bundle-ClassPath: commonclipse.jar
+Bundle-Activator: net.sf.commonclipse.CCPlugin
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.resources,
+ org.eclipse.ui,
+ org.eclipse.jdt.core,
+ org.eclipse.jdt.ui,
+ org.eclipse.ui.workbench.texteditor,
+ org.eclipse.jface.text,
+ org.eclipse.core.runtime
+Eclipse-AutoStart: true

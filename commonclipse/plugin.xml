@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
 <plugin
    id="net.sf.commonclipse"
    name="%plugin.name"
@@ -166,5 +167,12 @@
             id="net.sf.commonclipse.preferences.CCPreferencePage">
       </page>
    </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer class="net.sf.commonclipse.preferences.CCPreferenceInitializer"/>
+   </extension>
+     
+
+   
 
 </plugin>

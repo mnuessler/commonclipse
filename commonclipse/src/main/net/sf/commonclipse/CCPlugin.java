@@ -62,9 +62,9 @@ import java.util.ResourceBundle;
 
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IPluginDescriptor;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+
 
 /**
  * Main plugin class.
@@ -141,15 +141,13 @@ public class CCPlugin extends AbstractUIPlugin
 
     /**
      * Constructor.
-     * @param descriptor IPluginDescriptor
      */
-    public CCPlugin(IPluginDescriptor descriptor)
+    public CCPlugin()
     {
-        super(descriptor);
         plugin = this;
         try
         {
-            this.resourceBundle = ResourceBundle.getBundle("org.sape.eclipse.SapePluginResources");
+            this.resourceBundle = ResourceBundle.getBundle("net.sf.commonclipse.CCPluginResources");
         }
         catch (MissingResourceException x)
         {
