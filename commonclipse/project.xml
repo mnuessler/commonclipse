@@ -33,6 +33,11 @@
             <name>1.0.1</name>
             <tag>commonclipse-1_0_1</tag>
         </version>
+        <version>
+            <id>1.1.0</id>
+            <name>1.1.0</name>
+            <tag>commonclipse-1_1_0</tag>
+        </version>
     </versions>
     <branches/>
     <mailingLists/>
