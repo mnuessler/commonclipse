@@ -10,13 +10,13 @@
       <p>
       	Commonclipse is an eclipse plugin for jakarta commons-lang users.
       	It features automatic generation of the following methods using commons-lang builders:
-      	<ul>
-      		<li>toString()</li>
-      		<li>hashcode()</li>
-      		<li>equals(Object)</li>
-      		<li>compareTo(Object)</li>
-      	</ul>
       </p>
+      <ul>
+        <li>toString()</li>
+        <li>hashcode()</li>
+        <li>equals(Object)</li>
+        <li>compareTo(Object)</li>
+      </ul>
       
       <p>
       	Commonclipse supports customization of generated methods (custom ToStringStyle, 

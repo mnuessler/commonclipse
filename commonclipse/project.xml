@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <pomVersion>3</pomVersion>
+  <pomVersion>4</pomVersion>
   <id>Commonclipse</id>
   <name>Commonclipse</name>
   <groupId>commonclipse</groupId>
@@ -67,14 +67,10 @@
         <role>Project admin</role>
         <role>Developer</role>
       </roles>
-      <timezone>-4</timezone>
+      <timezone>+1</timezone>
     </developer>
   </developers>
   <dependencies>
-    <dependency>
-      <id>maven</id>
-      <version>1.0-rc1</version>
-    </dependency>
     <dependency>
       <groupId>eclipse</groupId>
       <artifactId>eclipse-runtime</artifactId>
@@ -149,16 +145,10 @@
     </dependency>
     <!-- plugin dependencies -->
     <dependency>
-      <groupId>maven</groupId>
-      <artifactId>maven-checkstyle-plugin</artifactId>
-      <version>2.2</version>
-      <type>plugin</type>
-    </dependency>
-    <dependency>
-      <groupId>maven</groupId>
-      <artifactId>maven-statcvs-plugin</artifactId>
-      <version>2.0</version>
-      <type>plugin</type>
+        <groupId>maven-validator</groupId>
+        <artifactId>maven-xhtml-plugin</artifactId>
+        <version>1.1</version>
+        <type>plugin</type>
     </dependency>
   </dependencies>
   <build>
@@ -179,6 +169,7 @@
     <report>maven-developer-activity-plugin</report>
     <report>maven-statcvs-plugin</report>
     <report>maven-linkcheck-plugin</report>
+    <report>maven-xhtml-plugin</report>
   </reports>
 </project>
 
