@@ -7,6 +7,12 @@
 
   <body>
 
+	<release version="1.0.1" date="in CVS" description="Bugfix release">
+      <action dev="fgiust" type="fix">
+          Boolean javabean properties are now properly included in toString()
+      </action>          
+    </release>
+    
 	<release version="1.0.0" date="November 22, 2003" description="First release">
       <action dev="fgiust" type="add">
           Commonclipse 1.0.0 released.
