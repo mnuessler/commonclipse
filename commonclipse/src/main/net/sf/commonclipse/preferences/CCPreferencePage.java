@@ -56,8 +56,7 @@ public class CCPreferencePage extends TabbedFieldEditorPreferencePage implements
     public void createFieldEditors()
     {
 
-        // see JavaEditorPreferencePage
-        addTab("toString");
+        addTab(CCMessages.getString("preference.tab.tostring")); //$NON-NLS-1$
 
         addField(new RadioGroupFieldEditor(
             CCPlugin.P_TOSTRING_BEAN,
@@ -87,7 +86,7 @@ public class CCPreferencePage extends TabbedFieldEditorPreferencePage implements
 
         addField(new SpacerFieldEditor(getFieldEditorParent()));
 
-        addTab("general");
+        addTab(CCMessages.getString("preference.tab.general")); //$NON-NLS-1$
 
         addField(new BooleanFieldEditor(CCPlugin.P_TOSTRING_SUPER, CCMessages
             .getString("preference.appendsuper.tostring"), getFieldEditorParent())); //$NON-NLS-1$
@@ -102,7 +101,8 @@ public class CCPreferencePage extends TabbedFieldEditorPreferencePage implements
 
         addField(new SpacerFieldEditor(getFieldEditorParent()));
 
-        addField(new BooleanFieldEditor(CCPlugin.P_FINALPARAMETERS, CCMessages.getString("preference.finalparameters"), //$NON-NLS-1$
+        addField(new BooleanFieldEditor(CCPlugin.P_FINALPARAMETERS, //
+            CCMessages.getString("preference.finalparameters"), //$NON-NLS-1$
             getFieldEditorParent()));
 
         addField(new BooleanFieldEditor(CCPlugin.P_EQUALS_INSTANCECHECK, CCMessages
@@ -117,7 +117,7 @@ public class CCPreferencePage extends TabbedFieldEditorPreferencePage implements
 
         addField(new SpacerFieldEditor(getFieldEditorParent()));
 
-        addTab("exclude");
+        addTab(CCMessages.getString("preference.tab.exclude")); //$NON-NLS-1$
 
         AddRemoveListFieldEditor excludedEditor = new AddRemoveListFieldEditor(CCPlugin.P_EXCLUDE, CCMessages
             .getString("preference.excluded"), //$NON-NLS-1$
