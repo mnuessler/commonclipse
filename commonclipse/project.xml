@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <pomVersion>4</pomVersion>
+  <pomVersion>3</pomVersion>
   <id>Commonclipse</id>
-  <artifactId>commonclipse-plugin</artifactId>
   <name>commonclipse</name>
   <groupId>commonclipse</groupId>
   <currentVersion>1.0.1</currentVersion>
@@ -158,9 +157,6 @@
     <report>maven-jxr-plugin</report>
     <report>maven-tasklist-plugin</report>
     <report>maven-simian-plugin</report>
-    <report>maven-changelog-plugin</report>
-    <report>maven-file-activity-plugin</report>
-    <report>maven-developer-activity-plugin</report>
     <report>maven-statcvs-plugin</report>
     <report>maven-linkcheck-plugin</report>
     <report>maven-xhtml-plugin</report>
