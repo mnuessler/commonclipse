@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<document>
+  <properties>
+    <title>Commonclipse screenshots</title>
+    <author email="fgiust AT sourceforge.net">Fabrizio Giustina</author>
+  </properties>
+
+  <body>
+    <section name="Screenshots">
+      <p>
+      	Commonclipse menu, both in the editor...
+      </p>
+      <img src="images/editor.png" style="border: 1px solid #000" />
+      <p>
+        ... and in package explorer, (even with multiple file selection!)
+      </p>
+      <img src="images/explorer.png" style="border: 1px solid #000" />
+      <p>
+      	Preference page (Window->Preferences)
+      </p>
+      <img src="images/preferences.png" />
+      
+      
+    </section>
+
+  </body>
+</document>

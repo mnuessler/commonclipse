@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<document>
+  <properties>
+    <title>Commonclipse eclipse plug-in</title>
+    <author email="fgiust AT sourceforge.net">Fabrizio Giustina</author>
+  </properties>
+
+  <body>
+    <section name="Commonclipse">
+      <p>
+      	Commonclipse is an eclipse plugin for jakarta commons-lang users.
+      	It features automatic generation of the following methods using commons-lang builders:
+      	<ul>
+      		<li>toString()</li>
+      		<li>hashcode()</li>
+      		<li>equals(Object)</li>
+      		<li>compareTo(Object)</li>
+      	</ul>
+      </p>
+      
+      <p>
+      	Commonclipse supports customization of generated methods (custom ToStringStyle, 
+      	use of appendSuper(), excluded fields) through user defined properties.
+      </p>
+      
+      <p>
+      	Commonclipse menu is available on java editor views or in the package explorer. 
+      	See <a href="screenshots.html">screenshots</a>.
+      </p>
+      
+      <p>
+      	Built methods use jakarta commons-lang 2.0 builders.
+      	Commonclipse will not check for the presence of commons-lang in your project classpath, you need to get
+      	a copy from <a href="http://jakarta.apache.org/commons/lang.html">jakarta</a> and to set up java build path
+      	appropriately.
+      </p>
+      
+      <p>
+      	Is this another eclipse "toString plugin"? Well, there are many eclipse plugins providing automatic
+      	creation of basic methods, but none of them allows you to use commons-lang builders:
+      	that's the reason for Commonclipse.
+      </p>
+      
+    </section>
+
+  </body>
+</document>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<document>
+  <properties>
+    <title>Changes</title>
+    <author email="fgiust AT sourceforge.net">Fabrizio Giustina</author>
+  </properties>
+
+  <body>
+
+	<release version="1.0.0" date="November 22, 2003" description="First release">
+      <action dev="fgiust" type="add">
+          Commonclipse 1.0.0 released.
+      </action>          
+    </release>
+  </body>
+</document>

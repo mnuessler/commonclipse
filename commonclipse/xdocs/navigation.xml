@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Commonclipse">
+  <title>Commonclipse eclipse Plug-in</title>
+    <author email="fgiust AT sourceforge.net">Fabrizio Giustina</author>
+  <body>
+    <links>
+      <item href="http://maven.apache.org/" name="Maven"></item>
+      <item href="http://www.eclipse.org/" name="Eclipse"></item>
+      <item href="http://jakarta.apache.org/commons/lang.html" name="Jakarta commons-lang"></item>
+    </links>
+    <menu name="Overview">
+      <item href="/index.html" name="Commonclipse" />
+      <item href="/builders.html" name="Builders" />
+      <item href="/configuration.html" name="Configuration" />
+      <item href="/screenshots.html" name="Screenshots" />
+    </menu>
+  </body>
+</project>

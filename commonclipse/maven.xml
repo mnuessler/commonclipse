@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="rebuild-all" xmlns:m="maven" xmlns:j="jelly:core" xmlns:u="jelly:util">
+          
+<!-- ,zip:zip,site:generate -->
+	<goal name="rebuild-all">
+		<j:set var="goals" value="clean,jar:jar,eclipseplugin:zip,site:generate" />
+		<mkdir dir="${maven.build.dir}" />
+		<u:tokenize var="goals" delim=",">${goals}</u:tokenize>
+		<j:forEach items="${goals}" var="goal" indexVar="goalNumber">
+			Now attaining goal number ${goalNumber}, which is ${goal}
+			<attainGoal name="${goal}" />
+		</j:forEach>
+	</goal>
+
+    <goal name="eclipseplugin:zip">
+          <zip destfile="${maven.build.dir}/${pom.name}-src.zip">
+              <zipfileset dir="${maven.src.dir}/main"/>
+          </zip>
+          <zip destfile="${maven.build.dir}/${pom.name}-${pom.currentVersion}.zip">
+              <zipfileset dir="${maven.build.dir}" includes="${maven.final.name}.jar,${pom.name}-src.zip" prefix="${pom.package}_${pom.currentVersion}"/>
+              <zipfileset dir="${maven.base.dir}" includes="plugin.*,icons/*,LICENSE.txt" prefix="${pom.package}_${pom.currentVersion}"/>
+          </zip>
+    </goal>
+
+      
+</project>

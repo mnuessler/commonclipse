@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<document>
+  <properties>
+    <title>Commonclipse configuration</title>
+    <author email="fgiust AT sourceforge.net">Fabrizio Giustina</author>
+  </properties>
+
+  <body>
+    <section name="Configuration">
+      <p>
+      	Commonclipse lets you configure different aspects in generateed methods.
+      	After installing the plugin you will find a new "Commonclipse" Preference 
+      	page  in "Window"->"Preferences" menu.
+      </p>
+      
+      <subsection name="toString() options">
+      <p>
+      	toString type:
+      </p>
+      	<ul>
+      		<li>
+      			<strong>Use javabean properties</strong>: 
+      			the toString() method will contains all the readable javabean properties in the current class
+      			(defined by getXXX or isXXX methods). This is mostly useful for dataobjects you are writing to
+      			a log or displaying in a jsp page with the help of jsp tags (maybe using 
+      			<a href="http://displaytag.sf.net">the display tag library</a>?).
+      			The javabean is accessed using the getter method or using the field with the same name if existing.
+      		</li>
+      		<li>
+      			<strong>Use fields</strong>:
+      			standard toString() with all the fields in the current class, plus public or protected fields in
+      			superclasses.
+      		</li>
+      	</ul>
+      	
+      	<p>
+      		ToString style:
+      		you can left it blank to use the default implementation, 
+      		choose one of the available jakarta implementations (ToStringStyle.DEFAULT_STYLE,
+            ToStringStyle.MULTI_LINE_STYLE, ToStringStyle.NO_FIELD_NAMES_STYLE, ToStringStyle.SIMPLE_STYLE) or
+            provide your own ToStringStyle.
+      	</p>
+      	
+      </subsection>
+      
+      <subsection name="Generic options">
+      <p>
+      	<strong>Append super in XXX</strong> :
+      	all the jakarta builders support an "appendSuper()" method to add the superclass implementation
+      	to the current method. You can choose to enable it for any of the supported method.
+      </p>
+      <p>
+      	<strong>Overwrite existing methods without confirmation</strong> :
+      	If this option is not selected commonclipse will ask before deleting existing methods.
+      </p>
+      <p>
+      	<strong>Fields/properties to exclude from generated methods</strong> :
+      	You can add any property you don't want to be included in methods here. For example
+      	you can avoid fields defining Loggers or the standard class javabean property (Object#getClass())
+      	to appear in generated toString().
+      </p>
+      </subsection>
+      
+      
+    </section>
+
+  </body>
+</document>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<!-- 
+    bootstrap ant build.xml to copy jars from eclipse home to maven repository
+    set up:
+    eclipse.home = [your eclipse home]
+    maven.home.local = [your maven local home]
+    in build.xml, and run ant. The script has been built for eclipse 2.1.2 on windows platform,
+    you will need to change if for other versions/os
+-->
+<project name="commonclipse" default="copy-eclipse-lib">
+
+    <property file="build.properties" />
+    <property name="eclipse.version" value="2.1.2" />
+    
+	<target name="copy-eclipse-lib">
+		 <copy file="${eclipse.home}/plugins/org.eclipse.core.runtime_2.1.1/runtime.jar" 
+            tofile="${maven.home.local}/repository/eclipse/jars/eclipse-runtime-${eclipse.version}.jar" />
+        <copy file="${eclipse.home}/plugins/org.eclipse.ui.editors_2.1.0/editors.jar" 
+            tofile="${maven.home.local}/repository/eclipse/jars/eclipse-editors-${eclipse.version}.jar" />
+        <copy file="${eclipse.home}/plugins/org.eclipse.core.resources_2.1.1/resources.jar" 
+            tofile="${maven.home.local}/repository/eclipse/jars/eclipse-resources-${eclipse.version}.jar" />
+        <copy file="${eclipse.home}/plugins/org.eclipse.ui_2.1.1/ui.jar" 
+            tofile="${maven.home.local}/repository/eclipse/jars/eclipse-ui-${eclipse.version}.jar" />
+        <copy file="${eclipse.home}/plugins/org.eclipse.jface_2.1.1/jface.jar" 
+            tofile="${maven.home.local}/repository/eclipse/jars/eclipse-jface-${eclipse.version}.jar" />
+        <copy file="${eclipse.home}/plugins/org.eclipse.jface.text_2.1.0/jfacetext.jar" 
+            tofile="${maven.home.local}/repository/eclipse/jars/eclipse-jfacetext-${eclipse.version}.jar" />
+        <copy file="${eclipse.home}/plugins/org.eclipse.swt.win32_2.1.2/ws/win32/swt.jar" 
+            tofile="${maven.home.local}/repository/eclipse/jars/eclipse-swt-${eclipse.version}.jar" />
+        <copy file="${eclipse.home}/plugins/org.eclipse.jdt.ui_2.1.2/jdt.jar" 
+            tofile="${maven.home.local}/repository/eclipse/jars/eclipse-jdt-${eclipse.version}.jar" />
+        <copy file="${eclipse.home}/plugins/org.eclipse.jdt.core_2.1.2/jdtcore.jar" 
+            tofile="${maven.home.local}/repository/eclipse/jars/eclipse-jdtcore-${eclipse.version}.jar" />
+        <copy file="${eclipse.home}/plugins/org.eclipse.ui.workbench_2.1.1/workbench.jar" 
+            tofile="${maven.home.local}/repository/eclipse/jars/eclipse-workbench-${eclipse.version}.jar" />
+        <copy file="${eclipse.home}/plugins/org.eclipse.ui.workbench.texteditor_2.1.0/texteditor.jar" 
+            tofile="${maven.home.local}/repository/eclipse/jars/eclipse-texteditor-${eclipse.version}.jar" />
+	</target>
+
+</project>
+
+
+
+
+
+
+
+
+

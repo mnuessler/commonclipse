@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<document>
+  <properties>
+    <title>Generated methods</title>
+    <author email="fgiust AT sourceforge.net">Fabrizio Giustina</author>
+  </properties>
+
+  <body>
+    <section name="Commons-lang builders">
+	    <p>
+	    	Jakarta commons-lang provides a convenient way for building 
+	    	consistent equals(Object), toString(), hashCode(), and compareTo(Object) methods.
+	    	Commons-lang builders are robust and flexible. Probably the most useful builder
+	    	is the toString() one, which helps you in creating consistent and configurable
+	    	(through the use of a 
+	    	<a href="http://jakarta.apache.org/commons/lang/api/org/apache/commons/lang/builder/ToStringStyle.html">ToStringStyle</a>
+	    	object) toString() methods in your project.
+	    </p>
+    </section>
+    
+    <section name="Generated methods example">
+      <subsection name="toString()">      
+      
+      		<source>
+	/**
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		return new ToStringBuilder(this, ToStringStyle.SIMPLE_STYLE)
+			.appendSuper(super.toString())
+			.append("age", this.age)
+			.append("isSmoker", this.isSmoker)
+			.append("name", this.name)
+			.toString();
+	}
+      		</source>
+      </subsection>
+ 
+      
+      <subsection name="hashCode()">
+      		<source>
+	/**
+	 * @see java.lang.Object#hashCode()
+	 */
+	public int hashCode() {
+		return new HashCodeBuilder(357504959, 1759723435)
+			.appendSuper(super.hashCode())
+			.append(this.age)
+			.append(this.isSmoker)
+			.append(this.name)
+			.toHashCode();
+	}
+      		</source>
+      </subsection>
+      
+      
+      <subsection name="equals(Object)">
+      		<source>
+	/**
+	 * @see java.lang.Object#equals(Object)
+	 */
+	public boolean equals(Object object) {
+		if (!(object instanceof Person)) {
+			return false;
+		}
+		Person rhs = (Person) object;
+		return new EqualsBuilder()
+			.appendSuper(super.equals(object))
+			.append(this.age, rhs.age)
+			.append(this.isSmoker, rhs.isSmoker)
+			.append(this.name, rhs.name)
+			.isEquals();
+	}
+      		</source>
+      </subsection>
+      
+      
+      
+      
+      <subsection name="compareTo(Object)">
+      		<source>
+	/**
+	 * @see java.lang.Comparable#compareTo(Object)
+	 */
+	public int compareTo(Object object) {
+		Person myClass = (Person) object;
+		return new CompareToBuilder()
+			.append(this.age, myClass.age)
+			.append(this.isSmoker, myClass.isSmoker)
+			.append(this.name, myClass.name)
+			.toComparison();
+	}
+      		</source>
+      </subsection>
+      
+      
+      
+      
+    </section>
+
+  </body>
+</document>

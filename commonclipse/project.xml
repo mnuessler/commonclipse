@@ -1,0 +1,166 @@
+<project>
+    <pomVersion>3</pomVersion>
+    <groupId>commonclipse</groupId>
+    <artifactId>commonclipse</artifactId>
+    <name>Commonclipse</name>
+    <currentVersion>1.0.0</currentVersion>
+  <organization>
+    <name>sourceforge</name>
+    <identifier>sourceforge</identifier>
+    <url>http://sourceforge.net</url>
+    <logo>http://sourceforge.net/sflogo.php?group_id=93989&amp;type=2</logo>
+  </organization>
+    <inceptionYear>2003</inceptionYear>
+    
+    <package>net.sf.commonclipse</package>
+    
+    <shortDescription>Commonclipse</shortDescription>
+
+
+  <url>http://${pom.groupId}.sf.net</url>
+  <issueTrackingUrl>http://sourceforge.net/tracker/?group_id=95373</issueTrackingUrl>
+  <siteDirectory>/home/groups/c/co/commonclipse/htdocs</siteDirectory>
+  <distributionDirectory>http://sourceforge.net/project/showfiles.php?group_id=95373</distributionDirectory>
+  
+  <repository>
+    <connection>scm:cvs:pserver:anonymous@cvs.sourceforge.net:/cvsroot/${pom.groupId}:${pom.groupId}</connection>
+    <url>http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/${pom.groupId}/${pom.groupId}/</url>
+  </repository>
+
+
+
+  <versions>
+    <version>
+      <id>1.0.0</id>
+      <name>1.0.0</name>
+      <tag>commonclipse-1_0_0</tag>
+    </version>
+  </versions>
+  
+    <mailingLists>
+        <mailingList>
+            <name>${pom.name} Dev List</name>
+        </mailingList>
+        <mailingList>
+            <name>${pom.name} User List</name>
+        </mailingList>
+    </mailingLists>
+
+  <developers>
+    <developer>
+      <name>Fabrizio Giustina</name>
+      <id>fgiust</id>
+      <email>fgiust AT users.sourceforge.net</email>
+      <organization>Sourceforge</organization>
+      <roles>
+        <role>Project admin</role>
+      </roles>
+      <timezone>+18</timezone>
+    </developer>
+  </developers>
+
+    
+  <dependencies>
+
+    <dependency>
+      <id>maven</id>
+      <version>1.0-rc1</version>
+    </dependency>
+
+
+    <dependency>
+       <groupId>eclipse</groupId>
+       <artifactId>eclipse-runtime</artifactId>
+       <version>2.1.2</version>
+       <url>http://eclipse.org/</url>
+    </dependency>
+    <dependency>
+       <groupId>eclipse</groupId>
+       <artifactId>eclipse-jdtcore</artifactId>
+       <version>2.1.2</version>
+       <url>http://eclipse.org/</url>
+    </dependency>
+    <dependency>
+       <groupId>eclipse</groupId>
+       <artifactId>eclipse-jface</artifactId>
+       <version>2.1.2</version>
+       <url>http://eclipse.org/</url>
+    </dependency>
+    <dependency>
+       <groupId>eclipse</groupId>
+       <artifactId>eclipse-workbench</artifactId>
+       <version>2.1.2</version>
+       <url>http://eclipse.org/</url>
+    </dependency>
+
+
+    <dependency>
+       <groupId>eclipse</groupId>
+       <artifactId>eclipse-resources</artifactId>
+       <version>2.1.2</version>
+       <url>http://eclipse.org/</url>
+    </dependency>
+    <dependency>
+       <groupId>eclipse</groupId>
+       <artifactId>eclipse-jdt</artifactId>
+       <version>2.1.2</version>
+       <url>http://eclipse.org/</url>
+    </dependency>
+
+    <dependency>
+       <groupId>eclipse</groupId>
+       <artifactId>eclipse-swt</artifactId>
+       <version>2.1.2</version>
+       <url>http://eclipse.org/</url>
+    </dependency>
+    <dependency>
+       <groupId>eclipse</groupId>
+       <artifactId>eclipse-editors</artifactId>
+       <version>2.1.2</version>
+       <url>http://eclipse.org/</url>
+    </dependency>
+    <dependency>
+       <groupId>eclipse</groupId>
+       <artifactId>eclipse-ui</artifactId>
+       <version>2.1.2</version>
+       <url>http://eclipse.org/</url>
+    </dependency>
+    <dependency>
+       <groupId>eclipse</groupId>
+       <artifactId>eclipse-jfacetext</artifactId>
+       <version>2.1.2</version>
+       <url>http://eclipse.org/</url>
+    </dependency>
+    <dependency>
+       <groupId>eclipse</groupId>
+       <artifactId>eclipse-texteditor</artifactId>
+       <version>2.1.2</version>
+       <url>http://eclipse.org/</url>
+    </dependency>
+    </dependencies>
+    
+  <build>
+    <sourceDirectory>${basedir}/src/main</sourceDirectory>
+  </build>
+    
+  
+  <reports>
+    <report>maven-license-plugin</report>
+    <report>maven-changes-plugin</report>
+    <report>maven-javadoc-plugin</report>
+    <report>maven-jdepend-plugin</report>
+    <report>maven-checkstyle-plugin</report>
+    <report>maven-pmd-plugin</report>
+    <report>maven-jxr-plugin</report>
+    <report>maven-tasklist-plugin</report>
+    <report>maven-simian-plugin</report>
+    <!--
+    <report>maven-changelog-plugin</report>
+    <report>maven-file-activity-plugin</report>
+    <report>maven-developer-activity-plugin</report>
+    -->
+    <report>maven-linkcheck-plugin</report>
+    <report>maven-sitevalidator-plugin</report>
+  </reports>
+    
+</project>
