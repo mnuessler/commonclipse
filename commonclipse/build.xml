@@ -38,6 +38,10 @@
             tofile="${maven.home.local}/repository/eclipse/jars/eclipse-texteditor-${eclipse.version}.jar" />
         <copy file="${eclipse.home}/plugins/org.eclipse.osgi_${eclipse.version}/osgi.jar"  overwrite="true"
             tofile="${maven.home.local}/repository/eclipse/jars/eclipse-osgi-${eclipse.version}.jar" />
+        <copy file="${eclipse.home}/plugins/org.eclipse.osgi.services_${eclipse.version}/services.jar"  overwrite="true"
+            tofile="${maven.home.local}/repository/eclipse/jars/eclipse-osgiservices-${eclipse.version}.jar" />
+        <copy file="${eclipse.home}/plugins/org.eclipse.text_${eclipse.version}/text.jar"  overwrite="true"
+            tofile="${maven.home.local}/repository/eclipse/jars/eclipse-text-${eclipse.version}.jar" />
 	</target>
 
 </project>

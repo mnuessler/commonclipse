@@ -143,6 +143,18 @@
       <version>3.0.0</version>
       <url>http://eclipse.org/</url>
     </dependency>
+    <dependency>
+      <groupId>eclipse</groupId>
+      <artifactId>eclipse-osgiservices</artifactId>
+      <version>3.0.0</version>
+      <url>http://eclipse.org/</url>
+    </dependency>
+    <dependency>
+      <groupId>eclipse</groupId>
+      <artifactId>eclipse-text</artifactId>
+      <version>3.0.0</version>
+      <url>http://eclipse.org/</url>
+    </dependency>
   </dependencies>
   <build>
     <sourceDirectory>${basedir}/src/main</sourceDirectory>
