@@ -2,7 +2,7 @@
 <feature
       id="net.sf.commonclipse"
       label="net.sf.commonclipse"
-      version="1.1.1"
+      version="1.2.0"
       provider-name="Fabrizio Giustina"
       os="aix,hpux,linux,macosx,qnx,solaris,win32"
       ws="carbon,gtk,motif,photon,win32"
@@ -243,6 +243,6 @@ It features automatic generation of the following methods using commons-lang bui
          id="net.sf.commonclipse"
          download-size="37926"
          install-size="37926"
-         version="1.1.1"/>
+         version="1.2.0"/>
 
 </feature>

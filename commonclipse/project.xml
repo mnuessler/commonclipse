@@ -3,7 +3,7 @@
     <name>commonclipse</name>
     <groupId>commonclipse</groupId>
     <artifactId>Commonclipse</artifactId>
-    <currentVersion>1.1.1</currentVersion>
+    <currentVersion>1.2.0</currentVersion>
     <organization>
         <name>sourceforge</name>
         <url>http://sourceforge.net</url>
@@ -37,6 +37,11 @@
             <id>1.1.0</id>
             <name>1.1.0</name>
             <tag>commonclipse-1_1_0</tag>
+        </version>
+        <version>
+            <id>1.2.0</id>
+            <name>1.2.0</name>
+            <tag>commonclipse-1_2_0</tag>
         </version>
     </versions>
     <branches/>

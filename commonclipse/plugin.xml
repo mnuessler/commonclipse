@@ -3,7 +3,7 @@
 <plugin
    id="net.sf.commonclipse"
    name="%plugin.name"
-   version="1.1.1"
+   version="1.2.0"
    provider-name=""
    class="net.sf.commonclipse.CCPlugin">
 
