@@ -22,7 +22,7 @@
 
 
         <!-- plugins -->
-          <copy tofile="${maven.build.dir}/dist/plugins/${pom.package}_${pom.currentVersion}/commonclipse.jar"
+          <copy tofile="${maven.build.dir}/dist/plugins/${pom.package}_${pom.currentVersion}/commonclipse-${pom.currentVersion}.jar"
              file="${maven.build.dir}/${maven.final.name}.jar">
           </copy>
 
@@ -50,22 +50,20 @@
 		  
       <!-- copy site.xml -->
       <copy file="${maven.src.dir}/update/site.xml" todir="${maven.build.dir}/docs" />
-      <copy todir="${maven.build.dir}/docs" >
-        <fileset dir="${maven.build.dir}/dist/features/${pom.package}_${pom.currentVersion}" />
-      </copy>
 
       <!-- feature -->
-      <zip destfile="${maven.build.dir}/docs/commonclipse.jar">
+      <mkdir dir="${maven.build.dir}/docs/features" />
+      <zip destfile="${maven.build.dir}/docs/features/commonclipse-${pom.currentVersion}.jar">
             <fileset dir="${maven.src.dir}/feature"/>
       </zip>
 		  
-      <mkdir dir="${maven.build.dir}/docs/plugins" />
 
       <!-- copy plugin -->
+      <mkdir dir="${maven.build.dir}/docs/plugins" />
       <zip destfile="${maven.build.dir}/docs/plugins/net.sf.commonclipse_${pom.currentVersion}.jar">
             <zipfileset dir="${maven.build.dir}" includes="${maven.final.name}.jar" fullpath="commonclipse.jar" />
             <zipfileset dir="${maven.build.dir}" includes="${pom.name}-src.zip" />
-            <zipfileset dir="${maven.base.dir}" includes="plugin.*,icons/*,LICENSE.txt" />
+            <zipfileset dir="${maven.base.dir}" includes="plugin*,icons/*,LICENSE.txt" />
       </zip>
 
     </goal>
