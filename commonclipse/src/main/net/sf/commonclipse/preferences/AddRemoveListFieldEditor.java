@@ -155,8 +155,7 @@ public class AddRemoveListFieldEditor extends FieldEditor
 
         this.list = new List(this.top, SWT.BORDER);
 
-        // Create a grid data that takes up the extra
-        // space in the dialog and spans both columns.
+        // Create a grid data that takes up the extra space in the dialog and spans both columns.
         GridData listData = new GridData(GridData.FILL_HORIZONTAL);
         listData.heightHint = convertVerticalDLUsToPixels(this.list, LIST_HEIGHT_IN_DLUS);
         listData.horizontalSpan = numColumns;
@@ -171,8 +170,7 @@ public class AddRemoveListFieldEditor extends FieldEditor
             }
         });
 
-        // Create a composite for the add and remove
-        // buttons and the input text field.
+        // Create a composite for the add and remove buttons and the input text field.
         Composite addRemoveGroup = new Composite(this.top, SWT.NONE);
 
         GridData addRemoveData = new GridData(GridData.FILL_HORIZONTAL);
