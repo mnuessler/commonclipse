@@ -34,6 +34,10 @@
       	a copy from <a href="http://jakarta.apache.org/commons/lang.html">jakarta</a> and to set up java build path
       	appropriately.
       </p>
+
+       <p>
+      	<strong>Current build is compatible with eclipse 2.x and 3.0 Mx.</strong>
+      </p>
       
       <p>
       	Is this another eclipse "toString plugin"? Well, there are many eclipse plugins providing automatic
