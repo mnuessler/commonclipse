@@ -75,7 +75,14 @@ public final class EqualsGenerator extends Generator
 
         String className = type.getElementName();
 
-        buffer.append("public boolean equals(Object object) {\n"); //$NON-NLS-1$
+        buffer.append("public boolean equals("); //$NON-NLS-1$
+
+        if (CCPluginPreferences.getPreferences().useFinalParameters())
+        {
+            buffer.append("final "); //$NON-NLS-1$
+        }
+
+        buffer.append("Object object) {\n"); //$NON-NLS-1$
 
         if (CCPluginPreferences.getPreferences().addInstanceCheckToEquals())
         {

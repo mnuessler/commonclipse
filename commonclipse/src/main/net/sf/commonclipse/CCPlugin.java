@@ -75,6 +75,11 @@ public class CCPlugin extends AbstractUIPlugin
     public static final String P_EXCLUDE = "exclude"; //$NON-NLS-1$
 
     /**
+     * use final parameters in generated methods.
+     */
+    public static final String P_FINALPARAMETERS = "final_param"; //$NON-NLS-1$
+
+    /**
      * don't ask for overwriting existing methods.
      */
     public static final String P_DONTASKONOVERWRITE = "dontask"; //$NON-NLS-1$

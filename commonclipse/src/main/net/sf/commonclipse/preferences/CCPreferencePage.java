@@ -97,6 +97,10 @@ public class CCPreferencePage extends FieldEditorPreferencePage implements IWork
 
         addField(new SpacerFieldEditor(getFieldEditorParent()));
 
+        addField(new BooleanFieldEditor(CCPlugin.P_FINALPARAMETERS, CCMessages
+            .getString("preference.finalparameters"), //$NON-NLS-1$
+            getFieldEditorParent()));
+
         addField(new BooleanFieldEditor(CCPlugin.P_EQUALS_INSTANCECHECK, CCMessages
             .getString("preference.equals.equalitycheck"), //$NON-NLS-1$
             getFieldEditorParent()));

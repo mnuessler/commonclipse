@@ -76,7 +76,15 @@ public final class CompareToGenerator extends Generator
 
         String className = type.getElementName();
 
-        buffer.append("public int compareTo(Object object) {\n"); //$NON-NLS-1$
+        buffer.append("public int compareTo("); //$NON-NLS-1$
+
+        if (CCPluginPreferences.getPreferences().useFinalParameters())
+        {
+            buffer.append("final "); //$NON-NLS-1$
+        }
+
+        buffer.append("Object object) {\n"); //$NON-NLS-1$
+
         buffer.append(className);
         buffer.append(" myClass = ("); //$NON-NLS-1$
         buffer.append(className);

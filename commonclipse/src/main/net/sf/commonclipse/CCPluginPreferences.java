@@ -198,6 +198,15 @@ public final class CCPluginPreferences
     }
 
     /**
+     * Use final parameters in generated methods?
+     * @return <code>true</code> if final parameters should be used.
+     */
+    public boolean useFinalParameters()
+    {
+        return CCPlugin.getDefault().getPreferenceStore().getBoolean(CCPlugin.P_FINALPARAMETERS);
+    }
+
+    /**
      * Returns the list of excluded fields/properties.
      * @return list of excluded fields/properties
      */
