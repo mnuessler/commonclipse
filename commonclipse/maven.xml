@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project default="rebuild-all" xmlns:m="maven" xmlns:j="jelly:core" xmlns:u="jelly:util">
+<project default="rebuild-all" xmlns:j="jelly:core" xmlns:u="jelly:util">
 
 	<goal name="rebuild-all">
 		<j:set var="goals" value="clean,jar:jar,eclipseplugin:zip,site:generate" />
