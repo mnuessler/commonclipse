@@ -252,7 +252,17 @@ public final class ToStringGenerator extends Generator
      */
     private String getJavabeanProperyName(String methodName)
     {
-        String propertyName = methodName.substring(3, methodName.length());
+
+        String propertyName;
+        if (methodName.startsWith("get"))
+        {
+            propertyName = methodName.substring(3, methodName.length());
+        }
+        else
+        {
+            // should be a boolean property isXXX
+            propertyName = methodName.substring(2, methodName.length());
+        }
 
         if (propertyName.length() > 1 && Character.isLowerCase(propertyName.charAt(1)))
         {
@@ -274,9 +284,11 @@ public final class ToStringGenerator extends Generator
      */
     private boolean isJavabeanGetter(IMethod method) throws JavaModelException
     {
+
         if (method.getNumberOfParameters() == 0 && Flags.isPublic(method.getFlags()))
         {
             String methodName = method.getElementName();
+
             if (methodName.length() > 3 && methodName.startsWith("get"))
             {
                 return true;
@@ -284,7 +296,7 @@ public final class ToStringGenerator extends Generator
             else if (
                 methodName.length() > 2
                     && methodName.startsWith("is")
-                    && ("boolean".equals(method.getReturnType()) || "Boolean".equals(method.getReturnType())))
+                    && ("Z".equals(method.getReturnType()) || "QBoolean;".equals(method.getReturnType())))
             {
                 return true;
             }
