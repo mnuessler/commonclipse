@@ -1,50 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project>
-    <pomVersion>3</pomVersion>
-    <groupId>commonclipse</groupId>
-    <artifactId>commonclipse</artifactId>
-    <name>Commonclipse</name>
-    <currentVersion>1.0.1</currentVersion>
+  <pomVersion>3</pomVersion>
+  <id>Commonclipse</id>
+  <name>Commonclipse</name>
+  <groupId>commonclipse</groupId>
+  <currentVersion>1.0.1</currentVersion>
   <organization>
     <name>sourceforge</name>
-    <identifier>sourceforge</identifier>
     <url>http://sourceforge.net</url>
-    <logo>http://sourceforge.net/sflogo.php?group_id=93989&amp;type=2</logo>
+    <logo>http://sourceforge.net/sflogo.php?group_id=${sf.groupid}&amp;type=2</logo>
   </organization>
-    <inceptionYear>2003</inceptionYear>
-    <package>net.sf.commonclipse</package>
-    <shortDescription>Commonclipse</shortDescription>
-    <description></description>
-
+  <inceptionYear>2003</inceptionYear>
+  <package>net.sf.commonclipse</package>
+  <description>Commonclipse is an eclipse plugin for jakarta commons-lang users. It features automatic generation of the following methods using commons-lang builders: toString(), hashcode(), equals(Object), compareTo(Object)</description>
+  <shortDescription>Commonclipse</shortDescription>
   <url>http://${pom.groupId}.sf.net</url>
-  <issueTrackingUrl>http://sourceforge.net/tracker/?group_id=95373</issueTrackingUrl>
+  <issueTrackingUrl>http://sourceforge.net/tracker/?group_id=${sf.groupid}</issueTrackingUrl>
   <siteAddress>shell.sf.net</siteAddress>
   <siteDirectory>/home/groups/c/co/commonclipse/htdocs</siteDirectory>
   <distributionDirectory>http://sourceforge.net/project/showfiles.php?group_id=95373</distributionDirectory>
-  
   <repository>
     <connection>scm:cvs:pserver:anonymous@cvs.sourceforge.net:/cvsroot/${pom.groupId}:${pom.groupId}</connection>
     <url>http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/${pom.groupId}/${pom.groupId}/</url>
   </repository>
-
-
-
   <versions>
     <version>
       <id>1.0.0</id>
       <name>1.0.0</name>
       <tag>commonclipse-1_0_0</tag>
     </version>
+    <version>
+      <id>1.0.1</id>
+      <name>1.0.1</name>
+      <tag>commonclipse-1_0_1</tag>
+    </version>
   </versions>
-  
-    <mailingLists>
-        <mailingList>
-            <name>${pom.name} Dev List</name>
-        </mailingList>
-        <mailingList>
-            <name>${pom.name} User List</name>
-        </mailingList>
-    </mailingLists>
-
+  <!--
+  <mailingLists>
+    <mailingList>
+      <name>${pom.name} User Mailing list</name>
+      <subscribe>http://lists.sourceforge.net/lists/listinfo/${pom.name}-user</subscribe>
+      <unsubscribe>http://lists.sourceforge.net/lists/listinfo/${pom.name}-user</unsubscribe>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum=${pom.name}-user</archive>
+    </mailingList>
+    <mailingList>
+      <name>${pom.name} Developer Mailing list</name>
+      <subscribe>http://lists.sourceforge.net/lists/listinfo/${pom.name}-devel</subscribe>
+      <unsubscribe>http://lists.sourceforge.net/lists/listinfo/${pom.name}-devel</unsubscribe>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum=${pom.name}-devel</archive>
+    </mailingList>
+    <mailingList>
+      <name>${pom.name} Cvs Mailing list</name>
+      <subscribe>http://lists.sourceforge.net/lists/listinfo/${pom.name}-cvs</subscribe>
+      <unsubscribe>http://lists.sourceforge.net/lists/listinfo/${pom.name}-cvs</unsubscribe>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum=${pom.name}-cvs</archive>
+    </mailingList>
+  </mailingLists>
+  -->
   <developers>
     <developer>
       <name>Fabrizio Giustina</name>
@@ -53,126 +65,105 @@
       <organization>Sourceforge</organization>
       <roles>
         <role>Project admin</role>
+        <role>Developer</role>
       </roles>
-      <timezone>+18</timezone>
+      <timezone>-4</timezone>
     </developer>
   </developers>
-
-    
   <dependencies>
-
     <dependency>
       <id>maven</id>
       <version>1.0-rc1</version>
     </dependency>
-    
-    <!--
     <dependency>
-	  <groupId>maven</groupId>
-	  <artifactId>maven-xhtml-plugin</artifactId>
-	  <type>plugin</type>
-	  <version>1.0-SNAPSHOT</version>
-	</dependency>
-	-->
-
-    <dependency>
-       <groupId>eclipse</groupId>
-       <artifactId>eclipse-runtime</artifactId>
-       <version>3.0.0</version>
-       <url>http://eclipse.org/</url>
+      <groupId>eclipse</groupId>
+      <artifactId>eclipse-runtime</artifactId>
+      <version>3.0.0</version>
+      <url>http://eclipse.org/</url>
     </dependency>
     <dependency>
-       <groupId>eclipse</groupId>
-       <artifactId>eclipse-jdtcore</artifactId>
-       <version>3.0.0</version>
-       <url>http://eclipse.org/</url>
+      <groupId>eclipse</groupId>
+      <artifactId>eclipse-jdtcore</artifactId>
+      <version>3.0.0</version>
+      <url>http://eclipse.org/</url>
     </dependency>
     <dependency>
-       <groupId>eclipse</groupId>
-       <artifactId>eclipse-jface</artifactId>
-       <version>3.0.0</version>
-       <url>http://eclipse.org/</url>
+      <groupId>eclipse</groupId>
+      <artifactId>eclipse-jface</artifactId>
+      <version>3.0.0</version>
+      <url>http://eclipse.org/</url>
     </dependency>
     <dependency>
-       <groupId>eclipse</groupId>
-       <artifactId>eclipse-workbench</artifactId>
-       <version>3.0.0</version>
-       <url>http://eclipse.org/</url>
-    </dependency>
-
-
-    <dependency>
-       <groupId>eclipse</groupId>
-       <artifactId>eclipse-resources</artifactId>
-       <version>3.0.0</version>
-       <url>http://eclipse.org/</url>
+      <groupId>eclipse</groupId>
+      <artifactId>eclipse-workbench</artifactId>
+      <version>3.0.0</version>
+      <url>http://eclipse.org/</url>
     </dependency>
     <dependency>
-       <groupId>eclipse</groupId>
-       <artifactId>eclipse-jdt</artifactId>
-       <version>3.0.0</version>
-       <url>http://eclipse.org/</url>
-    </dependency>
-
-    <dependency>
-       <groupId>eclipse</groupId>
-       <artifactId>eclipse-swt</artifactId>
-       <version>3.0.0</version>
-       <url>http://eclipse.org/</url>
+      <groupId>eclipse</groupId>
+      <artifactId>eclipse-resources</artifactId>
+      <version>3.0.0</version>
+      <url>http://eclipse.org/</url>
     </dependency>
     <dependency>
-       <groupId>eclipse</groupId>
-       <artifactId>eclipse-editors</artifactId>
-       <version>3.0.0</version>
-       <url>http://eclipse.org/</url>
+      <groupId>eclipse</groupId>
+      <artifactId>eclipse-jdt</artifactId>
+      <version>3.0.0</version>
+      <url>http://eclipse.org/</url>
     </dependency>
     <dependency>
-       <groupId>eclipse</groupId>
-       <artifactId>eclipse-ui</artifactId>
-       <version>3.0.0</version>
-       <url>http://eclipse.org/</url>
+      <groupId>eclipse</groupId>
+      <artifactId>eclipse-swt</artifactId>
+      <version>3.0.0</version>
+      <url>http://eclipse.org/</url>
     </dependency>
     <dependency>
-       <groupId>eclipse</groupId>
-       <artifactId>eclipse-jfacetext</artifactId>
-       <version>3.0.0</version>
-       <url>http://eclipse.org/</url>
+      <groupId>eclipse</groupId>
+      <artifactId>eclipse-editors</artifactId>
+      <version>3.0.0</version>
+      <url>http://eclipse.org/</url>
     </dependency>
     <dependency>
-       <groupId>eclipse</groupId>
-       <artifactId>eclipse-texteditor</artifactId>
-       <version>3.0.0</version>
-       <url>http://eclipse.org/</url>
+      <groupId>eclipse</groupId>
+      <artifactId>eclipse-ui</artifactId>
+      <version>3.0.0</version>
+      <url>http://eclipse.org/</url>
     </dependency>
     <dependency>
-       <groupId>eclipse</groupId>
-       <artifactId>eclipse-osgi</artifactId>
-       <version>3.0.0</version>
-       <url>http://eclipse.org/</url>
+      <groupId>eclipse</groupId>
+      <artifactId>eclipse-jfacetext</artifactId>
+      <version>3.0.0</version>
+      <url>http://eclipse.org/</url>
     </dependency>
-    
+    <dependency>
+      <groupId>eclipse</groupId>
+      <artifactId>eclipse-texteditor</artifactId>
+      <version>3.0.0</version>
+      <url>http://eclipse.org/</url>
+    </dependency>
+    <dependency>
+      <groupId>eclipse</groupId>
+      <artifactId>eclipse-osgi</artifactId>
+      <version>3.0.0</version>
+      <url>http://eclipse.org/</url>
+    </dependency>
     <!-- plugin dependencies -->
-	<dependency>
-	  <groupId>maven</groupId>
-	  <artifactId>maven-checkstyle-plugin</artifactId>
-	  <version>2.2</version>
-	  <type>plugin</type>
-	</dependency>
-
-	<dependency>
-	  <groupId>maven</groupId>
-	  <artifactId>maven-statcvs-plugin</artifactId>
-	  <version>2.0</version>
-	  <type>plugin</type>
-	</dependency>
-    
-    </dependencies>
-    
+    <dependency>
+      <groupId>maven</groupId>
+      <artifactId>maven-checkstyle-plugin</artifactId>
+      <version>2.2</version>
+      <type>plugin</type>
+    </dependency>
+    <dependency>
+      <groupId>maven</groupId>
+      <artifactId>maven-statcvs-plugin</artifactId>
+      <version>2.0</version>
+      <type>plugin</type>
+    </dependency>
+  </dependencies>
   <build>
     <sourceDirectory>${basedir}/src/main</sourceDirectory>
   </build>
-    
-  
   <reports>
     <report>maven-license-plugin</report>
     <report>maven-checkstyle-plugin</report>
@@ -188,7 +179,6 @@
     <report>maven-developer-activity-plugin</report>
     <report>maven-statcvs-plugin</report>
     <report>maven-linkcheck-plugin</report>
-    <!--<report>maven-xhtml-plugin</report>-->
   </reports>
-    
 </project>
+
