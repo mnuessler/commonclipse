@@ -13,7 +13,10 @@
             </action>
             <action dev="fgiust" type="fix">
                 Added the osgi bundle to the plugin jar (was missing in the build script). This allows the plugin to be
-                activated without restarting eclipse after installation
+                activated without restarting eclipse after installation.
+            </action>
+            <action dev="fgiust" type="update">
+                Reorganized preference page for better readability.
             </action>
         </release>
 
