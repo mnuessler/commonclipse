@@ -12,12 +12,31 @@
 	</goal>
 
     <goal name="eclipseplugin:zip">
-          <zip destfile="${maven.build.dir}/${pom.name}-src.zip">
+        
+          <mkdir dir="${maven.build.dir}/dist" />
+
+        <!-- features -->
+          <copy todir="${maven.build.dir}/dist/features/${pom.package}_${pom.currentVersion}" >
+            <fileset dir="${maven.src.dir}/feature"/>
+          </copy>
+
+
+        <!-- plugins -->
+          <copy tofile="${maven.build.dir}/dist/plugins/${pom.package}_${pom.currentVersion}/commonclipse.jar"
+             file="${maven.build.dir}/${maven.final.name}.jar">
+          </copy>
+
+          <copy todir="${maven.build.dir}/dist/plugins/${pom.package}_${pom.currentVersion}" >
+             <fileset dir="${maven.base.dir}" includes="plugin.*,icons/*,LICENSE.txt" />
+          </copy>
+
+        <!-- src -->
+          <zip destfile="${maven.build.dir}/dist/plugins/${pom.package}_${pom.currentVersion}/${pom.name}-src.zip">
               <zipfileset dir="${maven.src.dir}/main"/>
           </zip>
+
           <zip destfile="${maven.build.dir}/${pom.name}-${pom.currentVersion}.zip">
-              <zipfileset dir="${maven.build.dir}" includes="${maven.final.name}.jar,${pom.name}-src.zip" prefix="${pom.package}_${pom.currentVersion}"/>
-              <zipfileset dir="${maven.base.dir}" includes="plugin.*,icons/*,LICENSE.txt" prefix="${pom.package}_${pom.currentVersion}"/>
+              <zipfileset dir="${maven.build.dir}/dist" />
           </zip>
     </goal>
     
@@ -26,14 +45,28 @@
 	</preGoal>
     
     <goal name="updatesite">
-         <!-- copy site.xml -->
-        <copy file="${maven.src.dir}/update/site.xml" todir="${maven.build.dir}/docs" />
-		<!-- zip feature -->
-		<zip destfile="${maven.build.dir}/docs/commonclipse.jar">
-              <zipfileset dir="${maven.src.dir}/feature"/>
-        </zip>
-        <!-- copy plugin -->
-         <copy file="${maven.build.dir}/${maven.final.name}.jar" tofile="${maven.build.dir}/docs/plugins/net.sf.commonclipse_${pom.currentVersion}.jar" />
+		
+	  <attainGoal name="eclipseplugin:zip" />
+		  
+      <!-- copy site.xml -->
+      <copy file="${maven.src.dir}/update/site.xml" todir="${maven.build.dir}/docs" />
+      <copy todir="${maven.build.dir}/docs" >
+        <fileset dir="${maven.build.dir}/dist/features/${pom.package}_${pom.currentVersion}" />
+      </copy>
+
+      <!-- feature -->
+      <zip destfile="${maven.build.dir}/docs/commonclipse.jar">
+            <fileset dir="${maven.src.dir}/feature"/>
+      </zip>
+		  
+      <mkdir dir="${maven.build.dir}/docs/plugins" />
+
+      <!-- copy plugin -->
+      <zip destfile="${maven.build.dir}/docs/plugins/net.sf.commonclipse_${pom.currentVersion}.jar">
+            <zipfileset dir="${maven.build.dir}" includes="${maven.final.name}.jar" fullpath="commonclipse.jar" />
+            <zipfileset dir="${maven.build.dir}" includes="${pom.name}-src.zip" />
+            <zipfileset dir="${maven.base.dir}" includes="plugin.*,icons/*,LICENSE.txt" />
+      </zip>
 
     </goal>
     
