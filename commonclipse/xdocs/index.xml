@@ -31,12 +31,12 @@
       <p>
       	Built methods use jakarta commons-lang 2.0 builders.
       	Commonclipse will not check for the presence of commons-lang in your project classpath, you need to get
-      	a copy from <a href="http://jakarta.apache.org/commons/lang.html">jakarta</a> and to set up java build path
+      	a copy from <a href="http://jakarta.apache.org/commons/lang">jakarta</a> and to set up java build path
       	appropriately.
       </p>
 
        <p>
-      	<strong>Current build is compatible with eclipse 2.x and 3.0 Mx.</strong>
+      	<strong>Current build is compatible with eclipse 2.x and any 3.0 build.</strong>
       </p>
       
       <p>
