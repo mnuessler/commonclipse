@@ -22,12 +22,12 @@
 
 
         <!-- plugins -->
-          <copy tofile="${maven.build.dir}/dist/plugins/${pom.package}_${pom.currentVersion}/commonclipse-${pom.currentVersion}.jar"
+          <copy tofile="${maven.build.dir}/dist/plugins/${pom.package}_${pom.currentVersion}/commonclipse.jar"
              file="${maven.build.dir}/${maven.final.name}.jar">
           </copy>
 
           <copy todir="${maven.build.dir}/dist/plugins/${pom.package}_${pom.currentVersion}" >
-             <fileset dir="${maven.base.dir}" includes="plugin.*,icons/*,LICENSE.txt" />
+             <fileset dir="${maven.base.dir}" includes="plugin*,icons/*,LICENSE.txt" />
           </copy>
 
         <!-- src -->
