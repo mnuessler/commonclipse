@@ -7,7 +7,7 @@
    class="net.sf.commonclipse.CCPlugin">
 
    <runtime>
-      <library name="commonclipse-plugin.jar">
+      <library name="commonclipse.jar">
          <packages prefixes="net.sf.commonclipse"/>
       </library>
    </runtime>
