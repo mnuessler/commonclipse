@@ -6,7 +6,7 @@
     </properties>
     <body>
 
-        <release version="1.2.0" date="in CVS" description="Bugfix release">
+        <release version="1.2.0" date="August, 24" description="Bugfix release">
             <action dev="fgiust" type="fix" issue="989032">Generate equals() label incorrect</action>
             <action dev="fgiust" type="add" issue="989033">
                 Optionally add final to equals and compareTo. (requested by Archimedes Trajano)
