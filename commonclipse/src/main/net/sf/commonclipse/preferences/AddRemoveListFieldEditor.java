@@ -1,66 +1,29 @@
-/** ====================================================================
- * The Apache Software License, Version 1.1
+/* ====================================================================
+ *   Copyright 2003-2004 Fabrizio Giustina.
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights
- * reserved.
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- *
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in
- *    the documentation and/or other materials provided with the
- *    distribution.
- *
- * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:
- *       "This product includes software developed by the
- *        Apache Software Foundation (http://www.apache.org )."
- *    Alternately, this acknowledgment may appear in the software itself,
- *    if and wherever such third-party acknowledgments normally appear.
- *
- * 4. The names "Apache" and "Apache Software Foundation" must
- *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written
- *    permission, please contact apache@apache.org.
- *
- * 5. Products derived from this software may not be called "Apache",
- *    nor may "Apache" appear in their name, without prior written
- *    permission of the Apache Software Foundation.
- *
- * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED
- * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED.  IN NO EVENT SHALL THE APACHE SOFTWARE FOUNDATION OR
- * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
- * USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
- * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
- * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
- * SUCH DAMAGE.
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
  * ====================================================================
- *
- * This software consists of voluntary contributions made by many
- * individuals on behalf of the Apache Software Foundation.  For more
- * information on the Apache Software Foundation, please see
- * <http://www.apache.org >.
- *
- * Portions of this software are based upon public domain software
- * originally written at the National Center for Supercomputing Applications,
- * University of Illinois, Urbana-Champaign.
  */
 package net.sf.commonclipse.preferences;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+import net.sf.commonclipse.CCMessages;
+
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -71,7 +34,9 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+
 
 /**
  * A field editor for displaying and storing a list of strings. Buttons are provided for adding items to the list and
@@ -82,20 +47,11 @@ import org.eclipse.swt.widgets.Text;
  */
 public class AddRemoveListFieldEditor extends FieldEditor
 {
-    /**
-     * "add" button label.
-     */
-    private static final String DEFAULT_ADD_LABEL = "Add";
-
-    /**
-     * "remove" button label.
-     */
-    private static final String DEFAULT_REMOVE_LABEL = "Remove";
 
     /**
      * default separator for list items.
      */
-    private static final String DEFAULT_SEPARATOR = ";";
+    private static final String DEFAULT_SEPARATOR = ";"; //$NON-NLS-1$
 
     /**
      * vertical dialog units per char.
@@ -208,6 +164,7 @@ public class AddRemoveListFieldEditor extends FieldEditor
         this.list.setLayoutData(listData);
         this.list.addSelectionListener(new SelectionAdapter()
         {
+
             public void widgetSelected(SelectionEvent e)
             {
                 selectionChanged();
@@ -239,9 +196,10 @@ public class AddRemoveListFieldEditor extends FieldEditor
 
         // Create the add button.
         this.add = new Button(buttonGroup, SWT.NONE);
-        this.add.setText(DEFAULT_ADD_LABEL);
+        this.add.setText(CCMessages.getString("preferences.button.add")); //$NON-NLS-1$
         this.add.addSelectionListener(new SelectionAdapter()
         {
+
             public void widgetSelected(SelectionEvent e)
             {
                 add();
@@ -255,9 +213,10 @@ public class AddRemoveListFieldEditor extends FieldEditor
         // Create the remove button.
         this.remove = new Button(buttonGroup, SWT.NONE);
         this.remove.setEnabled(false);
-        this.remove.setText(DEFAULT_REMOVE_LABEL);
+        this.remove.setText(CCMessages.getString("preferences.button.remove")); //$NON-NLS-1$
         this.remove.addSelectionListener(new SelectionAdapter()
         {
+
             public void widgetSelected(SelectionEvent e)
             {
                 AddRemoveListFieldEditor.this.list.remove(AddRemoveListFieldEditor.this.list.getSelectionIndex());
@@ -336,9 +295,46 @@ public class AddRemoveListFieldEditor extends FieldEditor
         String tag = this.textField.getText();
         if (tag != null && tag.length() > 0)
         {
+
+            if (!containsOnlyValidChars(tag))
+            {
+                MessageDialog.openError(
+                    new Shell(),
+                    CCMessages.getString("preferences.invalidfieldtitle"), MessageFormat.format(//$NON-NLS-1$
+                        CCMessages.getString("preferences.invalidfieldmessage"), //$NON-NLS-1$
+                        new Object[]{tag}));
+                return;
+            }
+
             this.list.add(tag);
         }
-        this.textField.setText("");
+        this.textField.setText(""); //$NON-NLS-1$
+    }
+
+    /**
+     * Checks the the given String doesn't contains invalid chars.
+     * @param str input String
+     * @return <code>true</code> if the string doesn't contains invalid chars.
+     */
+    public static boolean containsOnlyValidChars(String str)
+    {
+
+        char[] invalidChars = new char[]{'(', ')', '[', ']', '{', '}', '.', '/', '\\', '^', '$', '.', '&', '|', '+'};
+
+        int strSize = str.length();
+        int validSize = invalidChars.length;
+        for (int i = 0; i < strSize; i++)
+        {
+            char ch = str.charAt(i);
+            for (int j = 0; j < validSize; j++)
+            {
+                if (invalidChars[j] == ch)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     /**
@@ -376,7 +372,7 @@ public class AddRemoveListFieldEditor extends FieldEditor
      */
     private String createListString(String[] items)
     {
-        StringBuffer path = new StringBuffer(""); //$NON-NLS-1$
+        StringBuffer path = new StringBuffer();
 
         for (int i = 0; i < items.length; i++)
         {
@@ -393,7 +389,7 @@ public class AddRemoveListFieldEditor extends FieldEditor
      */
     private String[] parseString(String stringList)
     {
-        StringTokenizer st = new StringTokenizer(stringList, this.separator); //$NON-NLS-1$
+        StringTokenizer st = new StringTokenizer(stringList, this.separator);
         java.util.List v = new ArrayList();
         while (st.hasMoreElements())
         {
@@ -410,4 +406,5 @@ public class AddRemoveListFieldEditor extends FieldEditor
         int index = this.list.getSelectionIndex();
         this.remove.setEnabled(index >= 0);
     }
+
 }

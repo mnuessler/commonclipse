@@ -1,78 +1,51 @@
-/** ====================================================================
- * The Apache Software License, Version 1.1
+/* ====================================================================
+ *   Copyright 2003-2004 Fabrizio Giustina.
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights
- * reserved.
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- *
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in
- *    the documentation and/or other materials provided with the
- *    distribution.
- *
- * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:
- *       "This product includes software developed by the
- *        Apache Software Foundation (http://www.apache.org )."
- *    Alternately, this acknowledgment may appear in the software itself,
- *    if and wherever such third-party acknowledgments normally appear.
- *
- * 4. The names "Apache" and "Apache Software Foundation" must
- *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written
- *    permission, please contact apache@apache.org.
- *
- * 5. Products derived from this software may not be called "Apache",
- *    nor may "Apache" appear in their name, without prior written
- *    permission of the Apache Software Foundation.
- *
- * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED
- * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED.  IN NO EVENT SHALL THE APACHE SOFTWARE FOUNDATION OR
- * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
- * USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
- * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
- * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
- * SUCH DAMAGE.
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
  * ====================================================================
- *
- * This software consists of voluntary contributions made by many
- * individuals on behalf of the Apache Software Foundation.  For more
- * information on the Apache Software Foundation, please see
- * <http://www.apache.org >.
- *
- * Portions of this software are based upon public domain software
- * originally written at the National Center for Supercomputing Applications,
- * University of Illinois, Urbana-Champaign.
  */
 package net.sf.commonclipse;
 
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.regex.Pattern;
 
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Preferences;
 import org.eclipse.jdt.core.Flags;
+import org.eclipse.jdt.core.IBuffer;
+import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IField;
+import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IMethod;
+import org.eclipse.jdt.core.ISourceReference;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
+import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.core.ToolFactory;
 import org.eclipse.jdt.core.formatter.CodeFormatter;
+import org.eclipse.jdt.core.formatter.DefaultCodeFormatterConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.text.BadLocationException;
+import org.eclipse.jface.text.Document;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.text.edits.MalformedTreeException;
+import org.eclipse.text.edits.TextEdit;
 
 
 /**
@@ -81,6 +54,11 @@ import org.eclipse.swt.widgets.Shell;
  */
 public abstract class Generator
 {
+
+    /**
+     * line separator.
+     */
+    private static final String LINE_SEPARATOR = System.getProperty("line.separator"); //$NON-NLS-1$
 
     /**
      * Generates the appropriate method in <code>type</code>.
@@ -105,7 +83,7 @@ public abstract class Generator
         }
         catch (Exception ex)
         {
-            MessageDialog.openError(shell, "Error", ex.getMessage());
+            MessageDialog.openError(shell, CCMessages.getString("Generator.errortitle"), ex.getMessage()); //$NON-NLS-1$
         }
 
         progressDialog.close();
@@ -127,11 +105,9 @@ public abstract class Generator
             boolean dontAsk = CCPluginPreferences.getPreferences().dontAskOnOverwrite();
 
             if (dontAsk
-                || MessageDialog.openConfirm(shell, CCPlugin.PLUGIN_NAME, "the method \""
-                    + getMethodName()
-                    + "\" already exists in "
-                    + type.getElementName()
-                    + ". Do you want to replace it?"))
+                || MessageDialog.openConfirm(shell, CCPlugin.PLUGIN_NAME, MessageFormat.format(CCMessages
+                    .getString("Generator.methodexists"), //$NON-NLS-1$
+                    new Object[]{getMethodName(), type.getElementName()})))
             {
                 try
                 {
@@ -140,11 +116,9 @@ public abstract class Generator
                 }
                 catch (JavaModelException e)
                 {
-
-                    MessageDialog.openError(shell, "Error", "Unable to delete existing \""
-                        + getMethodName()
-                        + "\" method due to: "
-                        + e.getMessage());
+                    MessageDialog.openError(shell, CCMessages.getString("Generator.errortitle"), MessageFormat.format(//$NON-NLS-1$
+                        CCMessages.getString("Generator.unabletodelete"), //$NON-NLS-1$
+                        new Object[]{getMethodName(), e.getMessage()}));
                 }
             }
             return false;
@@ -169,29 +143,139 @@ public abstract class Generator
     public void generateMethod(IType type, Shell shell, IProgressMonitor monitor) throws JavaModelException
     {
         String className = type.getElementName();
+        ICompilationUnit cu = (ICompilationUnit) type.getAncestor(IJavaElement.COMPILATION_UNIT);
 
-        String title = "Generating method for " + className + ". ";
+        // first check if file is writable
+        IResource resource;
+        try
+        {
+            resource = cu.getCorrespondingResource();
+        }
+        catch (JavaModelException e)
+        {
+            MessageDialog.openError(shell, CCMessages.getString("Generator.errortitle"), e.getMessage());
+            return;
+        }
+        if (resource != null && resource.isReadOnly())
+        {
+            MessageDialog.openError(shell, CCMessages.getString("Generator.errortitle"), CCMessages
+                .getString("Generator.readonly"));
+            return;
+        }
+
+        resource = null;
+
+        String title = MessageFormat.format(CCMessages.getString("Generator.generating"), new Object[]{className}); //$NON-NLS-1$
         monitor.beginTask(title, 100);
         monitor.worked(10);
 
-        monitor.setTaskName(title + "Parsing");
+        monitor.setTaskName(title + CCMessages.getString("Generator.parsing")); //$NON-NLS-1$
         String src = createMethod(type);
         monitor.worked(30);
 
-        monitor.setTaskName(title + "Formatting");
-        src = ToolFactory.createCodeFormatter(null).format(CodeFormatter.K_STATEMENTS, src, 0, 0, 0, null) + "\n";
+        monitor.setTaskName(title + CCMessages.getString("Generator.formatting")); //$NON-NLS-1$
+        Document document = new Document(src);
+
+        TextEdit text = ToolFactory.createCodeFormatter(null).format(
+            CodeFormatter.K_UNKNOWN,
+            src,
+            0,
+            src.length(),
+            getIndentUsed(type, cu) + 1,
+            null);
+
+        try
+        {
+            text.apply(document);
+        }
+        catch (MalformedTreeException ex)
+        {
+            MessageDialog.openError(shell, CCMessages.getString("Generator.errortitle"), ex.getMessage()); //$NON-NLS-1$
+        }
+        catch (BadLocationException ex)
+        {
+            MessageDialog.openError(shell, CCMessages.getString("Generator.errortitle"), ex.getMessage()); //$NON-NLS-1$
+        }
+
         monitor.worked(20);
 
-        monitor.setTaskName(title + "Adding method to class");
-        type.createMethod(src, null, false, null);
+        monitor.setTaskName(title + CCMessages.getString("Generator.adding")); //$NON-NLS-1$
+        type.createMethod(document.get() + LINE_SEPARATOR, null, false, null);
 
         monitor.worked(20);
 
-        monitor.setTaskName(title + "Adding required imports");
+        monitor.setTaskName(title + CCMessages.getString("Generator.imports")); //$NON-NLS-1$
         addImports(type);
         monitor.worked(20);
 
         monitor.done();
+    }
+
+    /**
+     * Evaluates the indention used by a Java element.
+     * @param elem Java element
+     * @param cu compilation unit
+     * @return indentation level
+     */
+    public int getIndentUsed(IJavaElement elem, ICompilationUnit cu) throws JavaModelException
+    {
+        if (elem instanceof ISourceReference)
+        {
+
+            if (cu != null)
+            {
+                IBuffer buf = cu.getBuffer();
+                int offset = ((ISourceReference) elem).getSourceRange().getOffset();
+                int i = offset;
+                // find beginning of line
+                char c = buf.getChar(i - 1);
+                while (i > 0 && c != '\n' && c != '\r')
+                {
+                    i--;
+                }
+
+                return computeIndent(buf.getText(i, offset - i));
+            }
+        }
+        return 0;
+    }
+
+    /**
+     * Returns the indent of the given string.
+     * @param line the text line
+     * @return indent level
+     */
+    public int computeIndent(String line)
+    {
+        Preferences preferences = JavaCore.getPlugin().getPluginPreferences();
+        int tabWidth = preferences.getInt(DefaultCodeFormatterConstants.FORMATTER_TAB_SIZE);
+
+        int result = 0;
+        int blanks = 0;
+        int size = line.length();
+        for (int i = 0; i < size; i++)
+        {
+            char c = line.charAt(i);
+            if (c == '\t')
+            {
+                result++;
+                blanks = 0;
+            }
+            else if (Character.isWhitespace(c) && c != '\n' && c != '\r')
+            {
+                blanks++;
+                if (blanks == tabWidth)
+                {
+                    result++;
+                    blanks = 0;
+                }
+            }
+            else
+            {
+                return result;
+            }
+        }
+        return result;
     }
 
     /**
@@ -305,17 +389,8 @@ public abstract class Generator
      */
     protected boolean isExcluded(String fieldName)
     {
-        String[] exclusionList = CCPluginPreferences.getPreferences().getExcludedFiels();
-
-        for (int j = 0; j < exclusionList.length; j++)
-        {
-            if (exclusionList[j].equals(fieldName))
-            {
-                return true;
-            }
-        }
-
-        return false;
+        Pattern exclusion = CCPluginPreferences.getPreferences().getExcludedFielsPattern();
+        return exclusion.matcher(fieldName).matches();
     }
 
     /**
