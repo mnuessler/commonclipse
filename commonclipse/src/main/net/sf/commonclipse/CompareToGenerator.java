@@ -21,6 +21,7 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.jdt.core.JavaModelException;
 
+
 /**
  * Generator for compareTo(Object) methods.
  * @author fgiust
@@ -75,13 +76,11 @@ public final class CompareToGenerator extends Generator
 
         String className = type.getElementName();
 
-        buffer.append(
-            "public int compareTo(Object object) {\n" //$NON-NLS-1$
-                + className
-                + " myClass = (" //$NON-NLS-1$
-                + className
-                + ") object;\n" //$NON-NLS-1$
-                + "return new CompareToBuilder()\n"); //$NON-NLS-1$
+        buffer.append("public int compareTo(Object object) {\n"); //$NON-NLS-1$
+        buffer.append(className);
+        buffer.append(" myClass = ("); //$NON-NLS-1$
+        buffer.append(className);
+        buffer.append(") object;\nreturn new CompareToBuilder()\n"); //$NON-NLS-1$
 
         if (CCPluginPreferences.getPreferences().appendSuperToCompareTo())
         {
@@ -140,20 +139,16 @@ public final class CompareToGenerator extends Generator
      */
     protected IMethod getExistingMethod(IType type)
     {
-        return type.getMethod(getMethodName(), new String[] { "QObject;" }); //$NON-NLS-1$
+        return type.getMethod(getMethodName(), new String[]{"QObject;"}); //$NON-NLS-1$
     }
 
     /**
-     * @see net.sf.commonclipse.Generator#addImports(org.eclipse.jdt.core.IType) @todo add implement Comparable
+     * @see net.sf.commonclipse.Generator#addImports(org.eclipse.jdt.core.IType)
+     * @todo add implement Comparable
      */
     protected void addImports(IType type) throws JavaModelException
     {
         type.getCompilationUnit().createImport(BUILDER_CLASS, null, null);
-
-        // type.createType
-        //type.getCompilationUnit()
-        // ITypeHierarchy hierarchy = type.newTypeHierarchy(null);
-
     }
 
     /**

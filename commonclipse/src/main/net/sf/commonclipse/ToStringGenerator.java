@@ -100,7 +100,8 @@ public final class ToStringGenerator extends Generator
 
         if (CCPluginPreferences.getPreferences().useCustomToStringStyle())
         {
-            buffer.append(", " + CCPluginPreferences.getPreferences().getToStringStyleClassAndConstant()); //$NON-NLS-1$
+            buffer.append(", "); //$NON-NLS-1$
+            buffer.append(CCPluginPreferences.getPreferences().getToStringStyleClassAndConstant());
         }
 
         buffer.append(")\n"); //$NON-NLS-1$

@@ -20,6 +20,7 @@ import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
 
+
 /**
  * Generator for equals(Object) methods.
  * @author fgiust
@@ -74,27 +75,20 @@ public final class EqualsGenerator extends Generator
 
         String className = type.getElementName();
 
-        buffer.append(
-            "public boolean equals(Object object) {\n"); //$NON-NLS-1$
+        buffer.append("public boolean equals(Object object) {\n"); //$NON-NLS-1$
 
         if (CCPluginPreferences.getPreferences().addInstanceCheckToEquals())
         {
-            buffer.append("if (object == this) {\n" //$NON-NLS-1$
-                + "return true;\n" //$NON-NLS-1$
-                + "}\n"); //$NON-NLS-1$
+            buffer.append("if (object == this) {\nreturn true;\n}\n"); //$NON-NLS-1$
         }
 
-        buffer.append(
-            "if ( !(object instanceof " //$NON-NLS-1$
-                + className
-                + ") ) {\n" //$NON-NLS-1$
-                + "return false;\n" //$NON-NLS-1$
-                + "}\n" //$NON-NLS-1$
-                + className
-                + " rhs = (" //$NON-NLS-1$
-                + className
-                + ") object;\n" //$NON-NLS-1$
-                + "return new EqualsBuilder()\n"); //$NON-NLS-1$
+        buffer.append("if ( !(object instanceof "); //$NON-NLS-1$
+        buffer.append(className);
+        buffer.append(") ) {\nreturn false;\n}\n"); //$NON-NLS-1$
+        buffer.append(className);
+        buffer.append(" rhs = ("); //$NON-NLS-1$
+        buffer.append(className);
+        buffer.append(") object;\nreturn new EqualsBuilder()\n"); //$NON-NLS-1$
 
         if (CCPluginPreferences.getPreferences().appendSuperToEquals())
         {
@@ -120,7 +114,7 @@ public final class EqualsGenerator extends Generator
      */
     protected IMethod getExistingMethod(IType type)
     {
-        return type.getMethod(getMethodName(), new String[] { "QObject;" }); //$NON-NLS-1$
+        return type.getMethod(getMethodName(), new String[]{"QObject;"}); //$NON-NLS-1$
     }
 
     /**

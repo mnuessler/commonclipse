@@ -22,6 +22,7 @@ import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
 
+
 /**
  * Generator for hashcode() methods.
  * @author fgiust
@@ -91,14 +92,11 @@ public final class HashcodeGenerator extends Generator
 
         buffer.append(getJavadoc());
 
-        buffer.append(
-            "public int hashCode()\n" //$NON-NLS-1$
-                + "    {\n" //$NON-NLS-1$
-                + "        return new HashCodeBuilder(" //$NON-NLS-1$
-                + initial
-                + ", " //$NON-NLS-1$
-                + multiplier
-                + ")\n"); //$NON-NLS-1$
+        buffer.append("public int hashCode()\n{\nreturn new HashCodeBuilder("); //$NON-NLS-1$
+        buffer.append(initial);
+        buffer.append(", "); //$NON-NLS-1$
+        buffer.append(multiplier);
+        buffer.append(")\n"); //$NON-NLS-1$
 
         if (CCPluginPreferences.getPreferences().appendSuperToHashcode())
         {
