@@ -62,7 +62,6 @@ import java.util.ResourceBundle;
 
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 
@@ -147,7 +146,7 @@ public class CCPlugin extends AbstractUIPlugin
         plugin = this;
         try
         {
-            this.resourceBundle = ResourceBundle.getBundle("net.sf.commonclipse.CCPluginResources");
+            this.resourceBundle = ResourceBundle.getBundle("net.sf.commonclipse.ccresources");
         }
         catch (MissingResourceException x)
         {
@@ -198,20 +197,6 @@ public class CCPlugin extends AbstractUIPlugin
     public ResourceBundle getResourceBundle()
     {
         return this.resourceBundle;
-    }
-
-    /**
-     * @see org.eclipse.ui.plugin.AbstractUIPlugin#initializeDefaultPreferences(IPreferenceStore)
-     */
-    protected void initializeDefaultPreferences(IPreferenceStore store)
-    {
-        super.initializeDefaultPreferences(store);
-        store.setDefault(CCPlugin.P_TOSTRING_BEAN, "bean");
-        store.setDefault(CCPlugin.P_TOSTRING_SUPER, false);
-        store.setDefault(CCPlugin.P_HASHCODE_SUPER, true);
-        store.setDefault(CCPlugin.P_EQUALS_SUPER, true);
-        store.setDefault(CCPlugin.P_COMPARETO_SUPER, true);
-        store.setDefault(CCPlugin.P_EXCLUDE, "class;log");
     }
 
 }
