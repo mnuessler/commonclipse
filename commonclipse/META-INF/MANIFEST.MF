@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-Name: %plugin.name
 Bundle-SymbolicName: net.sf.commonclipse; singleton=true
-Bundle-Version: 1.1
+Bundle-Version: 1.2
 Bundle-ClassPath: commonclipse.jar
 Bundle-Activator: net.sf.commonclipse.CCPlugin
 Bundle-Localization: plugin
