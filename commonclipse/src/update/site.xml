@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <description url="http://commonclipse.sf.net">
+
+   <description url="http://commonclipse.sourceforge.net">
       Commonclipse update site
    </description>
-
-   <feature url="commonclipse.jar" id="net.sf.commonclipse" version="1.0.1">
-      <category name="net.sf.commonclipse"/>
+   <feature url="features/commonclipse-1.0.1.jar" id="net.sf.commonclipse" version="1.0.1" label="commonclipse 1.0.1 for Eclipse 2/3">
+      <category name="commonclipse-eclipse2"/>
+   </feature>
+   <feature url="features/commonclipse-1.1.0.jar" id="net.sf.commonclipse" version="1.1.0" label="commonclipse 1.1 for Eclipse 3.0">
+      <category name="commonclipse-eclipse3"/>
    </feature>
    
-   <category-def name="net.sf.commonclipse" label="Commonclipse">
+   <category-def name="commonclipse-eclipse3" label="Commonclipse for Eclipse 3">
       <description>
          Commonclipse is an eclipse plugin for jakarta commons-lang users.
-      	It features automatic generation of the following methods using commons-lang builders:
-      	toString(), hashcode(), equals(Object), compareTo(Object).
+       It features automatic generation of the following methods using commons-lang builders:
+       toString(), hashcode(), equals(Object), compareTo(Object).
+      </description>
+   </category-def>
+   
+   <category-def name="commonclipse-eclipse2" label="Commonclipse for Eclipse 2.x">
+      <description>
+         Commonclipse is an eclipse plugin for jakarta commons-lang users.
+       It features automatic generation of the following methods using commons-lang builders:
+       toString(), hashcode(), equals(Object), compareTo(Object).
       </description>
    </category-def>
 </site>
