@@ -212,6 +212,9 @@ public final class CompareToGenerator extends Generator
             buffer.replace(offset, 0, " implements Comparable"); //$NON-NLS-1$
         }
 
+        buffer.save(null, false);
+        buffer.close();
+
     }
 
     /**
