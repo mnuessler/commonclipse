@@ -28,9 +28,6 @@
       </p>
       <p>Click <a href="http://sourceforge.net/donate/index.php?group_id=95373">here to donate to Commonclipse <img 
         src="images/paypal.gif" width="72" height="29" alt="support this project"/></a> </p>
-      <p> Is this another eclipse "toString plugin"? Well, there are many eclipse plugins providing automatic creation 
-        of basic methods, but none of them allows you to use commons-lang builders: that's the reason for Commonclipse. 
-        </p>
     </section>
   </body>
 </document>
