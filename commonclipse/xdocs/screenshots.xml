@@ -16,9 +16,13 @@
       </p>
       <img src="images/explorer.png" style="border: 1px solid #000" />
       <p>
-      	Preference page (Window->Preferences->Java)
+      	Preference pages (Window->Preferences->Java)
       </p>
-      <img src="images/preferences.png" />
+
+
+      <img src="images/preferences-tostring.png" style="border: 1px solid #000" alt="ToString preference page"/>
+      <img src="images/preferences-general.png" style="border: 1px solid #000" alt="General preference page" />
+      <img src="images/preferences-exclude.png" style="border: 1px solid #000" alt="Excluded field preference page" />
       
       
     </section>
