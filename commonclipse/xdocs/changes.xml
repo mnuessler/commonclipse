@@ -6,7 +6,7 @@
     </properties>
     <body>
 
-        <release version="1.1.1" date="in CVS" description="Bugfix release">
+        <release version="1.2.0" date="in CVS" description="Bugfix release">
             <action dev="fgiust" type="fix" issue="989032">Generate equals() label incorrect</action>
             <action dev="fgiust" type="add" issue="989033">
                 Optionally add final to equals and compareTo. (requested by Archimedes Trajano)
@@ -15,8 +15,10 @@
                 Added the osgi bundle to the plugin jar (was missing in the build script). This allows the plugin to be
                 activated without restarting eclipse after installation.
             </action>
-            <action dev="fgiust" type="update">
-                Reorganized preference page for better readability.
+            <action dev="fgiust" type="update">Reorganized preference page for better readability.</action>
+            <action dev="fgiust" type="add">
+                Add "implements Comparable" when generating the compareTo method and the class doesn't implement
+                Comparable yet.
             </action>
         </release>
 
