@@ -16,7 +16,9 @@
  */
 package net.sf.commonclipse;
 
+import org.eclipse.jdt.core.IBuffer;
 import org.eclipse.jdt.core.IMethod;
+import org.eclipse.jdt.core.ISourceRange;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.jdt.core.JavaModelException;
@@ -152,11 +154,64 @@ public final class CompareToGenerator extends Generator
 
     /**
      * @see net.sf.commonclipse.Generator#addImports(org.eclipse.jdt.core.IType)
-     * @todo add implement Comparable
      */
     protected void addImports(IType type) throws JavaModelException
     {
         type.getCompilationUnit().createImport(BUILDER_CLASS, null, null);
+
+        addImplementsComparable(type);
+
+    }
+
+    /**
+     * Adds "implements Comparable" to class declaration.
+     * @param type IType
+     * @throws JavaModelException model exception
+     */
+    private void addImplementsComparable(IType type) throws JavaModelException
+    {
+
+        // does class already implements comparable?
+        IType[] interfaces = type.newSupertypeHierarchy(null).getAllInterfaces();
+        for (int j = 0, size = interfaces.length; j < size; j++)
+        {
+            if (interfaces[j].getFullyQualifiedName().equals("java.lang.Comparable")) //$NON-NLS-1$
+            {
+                return;
+            }
+        }
+
+        // find class declaration
+        ISourceRange nameRange = type.getNameRange();
+
+        // no declaration??
+        if (nameRange == null)
+        {
+            return;
+        }
+
+        // offset for END of class name
+        int offset = nameRange.getOffset() + nameRange.getLength();
+
+        IBuffer buffer = type.getCompilationUnit().getBuffer();
+        String contents = buffer.getText(offset, buffer.getLength() - offset);
+
+        // warning, this doesn't handle "implements" and "{" contained in comments in the middle of the declaration!
+        int indexOfPar = contents.indexOf("{"); //$NON-NLS-1$
+
+        contents = contents.substring(0, indexOfPar);
+
+        int indexOfImplements = contents.indexOf("implements"); //$NON-NLS-1$
+        if (indexOfImplements > -1)
+        {
+            buffer.replace(offset + indexOfImplements + "implements".length()//$NON-NLS-1$
+            , 0, " Comparable,"); //$NON-NLS-1$
+        }
+        else
+        {
+            buffer.replace(offset, 0, " implements Comparable"); //$NON-NLS-1$
+        }
+
     }
 
     /**
