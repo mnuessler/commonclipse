@@ -6,8 +6,7 @@
   </properties>
   <body>
     <section name="Commonclipse">
-      <p>
-        Commonclipse is an eclipse plugin for jakarta commons-lang users. It features automatic generation of the 
+      <p> Commonclipse is an eclipse plugin for jakarta commons-lang users. It features automatic generation of the 
         following methods using commons-lang builders: </p>
       <ul>
         <li>toString()</li>
@@ -25,10 +24,10 @@
         href="changes-report.html">change log</a> for details and new features.</p>
       <p>
         <strong>Commonclipse is free for both commercial and non commercial use. If you like this plugin you can 
-          support its development with a small donation. Click <a 
-          href="http://sourceforge.net/donate/index.php?group_id=95373">here to donate to Commonclipse <img 
-          src="images/paypal.gif" width="72" height="29" alt="support this project"/></a> </strong>
+          support its development with a small donation.</strong>
       </p>
+      <p>Click <a href="http://sourceforge.net/donate/index.php?group_id=95373">here to donate to Commonclipse <img 
+        src="images/paypal.gif" width="72" height="29" alt="support this project"/></a> </p>
       <p> Is this another eclipse "toString plugin"? Well, there are many eclipse plugins providing automatic creation 
         of basic methods, but none of them allows you to use commons-lang builders: that's the reason for Commonclipse. 
         </p>

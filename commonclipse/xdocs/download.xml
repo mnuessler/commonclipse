@@ -17,15 +17,22 @@
 			<p>
 				Unzip the downloaded zip file in your eclipse/plugins folder.
 			</p>
+      <p>
+        <strong>Release 1.1 is for Eclipse 3.0 only. Get 1.0.1 if you are running Eclipse 2.</strong>
+      </p>
 		</section>
 
 		<section name="Using Eclipse Update manager">
 			<p>
 				Online updates are available on 
-				<strong>http://commonclipse.sourceforge.net</strong>. 
+				<strong>http://commonclipse.sourceforge.net</strong>.
+      </p>
+      <p>
 				Define a site bookmark in Eclipse's Update Manager view (Eclipse 2.x), navigate to the update site via this bookmark and install the Commonclipse feature.
-				In eclipse 3 select "Help" -> "Software updates" -> "Find and Install" -> "Search for new features to install". Click "add update site" and insert the commonclipse update site URL.
 			</p>
+      <p>
+        In eclipse 3 select "Help" -> "Software updates" -> "Find and Install" -> "Search for new features to 
+        install". Click "add update site" and insert the commonclipse update site URL. </p>
 		</section>
 
 	</body>

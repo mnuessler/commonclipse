@@ -23,7 +23,7 @@
       			the toString() method will contains all the readable javabean properties in the current class
       			(defined by getXXX or isXXX methods). This is mostly useful for dataobjects you are writing to
       			a log or displaying in a jsp page with the help of jsp tags (maybe using 
-      			<a href="http://displaytag.sf.net">the display tag library</a>?).
+      			<a href="http://displaytag.sourceforge.net">the display tag library</a>?).
       			The javabean is accessed using the getter method or using the field with the same name if existing.
       		</li>
       		<li>
