@@ -14,29 +14,29 @@
     <property name="eclipse.version" value="3.0.0" />
     
 	<target name="copy-eclipse-lib">
-		 <copy file="${eclipse.home}/plugins/org.eclipse.core.runtime_${eclipse.version}/runtime.jar" 
+		 <copy file="${eclipse.home}/plugins/org.eclipse.core.runtime_${eclipse.version}/runtime.jar"  overwrite="true"
             tofile="${maven.home.local}/repository/eclipse/jars/eclipse-runtime-${eclipse.version}.jar" />
-        <copy file="${eclipse.home}/plugins/org.eclipse.ui.editors_${eclipse.version}/editors.jar" 
+        <copy file="${eclipse.home}/plugins/org.eclipse.ui.editors_${eclipse.version}/editors.jar"  overwrite="true"
             tofile="${maven.home.local}/repository/eclipse/jars/eclipse-editors-${eclipse.version}.jar" />
-        <copy file="${eclipse.home}/plugins/org.eclipse.core.resources_${eclipse.version}/resources.jar" 
+        <copy file="${eclipse.home}/plugins/org.eclipse.core.resources_${eclipse.version}/resources.jar"  overwrite="true"
             tofile="${maven.home.local}/repository/eclipse/jars/eclipse-resources-${eclipse.version}.jar" />
-        <copy file="${eclipse.home}/plugins/org.eclipse.ui_${eclipse.version}/ui.jar" 
+        <copy file="${eclipse.home}/plugins/org.eclipse.ui_${eclipse.version}/ui.jar"  overwrite="true"
             tofile="${maven.home.local}/repository/eclipse/jars/eclipse-ui-${eclipse.version}.jar" />
-        <copy file="${eclipse.home}/plugins/org.eclipse.jface_${eclipse.version}/jface.jar" 
+        <copy file="${eclipse.home}/plugins/org.eclipse.jface_${eclipse.version}/jface.jar"  overwrite="true"
             tofile="${maven.home.local}/repository/eclipse/jars/eclipse-jface-${eclipse.version}.jar" />
-        <copy file="${eclipse.home}/plugins/org.eclipse.jface.text_${eclipse.version}/jfacetext.jar" 
+        <copy file="${eclipse.home}/plugins/org.eclipse.jface.text_${eclipse.version}/jfacetext.jar"  overwrite="true"
             tofile="${maven.home.local}/repository/eclipse/jars/eclipse-jfacetext-${eclipse.version}.jar" />
-        <copy file="${eclipse.home}/plugins/org.eclipse.swt.win32_${eclipse.version}/ws/win32/swt.jar" 
+        <copy file="${eclipse.home}/plugins/org.eclipse.swt.win32_${eclipse.version}/ws/win32/swt.jar"  overwrite="true"
             tofile="${maven.home.local}/repository/eclipse/jars/eclipse-swt-${eclipse.version}.jar" />
-        <copy file="${eclipse.home}/plugins/org.eclipse.jdt.ui_${eclipse.version}/jdt.jar" 
+        <copy file="${eclipse.home}/plugins/org.eclipse.jdt.ui_${eclipse.version}/jdt.jar"  overwrite="true"
             tofile="${maven.home.local}/repository/eclipse/jars/eclipse-jdt-${eclipse.version}.jar" />
-        <copy file="${eclipse.home}/plugins/org.eclipse.jdt.core_${eclipse.version}/jdtcore.jar" 
+        <copy file="${eclipse.home}/plugins/org.eclipse.jdt.core_${eclipse.version}/jdtcore.jar"  overwrite="true"
             tofile="${maven.home.local}/repository/eclipse/jars/eclipse-jdtcore-${eclipse.version}.jar" />
-        <copy file="${eclipse.home}/plugins/org.eclipse.ui.workbench_${eclipse.version}/workbench.jar" 
+        <copy file="${eclipse.home}/plugins/org.eclipse.ui.workbench_${eclipse.version}/workbench.jar"  overwrite="true"
             tofile="${maven.home.local}/repository/eclipse/jars/eclipse-workbench-${eclipse.version}.jar" />
-        <copy file="${eclipse.home}/plugins/org.eclipse.ui.workbench.texteditor_${eclipse.version}/texteditor.jar" 
+        <copy file="${eclipse.home}/plugins/org.eclipse.ui.workbench.texteditor_${eclipse.version}/texteditor.jar"  overwrite="true"
             tofile="${maven.home.local}/repository/eclipse/jars/eclipse-texteditor-${eclipse.version}.jar" />
-        <copy file="${eclipse.home}/plugins/org.eclipse.osgi_${eclipse.version}/osgi.jar" 
+        <copy file="${eclipse.home}/plugins/org.eclipse.osgi_${eclipse.version}/osgi.jar"  overwrite="true"
             tofile="${maven.home.local}/repository/eclipse/jars/eclipse-osgi-${eclipse.version}.jar" />
 	</target>
 
