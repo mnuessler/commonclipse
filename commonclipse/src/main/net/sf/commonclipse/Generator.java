@@ -69,9 +69,11 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.core.ToolFactory;
+import org.eclipse.jdt.core.formatter.CodeFormatter;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.swt.widgets.Shell;
+
 
 /**
  * @author fgiust
@@ -79,6 +81,7 @@ import org.eclipse.swt.widgets.Shell;
  */
 public abstract class Generator
 {
+
     /**
      * Generates the appropriate method in <code>type</code>.
      * @param type IType
@@ -124,14 +127,11 @@ public abstract class Generator
             boolean dontAsk = CCPluginPreferences.getPreferences().dontAskOnOverwrite();
 
             if (dontAsk
-                || MessageDialog.openConfirm(
-                    shell,
-                    CCPlugin.PLUGIN_NAME,
-                    "the method \""
-                        + getMethodName()
-                        + "\" already exists in "
-                        + type.getElementName()
-                        + ". Do you want to replace it?"))
+                || MessageDialog.openConfirm(shell, CCPlugin.PLUGIN_NAME, "the method \""
+                    + getMethodName()
+                    + "\" already exists in "
+                    + type.getElementName()
+                    + ". Do you want to replace it?"))
             {
                 try
                 {
@@ -141,10 +141,10 @@ public abstract class Generator
                 catch (JavaModelException e)
                 {
 
-                    MessageDialog.openError(
-                        shell,
-                        "Error",
-                        "Unable to delete existing \"" + getMethodName() + "\" method due to: " + e.getMessage());
+                    MessageDialog.openError(shell, "Error", "Unable to delete existing \""
+                        + getMethodName()
+                        + "\" method due to: "
+                        + e.getMessage());
                 }
             }
             return false;
@@ -179,7 +179,7 @@ public abstract class Generator
         monitor.worked(30);
 
         monitor.setTaskName(title + "Formatting");
-        src = ToolFactory.createCodeFormatter().format(src, 1, null, null) + "\n";
+        src = ToolFactory.createCodeFormatter(null).format(CodeFormatter.K_STATEMENTS, src, 0, 0, 0, null) + "\n";
         monitor.worked(20);
 
         monitor.setTaskName(title + "Adding method to class");
