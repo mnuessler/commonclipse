@@ -7,7 +7,7 @@
    <feature url="features/commonclipse-1.0.1.jar" id="net.sf.commonclipse" version="1.0.1" label="commonclipse 1.0.1 for Eclipse 2/3" os="aix,hpux,linux,macosx,qnx,solaris,win32" ws="carbon,gtk,motif,photon,win32" nl="en,it" arch="amd64,ia64,PA_RISC,ppc,sparc,x86">
       <category name="commonclipse-eclipse2"/>
    </feature>
-   <feature url="features/commonclipse-1.1.0.jar" id="net.sf.commonclipse" version="1.1.0" label="commonclipse 1.1 for Eclipse 3.0" os="aix,hpux,linux,macosx,qnx,solaris,win32" ws="carbon,gtk,motif,photon,win32" nl="en,it" arch="amd64,ia64,PA_RISC,ppc,sparc,x86">
+   <feature url="features/commonclipse-1.1.1.jar" id="net.sf.commonclipse" version="1.1.1" label="commonclipse 1.1.1 for Eclipse 3.0" os="aix,hpux,linux,macosx,qnx,solaris,win32" ws="carbon,gtk,motif,photon,win32" nl="en,it" arch="amd64,ia64,PA_RISC,ppc,sparc,x86">
       <category name="commonclipse-eclipse3"/>
    </feature>
    <category-def name="commonclipse-eclipse3" label="Commonclipse for Eclipse 3">

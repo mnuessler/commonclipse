@@ -1,34 +1,57 @@
 <?xml version="1.0"?>
 <document>
-  <properties>
-    <title>Changes</title>
-    <author email="fgiust(at)sourceforge.net">Fabrizio Giustina</author>
-  </properties>
-  <body>
-    <release version="1.1.0" date="July 10, 2004" description="First Eclipse 3.0 only release">
-      <action dev="fgiust" type="update">Updated to use the new Eclipse 3.0 API. This version requires Eclipse 3 and 
-        will not run on the 2.x series</action>
-      <action dev="fgiust" type="fix">Generated methods are now properly formatted according user preferences (using 
-        the new Eclipse 3 formatter)</action>
-      <action dev="fgiust" type="add">You can now use wildcards in excluded fields list. (requested by Ludovic Bailly) 
-        </action>
-      <action dev="fgiust" type="add">New option to add an instance equality check to equals() methods (requested by 
-        Jay Glanville)</action>
-      <action dev="fgiust" type="add">i18n and italian translation added</action>
-      <action dev="fgiust" type="fix">Don't add methods to read only files (previously it ignored file state for right 
-        clicks in the editor). </action>
-    </release>
-    <release version="1.0.1" date="January 4, 2004" description="Bugfix release">
-      <action dev="fgiust" type="fix"> Boolean javabean properties are now properly included in toString() </action>
-      <action dev="fgiust" type="update"> Commonclipse preference page is now placed in the "Java" category. </action>
-      <action dev="fgiust" type="fix"> Multiple types in the same .java file are handled on editor actions: you can now 
-        select inner or non-primary classes in java files. </action>
-      <action dev="fgiust" type="update"> Better check for valid custom ToStringStyle in preferences. </action>
-      <action dev="fgiust" type="update"> Plugin dependencies updated for Eclipse 3.0 M6. </action>
-      <action dev="fgiust" type="add"> Added Eclipse update site for automatic installation. </action>
-    </release>
-    <release version="1.0.0" date="November 22, 2003" description="First release">
-      <action dev="fgiust" type="add"> Commonclipse 1.0.0 released. </action>
-    </release>
-  </body>
+    <properties>
+        <title>Changes</title>
+        <author email="fgiust(at)sourceforge.net">Fabrizio Giustina</author>
+    </properties>
+    <body>
+
+        <release version="1.1.1" date="in CVS" description="Bugfix release">
+            <action dev="fgiust" type="fix" issue="989032">Generate equals() label incorrect</action>
+            <action dev="fgiust" type="add" issue="989033">
+                Optionally add final to equals and compareTo. (requested by Archimedes Trajano)
+            </action>
+            <action dev="fgiust" type="fix">
+                Added the osgi bundle to the plugin jar (was missing in the build script). This allows the plugin to be
+                activated without restarting eclipse after installation
+            </action>
+        </release>
+
+        <release version="1.1.0" date="July 10, 2004" description="First Eclipse 3.0 only release">
+            <action dev="fgiust" type="update">
+                Updated to use the new Eclipse 3.0 API. This version requires Eclipse 3 and will not run on the 2.x
+                series
+            </action>
+            <action dev="fgiust" type="fix">
+                Generated methods are now properly formatted according user preferences (using the new Eclipse 3
+                formatter)
+            </action>
+            <action dev="fgiust" type="add">
+                You can now use wildcards in excluded fields list. (requested by Ludovic Bailly)
+            </action>
+            <action dev="fgiust" type="add">
+                New option to add an instance equality check to equals() methods (requested by Jay Glanville)
+            </action>
+            <action dev="fgiust" type="add">i18n and italian translation added</action>
+            <action dev="fgiust" type="fix">
+                Don't add methods to read only files (previously it ignored file state for right clicks in the editor).
+            </action>
+        </release>
+        <release version="1.0.1" date="January 4, 2004" description="Bugfix release">
+            <action dev="fgiust" type="fix">Boolean javabean properties are now properly included in toString()</action>
+            <action dev="fgiust" type="update">
+                Commonclipse preference page is now placed in the "Java" category.
+            </action>
+            <action dev="fgiust" type="fix">
+                Multiple types in the same .java file are handled on editor actions: you can now select inner or
+                non-primary classes in java files.
+            </action>
+            <action dev="fgiust" type="update">Better check for valid custom ToStringStyle in preferences.</action>
+            <action dev="fgiust" type="update">Plugin dependencies updated for Eclipse 3.0 M6.</action>
+            <action dev="fgiust" type="add">Added Eclipse update site for automatic installation.</action>
+        </release>
+        <release version="1.0.0" date="November 22, 2003" description="First release">
+            <action dev="fgiust" type="add">Commonclipse 1.0.0 released.</action>
+        </release>
+    </body>
 </document>
