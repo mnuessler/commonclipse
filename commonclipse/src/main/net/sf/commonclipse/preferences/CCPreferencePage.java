@@ -19,18 +19,8 @@ package net.sf.commonclipse.preferences;
 import net.sf.commonclipse.CCMessages;
 import net.sf.commonclipse.CCPlugin;
 
-import org.eclipse.jdt.internal.ui.util.TabFolderLayout;
-import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.preference.BooleanFieldEditor;
-import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.jface.preference.RadioGroupFieldEditor;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.TabFolder;
-import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
