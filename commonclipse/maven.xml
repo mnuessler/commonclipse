@@ -12,7 +12,7 @@
 	</goal>
 
     <goal name="eclipseplugin:zip">
-        
+
           <mkdir dir="${maven.build.dir}/dist" />
 
         <!-- features -->
@@ -39,15 +39,15 @@
               <zipfileset dir="${maven.build.dir}/dist" />
           </zip>
     </goal>
-    
+
     <preGoal name="site:sshdeploy">
 		<attainGoal name="updatesite" />
 	</preGoal>
-    
+
     <goal name="updatesite">
-		
+
 	  <attainGoal name="eclipseplugin:zip" />
-		  
+
       <!-- copy site.xml -->
       <copy file="${maven.src.dir}/update/site.xml" todir="${maven.build.dir}/docs" />
 
@@ -56,17 +56,15 @@
       <zip destfile="${maven.build.dir}/docs/features/commonclipse-${pom.currentVersion}.jar">
             <fileset dir="${maven.src.dir}/feature"/>
       </zip>
-		  
+
 
       <!-- copy plugin -->
       <mkdir dir="${maven.build.dir}/docs/plugins" />
       <zip destfile="${maven.build.dir}/docs/plugins/net.sf.commonclipse_${pom.currentVersion}.jar">
             <zipfileset dir="${maven.build.dir}" includes="${maven.final.name}.jar" fullpath="commonclipse.jar" />
-            <zipfileset dir="${maven.build.dir}" includes="${pom.name}-src.zip" />
-            <zipfileset dir="${maven.base.dir}" includes="plugin*,icons/*,LICENSE.txt,META-INF/*" />
       </zip>
 
     </goal>
-    
-      
+
+
 </project>

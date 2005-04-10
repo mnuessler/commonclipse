@@ -1,6 +1,5 @@
 package net.sf.commonclipse.preferences;
 
-import org.eclipse.jdt.internal.ui.util.TabFolderLayout;
 import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -108,10 +107,7 @@ public abstract class TabbedFieldEditorPreferencePage extends FieldEditorPrefere
         {
             return super.getFieldEditorParent();
         }
-        else
-        {
-            return (Composite) folder.getItem(folder.getItemCount() - 1).getControl();
-        }
+        return (Composite) folder.getItem(folder.getItemCount() - 1).getControl();
     }
 
     /**
@@ -124,7 +120,6 @@ public abstract class TabbedFieldEditorPreferencePage extends FieldEditorPrefere
         {
             // initialize tab folder
             folder = new TabFolder(super.getFieldEditorParent(), SWT.NONE);
-            folder.setLayout(new TabFolderLayout());
             folder.setLayoutData(new GridData(GridData.FILL_BOTH));
         }
 

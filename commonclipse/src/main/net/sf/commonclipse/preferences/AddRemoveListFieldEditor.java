@@ -204,7 +204,7 @@ public class AddRemoveListFieldEditor extends FieldEditor
             }
         });
         GridData addData = new GridData(GridData.FILL_HORIZONTAL);
-        addData.heightHint = convertVerticalDLUsToPixels(this.add, IDialogConstants.BUTTON_HEIGHT);
+        addData.heightHint = convertVerticalDLUsToPixels(this.add, 14);
         addData.widthHint = convertHorizontalDLUsToPixels(this.add, IDialogConstants.BUTTON_WIDTH);
         this.add.setLayoutData(addData);
 
@@ -222,7 +222,7 @@ public class AddRemoveListFieldEditor extends FieldEditor
             }
         });
         GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
-        removeData.heightHint = convertVerticalDLUsToPixels(this.remove, IDialogConstants.BUTTON_HEIGHT);
+        removeData.heightHint = convertVerticalDLUsToPixels(this.remove, 14);
         removeData.widthHint = convertHorizontalDLUsToPixels(this.remove, IDialogConstants.BUTTON_WIDTH);
         this.remove.setLayoutData(removeData);
 

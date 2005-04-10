@@ -1,5 +1,5 @@
 /* ====================================================================
- *   Copyright 2003-2004 Fabrizio Giustina.
+ *   Copyright 2003-2005 Fabrizio Giustina.
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -84,7 +84,7 @@ public abstract class Generator
             MessageDialog.openError(shell, CCMessages.getString("Generator.errortitle"), e.getMessage()); //$NON-NLS-1$
             return;
         }
-        if (resource != null && resource.isReadOnly())
+        if (resource != null && resource.getResourceAttributes().isReadOnly())
         {
             IStatus status = ResourcesPlugin.getWorkspace().validateEdit(new IFile[]{(IFile) resource}, shell);
 

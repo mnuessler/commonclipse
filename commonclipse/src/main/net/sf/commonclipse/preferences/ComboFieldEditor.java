@@ -33,6 +33,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 
+
 /**
  * Implementation identical to StringFieldEditor but using a combo instead of a Text field.
  * @author fgiust
@@ -108,6 +109,7 @@ public class ComboFieldEditor extends FieldEditor
         this.errorMessage = JFaceResources.getString("StringFieldEditor.errorMessage"); //$NON-NLS-1$
         createControl(parent);
     }
+
     /**
      * Creates a string field editor of unlimited width. Use the method <code>setTextLimit</code> to limit the text.
      * @param name the name of the preference this field editor works on
@@ -226,10 +228,7 @@ public class ComboFieldEditor extends FieldEditor
         {
             return this.textField.getText();
         }
-        else
-        {
-            return getPreferenceStore().getString(getPreferenceName());
-        }
+        return getPreferenceStore().getString(getPreferenceName());
     }
 
     /**
@@ -259,6 +258,7 @@ public class ComboFieldEditor extends FieldEditor
 
             this.textField.addKeyListener(new KeyAdapter()
             {
+
                 public void keyReleased(KeyEvent e)
                 {
                     valueChanged();
@@ -266,6 +266,7 @@ public class ComboFieldEditor extends FieldEditor
             });
             this.textField.addSelectionListener(new SelectionListener()
             {
+
                 public void widgetSelected(SelectionEvent e)
                 {
                     valueChanged();
@@ -279,10 +280,12 @@ public class ComboFieldEditor extends FieldEditor
             });
             this.textField.addFocusListener(new FocusAdapter()
             {
+
                 public void focusGained(FocusEvent e)
                 {
                     refreshValidState();
                 }
+
                 public void focusLost(FocusEvent e)
                 {
                     valueChanged();
@@ -292,13 +295,14 @@ public class ComboFieldEditor extends FieldEditor
 
             this.textField.addDisposeListener(new DisposeListener()
             {
+
                 public void widgetDisposed(DisposeEvent event)
                 {
                     ComboFieldEditor.this.textField = null;
                 }
             });
             if (this.textLimit > 0)
-            { //Only set limits above 0 - see SWT spec
+            { // Only set limits above 0 - see SWT spec
                 this.textField.setTextLimit(this.textLimit);
             }
         }
@@ -308,6 +312,7 @@ public class ComboFieldEditor extends FieldEditor
         }
         return this.textField;
     }
+
     /**
      * Returns whether an empty string is a valid value.
      * @return <code>true</code> if an empty string is a valid value, and <code>false</code> if an empty string is
@@ -337,13 +342,13 @@ public class ComboFieldEditor extends FieldEditor
 
     /**
      * Sets whether the empty string is a valid value or not.
-     * @param b <code>true</code> if the empty string is allowed, and <code>false</code> if it is considered
-     * invalid
+     * @param b <code>true</code> if the empty string is allowed, and <code>false</code> if it is considered invalid
      */
     public void setEmptyStringAllowed(boolean b)
     {
         this.emptyStringAllowed = b;
     }
+
     /**
      * Sets the error message that will be displayed when and if an error occurs.
      * @param message the error message
@@ -363,6 +368,7 @@ public class ComboFieldEditor extends FieldEditor
             this.textField.setFocus();
         }
     }
+
     /**
      * Sets this field editor's value.
      * @param value the new value, or <code>null</code> meaning the empty string
@@ -409,9 +415,10 @@ public class ComboFieldEditor extends FieldEditor
     {
         showErrorMessage(this.errorMessage);
     }
+
     /**
-     * Informs this field editor's listener, if it has one, about a change to the value (<code>VALUE</code>
-     * property) provided that the old and new values are different.
+     * Informs this field editor's listener, if it has one, about a change to the value (<code>VALUE</code> property)
+     * provided that the old and new values are different.
      * <p>
      * This hook is <em>not</em> called when the text is initialized (or reset to the default value) from the
      * preference store.
