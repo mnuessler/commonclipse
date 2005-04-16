@@ -6,7 +6,7 @@
   </properties>
   <body>
     <section name="Commonclipse">
-      <p> Commonclipse is an eclipse plugin for jakarta commons-lang users. It features automatic generation of the 
+      <p> Commonclipse is an eclipse plugin for jakarta commons-lang users. It features automatic generation of the
         following methods using commons-lang builders: </p>
       <ul>
         <li>toString()</li>
@@ -14,19 +14,19 @@
         <li>equals(Object)</li>
         <li>compareTo(Object)</li>
       </ul>
-      <p> Commonclipse supports customization of generated methods (custom ToStringStyle, use of appendSuper(), 
-        excluded fields) through user defined properties. Commonclipse actions are available both in java editor views 
+      <p> Commonclipse supports customization of generated methods (custom ToStringStyle, use of appendSuper(),
+        excluded fields) through user defined properties. Commonclipse actions are available both in java editor views
         and in package explorer. See <a href="screenshots.html">screenshots</a>. </p>
-      <p> Built methods use jakarta commons-lang 2.0 builders. Commonclipse will not check for the presence of 
-        commons-lang in your project classpath, you will need to get a copy from <a 
+      <p> Built methods use jakarta commons-lang 2.0 builders. Commonclipse will not check for the presence of
+        commons-lang in your project classpath, you will need to get a copy from <a
         href="http://jakarta.apache.org/commons/lang/">jakarta</a> and to set up java build path appropriately. </p>
-      <p> <strong>August, 24 2004: </strong> new version 1.2.0 for Eclipse 3.0 released. See the <a 
+      <p> <strong>April, 16 2005: </strong> new version 1.3.0 for Eclipse 3.1M6 released. See the <a
         href="changes-report.html">change log</a> for details and new features.</p>
       <p>
-        <strong>Commonclipse is free for both commercial and non commercial use. If you like this plugin you can 
+        <strong>Commonclipse is free for both commercial and non commercial use. If you like this plugin you can
           support its development with a small donation.</strong>
       </p>
-      <p>Click <a href="http://sourceforge.net/donate/index.php?group_id=95373">here to donate to Commonclipse <img 
+      <p>Click <a href="http://sourceforge.net/donate/index.php?group_id=95373">here to donate to Commonclipse <img
         src="images/paypal.gif" width="72" height="29" alt="support this project"/></a> </p>
     </section>
   </body>

@@ -4,30 +4,30 @@
    <description url="http://commonclipse.sourceforge.net">
       Commonclipse update site
    </description>
-   <feature url="features/commonclipse-1.0.1.jar" id="net.sf.commonclipse" version="1.0.1" label="commonclipse 1.0.1 for Eclipse 2/3" os="aix,hpux,linux,macosx,qnx,solaris,win32" ws="carbon,gtk,motif,photon,win32" nl="en,it" arch="amd64,ia64,PA_RISC,ppc,sparc,x86">
-      <category name="commonclipse-eclipse2"/>
+   <feature url="features/commonclipse-1.0.1.jar" id="net.sf.commonclipse" version="1.0.1" label="commonclipse 1.0.1 for Eclipse 2/3">
+      <category name="commonclipse for eclipse 2.x"/>
    </feature>
-   <feature url="features/commonclipse-1.2.0.jar" id="net.sf.commonclipse" version="1.2.0" label="commonclipse 1.2.0 for Eclipse 3.0" os="aix,hpux,linux,macosx,qnx,solaris,win32" ws="carbon,gtk,motif,photon,win32" nl="en,it" arch="amd64,ia64,PA_RISC,ppc,sparc,x86">
-      <category name="commonclipse-eclipse3"/>
+   <feature url="features/commonclipse-1.2.0.jar" id="net.sf.commonclipse" version="1.2.0" label="commonclipse 1.2.0 for Eclipse 3.0">
+      <category name="commonclipse for eclipse 3.0 - 3.1M5"/>
    </feature>
-   <feature url="features/commonclipse-1.3.0.jar" id="net.sf.commonclipse" version="1.3.0" label="commonclipse 1.3.0 for Eclipse 3.1" os="aix,hpux,linux,macosx,qnx,solaris,win32" ws="carbon,gtk,motif,photon,win32" nl="en,it" arch="amd64,ia64,PA_RISC,ppc,sparc,x86">
-      <category name="commonclipse-eclipse31"/>
+   <feature url="features/commonclipse-1.3.0.jar" id="net.sf.commonclipse" version="1.3.0" label="commonclipse 1.3.0 for Eclipse 3.1" unpack="false">
+      <category name="commonclipse for eclipse 3.1M6 and up"/>
    </feature>
-   <category-def name="commonclipse-eclipse31" label="Commonclipse for Eclipse 3.1">
+   <category-def name="commonclipse for eclipse 3.1M6 and up" label="Commonclipse for eclipse 3.1M6 and up">
       <description>
          Commonclipse is an eclipse plugin for jakarta commons-lang users.
        It features automatic generation of the following methods using commons-lang builders:
        toString(), hashcode(), equals(Object), compareTo(Object).
       </description>
    </category-def>
-   <category-def name="commonclipse-eclipse3" label="Commonclipse for Eclipse 3.0">
+   <category-def name="commonclipse for eclipse 3.0 - 3.1M5" label="Commonclipse for eclipse 3.0 - 3.1M5">
       <description>
          Commonclipse is an eclipse plugin for jakarta commons-lang users.
        It features automatic generation of the following methods using commons-lang builders:
        toString(), hashcode(), equals(Object), compareTo(Object).
       </description>
    </category-def>
-   <category-def name="commonclipse-eclipse2" label="Commonclipse for Eclipse 2.x">
+   <category-def name="commonclipse for eclipse 2.x" label="Commonclipse for Eclipse 2.x">
       <description>
          Commonclipse is an eclipse plugin for jakarta commons-lang users.
        It features automatic generation of the following methods using commons-lang builders:

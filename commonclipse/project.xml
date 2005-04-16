@@ -189,6 +189,13 @@
                 </includes>
                 <filtering>false</filtering>
             </resource>
+            <resource>
+                <directory>/</directory>
+                <includes>
+                    <include>plugin*.*</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
         </resources>
     </build>
     <reports>

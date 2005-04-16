@@ -2,7 +2,7 @@
 <project default="rebuild-all" xmlns:j="jelly:core" xmlns:u="jelly:util">
 
 	<goal name="rebuild-all">
-		<j:set var="goals" value="clean,jar:jar,eclipseplugin:zip,site:generate" />
+		<j:set var="goals" value="clean,jar:jar,eclipseplugin:zip,site:generate,updatesite" />
 		<mkdir dir="${maven.build.dir}" />
 		<u:tokenize var="goals" delim=",">${goals}</u:tokenize>
 		<j:forEach items="${goals}" var="goal" indexVar="goalNumber">
@@ -13,36 +13,22 @@
 
     <goal name="eclipseplugin:zip">
 
-          <mkdir dir="${maven.build.dir}/dist" />
+        <mkdir dir="${maven.build.dir}/dist" />
+        <mkdir dir="${maven.build.dir}/dist/features" />
+        <mkdir dir="${maven.build.dir}/dist/plugins" />
 
         <!-- features -->
-          <copy todir="${maven.build.dir}/dist/features/${pom.package}_${pom.currentVersion}" >
+        <zip destfile="${maven.build.dir}/dist/features/${maven.final.name}.jar">
             <fileset dir="${maven.src.dir}/feature"/>
-          </copy>
-
+        </zip>
 
         <!-- plugins -->
-          <copy tofile="${maven.build.dir}/dist/plugins/${pom.package}_${pom.currentVersion}/commonclipse.jar"
-             file="${maven.build.dir}/${maven.final.name}.jar">
-          </copy>
+        <copy file="${maven.build.dir}/${maven.final.name}.jar" todir="${maven.build.dir}/dist/plugins" />
 
-          <copy todir="${maven.build.dir}/dist/plugins/${pom.package}_${pom.currentVersion}" >
-             <fileset dir="${maven.base.dir}" includes="plugin*,icons/*,LICENSE.txt,META-INF/*" />
-          </copy>
-
-        <!-- src -->
-          <zip destfile="${maven.build.dir}/dist/plugins/${pom.package}_${pom.currentVersion}/${pom.name}-src.zip">
-              <zipfileset dir="${maven.src.dir}/main"/>
-          </zip>
-
-          <zip destfile="${maven.build.dir}/${pom.name}-${pom.currentVersion}.zip">
-              <zipfileset dir="${maven.build.dir}/dist" />
-          </zip>
+        <zip destfile="${maven.build.dir}/${maven.final.name}.zip">
+            <zipfileset dir="${maven.build.dir}/dist" />
+        </zip>
     </goal>
-
-    <preGoal name="site:sshdeploy">
-		<attainGoal name="updatesite" />
-	</preGoal>
 
     <goal name="updatesite">
 
@@ -53,16 +39,13 @@
 
       <!-- feature -->
       <mkdir dir="${maven.build.dir}/docs/features" />
-      <zip destfile="${maven.build.dir}/docs/features/commonclipse-${pom.currentVersion}.jar">
+      <zip destfile="${maven.build.dir}/docs/features/${maven.final.name}.jar">
             <fileset dir="${maven.src.dir}/feature"/>
       </zip>
 
-
       <!-- copy plugin -->
       <mkdir dir="${maven.build.dir}/docs/plugins" />
-      <zip destfile="${maven.build.dir}/docs/plugins/net.sf.commonclipse_${pom.currentVersion}.jar">
-            <zipfileset dir="${maven.build.dir}" includes="${maven.final.name}.jar" fullpath="commonclipse.jar" />
-      </zip>
+      <copy file="${maven.build.dir}/${maven.final.name}.jar" todir="${maven.build.dir}/docs/plugins" />
 
     </goal>
 
