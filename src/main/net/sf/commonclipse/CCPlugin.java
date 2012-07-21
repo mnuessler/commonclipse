@@ -95,6 +95,11 @@ public class CCPlugin extends AbstractUIPlugin
     public static final String TOSTRINGSTYLE_FIELDS = "fields"; //$NON-NLS-1$
 
     /**
+     * add @Override annotation to generated method.
+     */
+    public static final String P_OVERRIDE_ANNOTATION = "override_annotation"; //$NON-NLS-1$
+
+    /**
      * Shared instance.
      */
     private static CCPlugin plugin;

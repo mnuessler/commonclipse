@@ -84,7 +84,7 @@ public final class CCPluginPreferences
     };
 
     /**
-     * private contructor. Initialize plugin preferences and set up preference listener
+     * private constructor. Initialize plugin preferences and set up preference listener
      */
     private CCPluginPreferences()
     {
@@ -226,6 +226,15 @@ public final class CCPluginPreferences
     }
 
     /**
+     * Add an @Override annotation to the generated method?
+     * @return <code>true</code> if an @Override annotation should be added
+     */
+    public boolean addOverrideAnnotation()
+    {
+        return CCPlugin.getDefault().getPreferenceStore().getBoolean(CCPlugin.P_OVERRIDE_ANNOTATION);
+    }
+
+    /**
      * Gets the package.class part of the custom toStringStyle.
      * @return fully qualified class of the custom toStringStyle
      */
@@ -254,7 +263,7 @@ public final class CCPluginPreferences
 
     /**
      * Generate a single regular expression used to match excluded fields.
-     * @param stringList list of fileds separate by ";"
+     * @param stringList list of fields separate by ";"
      * @return regular expression that matches all the given Strings
      */
     public static Pattern generateRegExp(String stringList)

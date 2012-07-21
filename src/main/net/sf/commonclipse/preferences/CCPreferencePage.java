@@ -110,12 +110,16 @@ public class CCPreferencePage extends TabbedFieldEditorPreferencePage implements
             .getString("preference.equals.equalitycheck"), //$NON-NLS-1$
             getFieldEditorParent()));
 
+        addField(new BooleanFieldEditor(CCPlugin.P_OVERRIDE_ANNOTATION, CCMessages
+                .getString("preference.overrideannotation"), //$NON-NLS-1$
+                getFieldEditorParent()));
+        
         addField(new SpacerFieldEditor(getFieldEditorParent()));
 
         addField(new BooleanFieldEditor(CCPlugin.P_DONTASKONOVERWRITE, CCMessages
             .getString("preference.overwriteconfirmation"), //$NON-NLS-1$
             getFieldEditorParent()));
-
+        
         addField(new SpacerFieldEditor(getFieldEditorParent()));
 
         addTab(CCMessages.getString("preference.tab.exclude")); //$NON-NLS-1$

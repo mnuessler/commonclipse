@@ -100,6 +100,11 @@ public final class ToStringGenerator extends Generator
 
         buffer.append(getJavadoc());
 
+        if (CCPluginPreferences.getPreferences().addOverrideAnnotation())
+        {
+            buffer.append("@Override\n"); //$NON-NLS-1$
+        }
+
         buffer.append("    public String toString()\n    {\n        return new ToStringBuilder(this"); //$NON-NLS-1$
 
         if (CCPluginPreferences.getPreferences().useCustomToStringStyle())

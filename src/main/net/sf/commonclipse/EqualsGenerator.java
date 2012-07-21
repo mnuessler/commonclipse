@@ -77,6 +77,11 @@ public final class EqualsGenerator extends Generator
 
         String className = type.getElementName();
 
+        if (CCPluginPreferences.getPreferences().addOverrideAnnotation())
+        {
+            buffer.append("@Override\n"); //$NON-NLS-1$
+        }
+
         buffer.append("public boolean equals("); //$NON-NLS-1$
 
         if (CCPluginPreferences.getPreferences().useFinalParameters())

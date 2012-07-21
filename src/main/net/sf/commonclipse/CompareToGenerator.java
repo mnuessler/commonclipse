@@ -80,6 +80,11 @@ public final class CompareToGenerator extends Generator
 
         String className = type.getElementName();
 
+        if (CCPluginPreferences.getPreferences().addOverrideAnnotation())
+        {
+            buffer.append("@Override\n"); //$NON-NLS-1$
+        }
+
         buffer.append("public int compareTo("); //$NON-NLS-1$
 
         if (CCPluginPreferences.getPreferences().useFinalParameters())

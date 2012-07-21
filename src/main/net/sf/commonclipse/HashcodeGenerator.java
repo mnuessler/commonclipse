@@ -93,6 +93,11 @@ public final class HashcodeGenerator extends Generator
         StringBuffer buffer = new StringBuffer();
 
         buffer.append(getJavadoc());
+        
+        if (CCPluginPreferences.getPreferences().addOverrideAnnotation())
+        {
+            buffer.append("@Override\n"); //$NON-NLS-1$
+        }
 
         buffer.append("public int hashCode()\n{\nreturn new HashCodeBuilder("); //$NON-NLS-1$
         buffer.append(initial);

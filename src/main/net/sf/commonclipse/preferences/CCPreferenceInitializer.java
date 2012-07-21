@@ -26,6 +26,7 @@ public class CCPreferenceInitializer extends AbstractPreferenceInitializer
         preferences.setDefault(CCPlugin.P_EQUALS_SUPER, true);
         preferences.setDefault(CCPlugin.P_COMPARETO_SUPER, true);
         preferences.setDefault(CCPlugin.P_EXCLUDE, "class;log"); //$NON-NLS-1$
+        preferences.setDefault(CCPlugin.P_OVERRIDE_ANNOTATION, true);
     }
 
 }
