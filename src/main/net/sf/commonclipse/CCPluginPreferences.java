@@ -67,6 +67,7 @@ public final class CCPluginPreferences
         /**
          * @see IPropertyChangeListener.propertyChange()
          */
+        @Override
         public void propertyChange(PropertyChangeEvent event)
         {
 

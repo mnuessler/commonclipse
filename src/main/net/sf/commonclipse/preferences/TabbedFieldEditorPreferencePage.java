@@ -62,6 +62,7 @@ public abstract class TabbedFieldEditorPreferencePage extends FieldEditorPrefere
      * Adds the given field editor to this page.
      * @param editor the field editor
      */
+    @Override
     protected void addField(FieldEditor editor)
     {
         // needed for layout, since there is no way to get fields editor from parent
@@ -72,6 +73,7 @@ public abstract class TabbedFieldEditorPreferencePage extends FieldEditorPrefere
     /**
      * Adjust the layout of the field editors so that they are properly aligned.
      */
+    @Override
     protected void adjustGridLayout()
     {
         if (folder != null)
@@ -101,6 +103,7 @@ public abstract class TabbedFieldEditorPreferencePage extends FieldEditorPrefere
      * </p>
      * @return a parent
      */
+    @Override
     protected Composite getFieldEditorParent()
     {
         if (folder == null || folder.getItemCount() == 0)

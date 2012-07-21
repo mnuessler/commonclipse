@@ -57,6 +57,7 @@ public class JavaTypeObjectAction extends JavaTypeAction implements IObjectActio
     /**
      * @see org.eclipse.ui.IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
      */
+    @Override
     public void setActivePart(IAction action, IWorkbenchPart targetPart)
     {
     }
@@ -64,6 +65,7 @@ public class JavaTypeObjectAction extends JavaTypeAction implements IObjectActio
     /**
      * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
      */
+    @Override
     public void run(IAction action)
     {
 
@@ -118,6 +120,7 @@ public class JavaTypeObjectAction extends JavaTypeAction implements IObjectActio
      * file selected from menu.
      * @see org.eclipse.ui.IActionDelegate#selectionChanged(IAction, ISelection)
      */
+    @Override
     public void selectionChanged(IAction action, ISelection selection)
     {
         if (selection != null && selection instanceof IStructuredSelection)

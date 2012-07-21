@@ -16,6 +16,7 @@ public class CCPreferenceInitializer extends AbstractPreferenceInitializer
     /**
      * @see org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer#initializeDefaultPreferences()
      */
+    @Override
     public void initializeDefaultPreferences()
     {
         IPreferenceStore preferences = CCPlugin.getDefault().getPreferenceStore();

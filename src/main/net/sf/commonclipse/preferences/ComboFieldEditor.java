@@ -165,6 +165,7 @@ public class ComboFieldEditor extends FieldEditor
     /**
      * @see org.eclipse.jface.preference.FieldEditor#doLoad()
      */
+    @Override
     protected void doLoad()
     {
         if (this.textField != null)
@@ -181,6 +182,7 @@ public class ComboFieldEditor extends FieldEditor
     /**
      * @see org.eclipse.jface.preference.FieldEditor#doLoadDefault()
      */
+    @Override
     protected void doLoadDefault()
     {
         if (this.textField != null)
@@ -196,6 +198,7 @@ public class ComboFieldEditor extends FieldEditor
     /**
      * @see org.eclipse.jface.preference.FieldEditor#doStore()
      */
+    @Override
     protected void doStore()
     {
         getPreferenceStore().setValue(getPreferenceName(), this.textField.getText());
@@ -213,6 +216,7 @@ public class ComboFieldEditor extends FieldEditor
     /**
      * @see org.eclipse.jface.preference.FieldEditor#getNumberOfControls()
      */
+    @Override
     public int getNumberOfControls()
     {
         return 2;
@@ -259,6 +263,7 @@ public class ComboFieldEditor extends FieldEditor
             this.textField.addKeyListener(new KeyAdapter()
             {
 
+                @Override
                 public void keyReleased(KeyEvent e)
                 {
                     valueChanged();
@@ -267,11 +272,13 @@ public class ComboFieldEditor extends FieldEditor
             this.textField.addSelectionListener(new SelectionListener()
             {
 
+                @Override
                 public void widgetSelected(SelectionEvent e)
                 {
                     valueChanged();
                 }
 
+                @Override
                 public void widgetDefaultSelected(SelectionEvent e)
                 {
                     valueChanged();
@@ -281,11 +288,13 @@ public class ComboFieldEditor extends FieldEditor
             this.textField.addFocusListener(new FocusAdapter()
             {
 
+                @Override
                 public void focusGained(FocusEvent e)
                 {
                     refreshValidState();
                 }
 
+                @Override
                 public void focusLost(FocusEvent e)
                 {
                     valueChanged();
@@ -296,6 +305,7 @@ public class ComboFieldEditor extends FieldEditor
             this.textField.addDisposeListener(new DisposeListener()
             {
 
+                @Override
                 public void widgetDisposed(DisposeEvent event)
                 {
                     ComboFieldEditor.this.textField = null;
@@ -327,6 +337,7 @@ public class ComboFieldEditor extends FieldEditor
     /**
      * @see org.eclipse.jface.preference.FieldEditor # isValid()
      */
+    @Override
     public boolean isValid()
     {
         return this.isValid;
@@ -335,6 +346,7 @@ public class ComboFieldEditor extends FieldEditor
     /**
      * @see org.eclipse.jface.preference.FieldEditor#refreshValidState()
      */
+    @Override
     protected void refreshValidState()
     {
         this.isValid = checkState();
@@ -361,6 +373,7 @@ public class ComboFieldEditor extends FieldEditor
     /**
      * @see org.eclipse.jface.preference.FieldEditor#setFocus()
      */
+    @Override
     public void setFocus()
     {
         if (this.textField != null)
@@ -446,6 +459,7 @@ public class ComboFieldEditor extends FieldEditor
     /**
      * @see org.eclipse.jface.preference.FieldEditor#setEnabled(boolean,Composite).
      */
+    @Override
     public void setEnabled(boolean enabled, Composite parent)
     {
         super.setEnabled(enabled, parent);
@@ -468,6 +482,7 @@ public class ComboFieldEditor extends FieldEditor
     /**
      * @see org.eclipse.jface.preference.FieldEditor#adjustForNumColumns(int)
      */
+    @Override
     protected void adjustForNumColumns(int numColumns)
     {
         GridData gd = (GridData) this.textField.getLayoutData();
@@ -481,6 +496,7 @@ public class ComboFieldEditor extends FieldEditor
     /**
      * @see org.eclipse.jface.preference.FieldEditor#doFillIntoGrid(Composite, int)
      */
+    @Override
     protected void doFillIntoGrid(Composite parent, int numColumns)
     {
         getLabelControl(parent);
@@ -532,6 +548,7 @@ public class ComboFieldEditor extends FieldEditor
     /**
      * @see org.eclipse.jface.preference.FieldEditor#clearErrorMessage()
      */
+    @Override
     protected void clearErrorMessage()
     {
         super.clearErrorMessage();

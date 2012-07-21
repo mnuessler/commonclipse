@@ -50,6 +50,7 @@ public class JavaTypeViewerAction extends JavaTypeAction implements IEditorActio
     /**
      * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
      */
+    @Override
     public void run(IAction action)
     {
         IType type = null;
@@ -91,6 +92,7 @@ public class JavaTypeViewerAction extends JavaTypeAction implements IEditorActio
      * selected editor has changed.
      * @see org.eclipse.ui.IActionDelegate#selectionChanged(IAction, ISelection)
      */
+    @Override
     public void selectionChanged(IAction action, ISelection selection)
     {
 
@@ -113,6 +115,7 @@ public class JavaTypeViewerAction extends JavaTypeAction implements IEditorActio
     /**
      * @see org.eclipse.ui.IEditorActionDelegate#setActiveEditor(IAction, IEditorPart)
      */
+    @Override
     public void setActiveEditor(IAction action, IEditorPart targetEditor)
     {
         if (targetEditor instanceof ITextEditor)

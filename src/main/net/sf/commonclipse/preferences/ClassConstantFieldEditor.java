@@ -41,6 +41,7 @@ public class ClassConstantFieldEditor extends ComboFieldEditor
      * Overrides default validation to check for a valid class.CONSTANT value.
      * @return <code>true</code> if the field value is valid, and <code>false</code> if invalid
      */
+    @Override
     protected boolean doCheckState()
     {
         String txt = getTextControl().getText();

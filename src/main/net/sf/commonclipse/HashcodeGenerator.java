@@ -65,6 +65,7 @@ public final class HashcodeGenerator extends Generator
     /**
      * @see net.sf.commonclipse.Generator#getMethodName()
      */
+    @Override
     protected String getMethodName()
     {
         return "hashCode"; //$NON-NLS-1$
@@ -73,6 +74,7 @@ public final class HashcodeGenerator extends Generator
     /**
      * @see net.sf.commonclipse.Generator#createMethod(org.eclipse.jdt.core.IType)
      */
+    @Override
     protected String createMethod(IType type) throws JavaModelException
     {
         int initial = this.random.nextInt();
@@ -112,6 +114,7 @@ public final class HashcodeGenerator extends Generator
     /**
      * @see net.sf.commonclipse.Generator#getFieldAppender(java.lang.String, java.lang.String)
      */
+    @Override
     protected String getFieldAppender(String fieldName, String accessor)
     {
         return ".append(this." + fieldName + ")\n"; //$NON-NLS-1$ //$NON-NLS-2$
@@ -120,6 +123,7 @@ public final class HashcodeGenerator extends Generator
     /**
      * @see net.sf.commonclipse.Generator#getExistingMethod(org.eclipse.jdt.core.IType)
      */
+    @Override
     protected IMethod getExistingMethod(IType type)
     {
         return type.getMethod(getMethodName(), new String[0]);
@@ -128,6 +132,7 @@ public final class HashcodeGenerator extends Generator
     /**
      * @see net.sf.commonclipse.Generator#addImports(org.eclipse.jdt.core.IType)
      */
+    @Override
     protected void addImports(IType type) throws JavaModelException
     {
         type.getCompilationUnit().createImport(BUILDER_CLASS, null, null);

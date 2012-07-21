@@ -61,6 +61,7 @@ public final class CompareToGenerator extends Generator
     /**
      * @see net.sf.commonclipse.Generator#getMethodName()
      */
+    @Override
     protected String getMethodName()
     {
         return "compareTo"; //$NON-NLS-1$
@@ -69,6 +70,7 @@ public final class CompareToGenerator extends Generator
     /**
      * @see net.sf.commonclipse.Generator#createMethod(org.eclipse.jdt.core.IType)
      */
+    @Override
     protected String createMethod(IType type) throws JavaModelException
     {
 
@@ -139,6 +141,7 @@ public final class CompareToGenerator extends Generator
     /**
      * @see net.sf.commonclipse.Generator#getFieldAppender(java.lang.String, java.lang.String)
      */
+    @Override
     protected String getFieldAppender(String fieldName, String accessor)
     {
         return ".append(this." + fieldName + ", myClass." + fieldName + ")\n"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -147,6 +150,7 @@ public final class CompareToGenerator extends Generator
     /**
      * @see net.sf.commonclipse.Generator#getExistingMethod(org.eclipse.jdt.core.IType)
      */
+    @Override
     protected IMethod getExistingMethod(IType type)
     {
         return type.getMethod(getMethodName(), new String[]{"QObject;"}); //$NON-NLS-1$
@@ -155,6 +159,7 @@ public final class CompareToGenerator extends Generator
     /**
      * @see net.sf.commonclipse.Generator#addImports(org.eclipse.jdt.core.IType)
      */
+    @Override
     protected void addImports(IType type) throws JavaModelException
     {
         type.getCompilationUnit().createImport(BUILDER_CLASS, null, null);

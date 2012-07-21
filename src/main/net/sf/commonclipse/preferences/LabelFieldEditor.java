@@ -48,6 +48,7 @@ class LabelFieldEditor extends FieldEditor
      * Adjusts the field editor to be displayed correctly for the given number of columns.
      * @param numColumns number of columns
      */
+    @Override
     protected void adjustForNumColumns(int numColumns)
     {
         ((GridData) this.label.getLayoutData()).horizontalSpan = numColumns;
@@ -58,6 +59,7 @@ class LabelFieldEditor extends FieldEditor
      * @param parent Composite
      * @param numColumns cumber of columns
      */
+    @Override
     protected void doFillIntoGrid(Composite parent, int numColumns)
     {
         this.label = getLabelControl(parent);
@@ -76,6 +78,7 @@ class LabelFieldEditor extends FieldEditor
      * Returns the number of controls in the field editor.
      * @return 1
      */
+    @Override
     public int getNumberOfControls()
     {
         return 1;
@@ -84,6 +87,7 @@ class LabelFieldEditor extends FieldEditor
     /**
      * Labels do not persist any preferences, so this method is empty.
      */
+    @Override
     protected void doLoad()
     {
     }
@@ -91,6 +95,7 @@ class LabelFieldEditor extends FieldEditor
     /**
      * Labels do not persist any preferences, so this method is empty.
      */
+    @Override
     protected void doLoadDefault()
     {
     }
@@ -98,7 +103,9 @@ class LabelFieldEditor extends FieldEditor
     /**
      * Labels do not persist any preferences, so this method is empty.
      */
+    @Override
     protected void doStore()
     {
     }
+
 }
