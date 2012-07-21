@@ -19,6 +19,7 @@ package net.sf.commonclipse;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.jdt.core.Flags;
 import org.eclipse.jdt.core.IField;
@@ -134,19 +135,19 @@ public final class ToStringGenerator extends Generator
     private String buildAppenderListFromBean(IType type) throws JavaModelException
     {
         // temporary map of methods to avoid duplicated entry
-        Map getterMethods = buildMethodsMap(type);
+        Map<String, IMethod> getterMethods = buildMethodsMap(type);
 
         // fields to match method names
-        Map fields = buildFieldMap(type);
+        Map<String, IField> fields = buildFieldMap(type);
 
         // now iterates on generated method list and create the toString method body
-        Iterator iterator = getterMethods.entrySet().iterator();
+        Iterator<Entry<String, IMethod>> iterator = getterMethods.entrySet().iterator();
 
         StringBuffer buffer = new StringBuffer();
 
         while (iterator.hasNext())
         {
-            IMethod method = (IMethod) ((Map.Entry) iterator.next()).getValue();
+            IMethod method = iterator.next().getValue();
             String methodName = method.getElementName();
             String propertyName = getJavabeanProperyName(methodName);
 
@@ -177,12 +178,12 @@ public final class ToStringGenerator extends Generator
     /**
      * Returns a Map containing all the javabean getter methods in this type and its supertypes.
      * @param type IType
-     * @return Map containg method names - IMethod objects
+     * @return Map containing method names - IMethod objects
      * @throws JavaModelException exception in analyzing type
      */
-    private Map buildMethodsMap(IType type) throws JavaModelException
+    private Map<String, IMethod> buildMethodsMap(IType type) throws JavaModelException
     {
-        Map getterMethods = new HashMap();
+        Map<String, IMethod> getterMethods = new HashMap<String, IMethod>();
 
         // iterates on hierarchy, looking for properties also if defined in superclasses
         ITypeHierarchy hierarchy = type.newSupertypeHierarchy(null);

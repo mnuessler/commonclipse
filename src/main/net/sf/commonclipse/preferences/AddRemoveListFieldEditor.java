@@ -388,10 +388,10 @@ public class AddRemoveListFieldEditor extends FieldEditor
     private String[] parseString(String stringList)
     {
         StringTokenizer st = new StringTokenizer(stringList, this.separator);
-        java.util.List v = new ArrayList();
+        java.util.List<String> v = new ArrayList<String>();
         while (st.hasMoreElements())
         {
-            v.add(st.nextElement());
+            v.add(st.nextToken());
         }
         return (String[]) v.toArray(new String[v.size()]);
     }

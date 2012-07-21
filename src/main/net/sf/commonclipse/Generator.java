@@ -337,11 +337,11 @@ public abstract class Generator
     protected String buildAppenderList(IType type) throws JavaModelException
     {
         // temporary map for caching type and supertypes fields and avoid duplicated fields
-        Map fields = buildFieldMap(type);
+        Map<String, IField> fields = buildFieldMap(type);
 
         // start building method body
         StringBuffer buffer = new StringBuffer();
-        Iterator fieldsIterator = fields.keySet().iterator();
+        Iterator<String> fieldsIterator = fields.keySet().iterator();
 
         while (fieldsIterator.hasNext())
         {
@@ -361,12 +361,12 @@ public abstract class Generator
     /**
      * Returns a Set containing all the names of fields visible by this type.
      * @param type IType
-     * @return Map containg field names - IField objects
+     * @return Map containing field names - IField objects
      * @throws JavaModelException exception in analyzing type
      */
-    protected Map buildFieldMap(IType type) throws JavaModelException
+    protected Map<String, IField> buildFieldMap(IType type) throws JavaModelException
     {
-        Map fieldNames = new HashMap();
+        Map<String, IField> fieldNames = new HashMap<String, IField>();
 
         IField[] fields = type.getFields();
 

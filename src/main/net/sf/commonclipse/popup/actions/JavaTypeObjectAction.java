@@ -44,7 +44,7 @@ public class JavaTypeObjectAction extends JavaTypeAction implements IObjectActio
     /**
      * selected objects. Can contain instances of IType or ICompilationUnit
      */
-    private List selected;
+    private List<?> selected;
 
     /**
      * new JavaTypeObjectAction.
@@ -73,7 +73,7 @@ public class JavaTypeObjectAction extends JavaTypeAction implements IObjectActio
         {
 
             // iterates on selection
-            Iterator selectionIterator = this.selected.iterator();
+            Iterator<?> selectionIterator = this.selected.iterator();
 
             // prepare shell
             Shell shell = new Shell();
