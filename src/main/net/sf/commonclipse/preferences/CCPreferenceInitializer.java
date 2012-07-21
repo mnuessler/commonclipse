@@ -2,8 +2,8 @@ package net.sf.commonclipse.preferences;
 
 import net.sf.commonclipse.CCPlugin;
 
-import org.eclipse.core.runtime.Preferences;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
+import org.eclipse.jface.preference.IPreferenceStore;
 
 
 /**
@@ -18,7 +18,7 @@ public class CCPreferenceInitializer extends AbstractPreferenceInitializer
      */
     public void initializeDefaultPreferences()
     {
-        Preferences preferences = CCPlugin.getDefault().getPluginPreferences();
+        IPreferenceStore preferences = CCPlugin.getDefault().getPreferenceStore();
         preferences.setDefault(CCPlugin.P_TOSTRING_BEAN, "bean"); //$NON-NLS-1$
         preferences.setDefault(CCPlugin.P_TOSTRING_SUPER, false);
         preferences.setDefault(CCPlugin.P_HASHCODE_SUPER, true);

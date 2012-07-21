@@ -18,6 +18,7 @@ package net.sf.commonclipse.preferences;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.jdt.core.JavaConventions;
+import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.swt.widgets.Composite;
 
 /**
@@ -58,8 +59,8 @@ public class ClassConstantFieldEditor extends ComboFieldEditor
             String fieldToken = txt.substring(lastDot + 1);
 
             // validates tokens
-            IStatus status1 = JavaConventions.validateJavaTypeName(typeToken);
-            IStatus status2 = JavaConventions.validateFieldName(fieldToken);
+            IStatus status1 = JavaConventions.validateJavaTypeName(typeToken, JavaCore.VERSION_1_6, JavaCore.VERSION_1_6);
+            IStatus status2 = JavaConventions.validateFieldName(fieldToken, JavaCore.VERSION_1_6, JavaCore.VERSION_1_6);
 
             if ((status1.getCode() != IStatus.OK) || (status2.getCode() != IStatus.OK))
             {

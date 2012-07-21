@@ -27,7 +27,6 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Preferences;
 import org.eclipse.jdt.core.Flags;
 import org.eclipse.jdt.core.IBuffer;
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -37,13 +36,13 @@ import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.ISourceReference;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
-import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.core.ToolFactory;
 import org.eclipse.jdt.core.formatter.CodeFormatter;
 import org.eclipse.jdt.core.formatter.DefaultCodeFormatterConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.Document;
 import org.eclipse.swt.widgets.Shell;
@@ -269,7 +268,7 @@ public abstract class Generator
      */
     public int computeIndent(String line)
     {
-        Preferences preferences = JavaCore.getPlugin().getPluginPreferences();
+        IPreferenceStore preferences = CCPlugin.getDefault().getPreferenceStore();
         int tabWidth = preferences.getInt(DefaultCodeFormatterConstants.FORMATTER_TAB_SIZE);
 
         int result = 0;
@@ -407,7 +406,7 @@ public abstract class Generator
     /**
      * Checks if a given field should be excluded from generated method.
      * @param fieldName field/property name
-     * @return <code>true</code> if the field should not be included in generathed method
+     * @return <code>true</code> if the field should not be included in generated method
      */
     protected boolean isExcluded(String fieldName)
     {

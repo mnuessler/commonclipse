@@ -78,7 +78,7 @@ public final class HashcodeGenerator extends Generator
         int initial = this.random.nextInt();
         int multiplier = this.random.nextInt();
 
-        // be shure they are odd numbers
+        // be sure they are odd numbers
         if (initial % 2 == 0)
         {
             initial++;
