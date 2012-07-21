@@ -344,7 +344,7 @@ public abstract class Generator
 
         while (fieldsIterator.hasNext())
         {
-            String fieldName = (String) fieldsIterator.next();
+            String fieldName = fieldsIterator.next();
 
             // only add field if not excluded by user preferences
             if (!isExcluded(fieldName))

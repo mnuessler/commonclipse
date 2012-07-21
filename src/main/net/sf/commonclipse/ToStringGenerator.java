@@ -158,7 +158,7 @@ public final class ToStringGenerator extends Generator
             if (!isExcluded(propertyName))
             {
                 // does a field with the same name exist?
-                IField matchingField = (IField) fields.get(propertyName);
+                IField matchingField = fields.get(propertyName);
 
                 if (matchingField != null)
                 {

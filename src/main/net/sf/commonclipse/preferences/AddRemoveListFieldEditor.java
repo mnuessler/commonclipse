@@ -402,7 +402,7 @@ public class AddRemoveListFieldEditor extends FieldEditor
         {
             v.add(st.nextToken());
         }
-        return (String[]) v.toArray(new String[v.size()]);
+        return v.toArray(new String[v.size()]);
     }
 
     /**

@@ -144,8 +144,10 @@ public class ComboFieldEditor extends FieldEditor
         {
             result = false;
         }
-
-        result = (txt.trim().length() > 0) || this.emptyStringAllowed;
+        else
+        {
+            result = (txt.trim().length() > 0) || this.emptyStringAllowed;
+        }
 
         // call hook for subclasses
         result = result && doCheckState();

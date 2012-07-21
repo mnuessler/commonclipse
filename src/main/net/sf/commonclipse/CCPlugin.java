@@ -70,7 +70,7 @@ public class CCPlugin extends AbstractUIPlugin
     public static final String P_COMPARETO_SUPER = "compareto_super"; //$NON-NLS-1$
 
     /**
-     * esclusion list.
+     * exclusion list.
      */
     public static final String P_EXCLUDE = "exclude"; //$NON-NLS-1$
 
