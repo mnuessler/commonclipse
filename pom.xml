@@ -89,6 +89,9 @@
 		<eclipse-equinox-common.version>3.6.0.v20110523</eclipse-equinox-common.version>
 		<eclipse-swt-cocoa.version>x86_64_3.7.2.v3740f</eclipse-swt-cocoa.version>
 		<eclipse-equinox-preferences.version>3.4.2.v20120111-2020</eclipse-equinox-preferences.version>
+		<eclipse-jobs.version>3.5.101.v20120113-1953</eclipse-jobs.version>
+		<eclipse-equinox-registry.version>3.5.101.R37x_v20110810-1611</eclipse-equinox-registry.version>
+		<eclipse-commands.version>3.6.0.I20110111-0800</eclipse-commands.version>
 
 		<maven-checkstyle-plugin.version>2.9.1</maven-checkstyle-plugin.version>
 		<maven-wagon-ssh.version>1.0</maven-wagon-ssh.version>
@@ -217,6 +220,27 @@
 			<scope>system</scope>
 			<systemPath>${eclipse.home}/plugins/org.eclipse.equinox.preferences_${eclipse-equinox-preferences.version}.jar </systemPath>
 		</dependency>
+		<dependency>
+			<groupId>eclipse</groupId>
+			<artifactId>eclipse-jobs</artifactId>
+			<version>${eclipse-jobs.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.core.jobs_${eclipse-jobs.version}.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>eclipse</groupId>
+			<artifactId>eclipse-equinox-registry</artifactId>
+			<version>${eclipse-equinox-registry.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.equinox.registry_${eclipse-equinox-registry.version}.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>eclipse</groupId>
+			<artifactId>eclipse-commands</artifactId>
+			<version>${eclipse-commands.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.core.commands_${eclipse-commands.version}.jar</systemPath>
+		</dependency>
 	</dependencies>
 	<build>
 		<sourceDirectory>src/main</sourceDirectory>
@@ -237,7 +261,7 @@
 				<filtering>false</filtering>
 			</resource>
 			<resource>
-				<directory>/</directory>
+				<directory>${basedir}</directory>
 				<includes>
 					<include>plugin*.*</include>
 				</includes>
@@ -306,6 +330,11 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>2.4</version>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.7</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -322,7 +351,7 @@
 					<execution>
 						<id>attach-sources</id>
 						<goals>
-							<goal>jar-no-fork</goal>
+							<goal>jar</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -361,6 +390,29 @@
 					<!-- recommended on https://docs.sonatype.org/display/Repository/How+To+Generate+PGP+Signatures+With+Maven -->
 					<mavenExecutorId>forked-path</mavenExecutorId>
 				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>update-site</id>
+						<phase>pre-site</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<mkdir dir="${project.build.directory}/site/features" />
+								<mkdir dir="${project.build.directory}/site/plugins" />
+								<copy file="${basedir}/src/update/site.xml" todir="${project.build.directory}/site" />
+								<zip destfile="${project.build.directory}/site/features/${project.groupId}_${project.version}.jar">
+									<fileset dir="${basedir}/src/feature" />
+								</zip>
+								<copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${project.build.directory}/site/plugins/${project.groupId}_${project.version}.jar" />
+							</target>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
