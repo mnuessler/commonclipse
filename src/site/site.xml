@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project xmlns="http://maven.apache.org/DECORATION/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+	<bannerLeft>
+		<name>Sourceforge</name>
+		<src>http://sourceforge.net/sflogo.php?group_id=95373&amp;type=2</src>
+		<href>http://www.sourceforge.net/</href>
+	</bannerLeft>
+	<bannerRight>
+		<name>Commonclipse</name>
+		<href>http://commonclipse.sourceforge.net</href>
+	</bannerRight>
+	<body>
+		<links>
+			<item href="http://maven.apache.org/" name="Maven"></item>
+			<item href="http://www.eclipse.org/" name="Eclipse"></item>
+			<item href="http://jakarta.apache.org/commons/lang" name="Jakarta commons-lang"></item>
+		</links>
+		<menu name="Overview">
+			<item name="Commonclipse" href="index.html" />
+			<item name="Builders" href="builders.html" />
+			<item name="Configuration" href="configuration.html" />
+			<item name="Screenshots" href="screenshots.html" />
+			<item name="Downloads" href="download.html" />
+		</menu>
+		<menu ref="reports" />
+	</body>
+</project>

@@ -1,32 +1,42 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<name>commonclipse</name>
-	<groupId>commonclipse</groupId>
-	<artifactId>net.sf.commonclipse</artifactId>
-	<version>1.3.0</version>
+	<groupId>net.sf.commonclipse</groupId>
+	<artifactId>commonclipse</artifactId>
+	<version>1.4.0-SNAPSHOT</version>
 	<organization>
 		<name>sourceforge</name>
 		<url>http://sourceforge.net</url>
 	</organization>
 	<inceptionYear>2003</inceptionYear>
 	<description>Commonclipse is an eclipse plugin for jakarta commons-lang users. It features automatic generation of the following methods using commons-lang builders: toString(), hashcode(), equals(Object), compareTo(Object)</description>
-	<url>http://${pom.groupId}.sf.net</url>
+	<url>http://commonclipse.sf.net</url>
+	<licenses>
+		<license>
+			<name>Apache License Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 	<issueManagement>
-		<url>http://sourceforge.net/tracker/?group_id=${maven.sourceforge.project.groupid}</url>
+		<system>Tracker</system>
+		<url>http://sourceforge.net/tracker/?group_id=${sourceforge.project.groupid}</url>
 	</issueManagement>
 	<distributionManagement>
 		<site>
+			<id>shell.sf.net</id>
 			<name>shell.sf.net</name>
-			<url>/home/groups/c/co/commonclipse/htdocs</url>
+			<url>scp://shell.sourceforge.net/home/project-web/commonclipse/htdocs</url>
 		</site>
-		<downloadUrl>http://sourceforge.net/project/showfiles.php?group_id=95373</downloadUrl>
+		<downloadUrl>http://sourceforge.net/project/showfiles.php?group_id=${sourceforge.project.groupid}</downloadUrl>
 	</distributionManagement>
 	<scm>
-		<connection>scm:cvs:pserver:anonymous@cvs.sourceforge.net:/cvsroot/${pom.groupId}:${pom.groupId}</connection>
-		<url>http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/${pom.groupId}/${pom.groupId}/</url>
+		<connection>scm:svn:https://commonclipse.svn.sourceforge.net/svnroot/commonclipse/trunk</connection>
+		<url>http://commonclipse.svn.sourceforge.net/viewvc/commonclipse/trunk/</url>
 	</scm>
-	<mailingLists/>
+	<mailingLists />
 	<developers>
 		<developer>
 			<name>Fabrizio Giustina</name>
@@ -40,82 +50,172 @@
 			<timezone>+1</timezone>
 		</developer>
 	</developers>
+	<contributors>
+		<contributor>
+			<name>Matthias Nuessler</name>
+			<email>mnuessler AT users.sourceforge.net</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>Europe/Berlin</timezone>
+		</contributor>
+	</contributors>
+	<prerequisites>
+		<maven>${maven.version}</maven>
+	</prerequisites>
+	<properties>
+		<jdk.version>1.6</jdk.version>
+		<maven.version>3.0</maven.version>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<sourceforge.project.groupid>95373</sourceforge.project.groupid>
+
+		<eclipse.home>/Applications/eclipse/eclipse-indigo</eclipse.home>
+		<eclipse.version>3.7.0</eclipse.version>
+		<eclipse-runtime.version>${eclipse.version}.v20110110</eclipse-runtime.version>
+		<eclipse-jdtcore.version>3.7.3.xx-20120703-1400-e37-RELEASE</eclipse-jdtcore.version>
+		<eclipse-jface.version>${eclipse.version}.v20110928-1505</eclipse-jface.version>
+		<eclipse-workbench.version>3.7.1.v20120104-1859</eclipse-workbench.version>
+		<eclipse-resources.version>3.7.101.v20120125-1505</eclipse-resources.version>
+		<eclipse-jdt.version>3.7.2.v20120109-1427</eclipse-jdt.version>
+		<eclipse-swt.version>3.7.2.v3740f</eclipse-swt.version>
+		<eclipse-editors.version>3.7.0.v20110928-1504</eclipse-editors.version>
+		<eclipse-ui.version>3.7.2.v20120109-1427</eclipse-ui.version>
+		<eclipse-jfacetext.version>3.7.2.v20111213-1208</eclipse-jfacetext.version>
+		<eclipse-texteditor.version>3.7.0.v20110928-1504</eclipse-texteditor.version>
+		<eclipse-osgi.version>3.7.2.v20120110-1415</eclipse-osgi.version>
+		<eclipse-osgiservices.version>3.3.0.v20110513</eclipse-osgiservices.version>
+		<eclipse-text.version>3.5.101.v20110928-1504</eclipse-text.version>
+		<eclipse-equinox-common.version>3.6.0.v20110523</eclipse-equinox-common.version>
+		<eclipse-swt-cocoa.version>x86_64_3.7.2.v3740f</eclipse-swt-cocoa.version>
+		<eclipse-equinox-preferences.version>3.4.2.v20120111-2020</eclipse-equinox-preferences.version>
+
+		<maven-checkstyle-plugin.version>2.9.1</maven-checkstyle-plugin.version>
+		<maven-wagon-ssh.version>1.0</maven-wagon-ssh.version>
+		<maven-javadoc-plugin.version>2.8.1</maven-javadoc-plugin.version>
+		<maven-changes-plugin.version>2.7.1</maven-changes-plugin.version>
+		<maven-pmd-plugin.version>2.7.1</maven-pmd-plugin.version>
+		<findbugs-maven-plugin.version>2.4.0</findbugs-maven-plugin.version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>eclipse</groupId>
 			<artifactId>eclipse-runtime</artifactId>
-			<version>3.1.0</version>
+			<version>${eclipse-runtime.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.core.runtime_${eclipse-runtime.version}.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>eclipse</groupId>
 			<artifactId>eclipse-jdtcore</artifactId>
-			<version>3.1.0</version>
+			<version>${eclipse-jdtcore.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.jdt.core_${eclipse-jdtcore.version}.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>eclipse</groupId>
 			<artifactId>eclipse-jface</artifactId>
-			<version>3.1.0</version>
+			<version>${eclipse-jface.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.jface_${eclipse-jface.version}.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>eclipse</groupId>
 			<artifactId>eclipse-workbench</artifactId>
-			<version>3.1.0</version>
+			<version>${eclipse-workbench.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.ui.workbench_${eclipse-workbench.version}.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>eclipse</groupId>
 			<artifactId>eclipse-resources</artifactId>
-			<version>3.1.0</version>
+			<version>${eclipse-resources.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.core.resources_${eclipse-resources.version}.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>eclipse</groupId>
 			<artifactId>eclipse-jdt</artifactId>
-			<version>3.1.0</version>
+			<version>${eclipse-jdt.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.jdt.ui_${eclipse-jdt.version}.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>eclipse</groupId>
 			<artifactId>eclipse-swt</artifactId>
-			<version>3.1.0</version>
+			<version>${eclipse-swt.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.swt_${eclipse-swt.version}.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>eclipse</groupId>
 			<artifactId>eclipse-editors</artifactId>
-			<version>3.1.0</version>
+			<version>${eclipse-editors.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.ui.editors_${eclipse-editors.version}.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>eclipse</groupId>
 			<artifactId>eclipse-ui</artifactId>
-			<version>3.1.0</version>
+			<version>${eclipse-ui.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.jdt.ui_${eclipse-ui.version}.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>eclipse</groupId>
 			<artifactId>eclipse-jfacetext</artifactId>
-			<version>3.1.0</version>
+			<version>${eclipse-jfacetext.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.jface.text_${eclipse-jfacetext.version}.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>eclipse</groupId>
 			<artifactId>eclipse-texteditor</artifactId>
-			<version>3.1.0</version>
+			<version>${eclipse-texteditor.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.ui.workbench.texteditor_${eclipse-texteditor.version}.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>eclipse</groupId>
 			<artifactId>eclipse-osgi</artifactId>
-			<version>3.1.0</version>
+			<version>${eclipse-osgi.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.osgi_${eclipse-osgi.version}.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>eclipse</groupId>
 			<artifactId>eclipse-osgiservices</artifactId>
-			<version>3.0.0</version>
+			<version>${eclipse-osgiservices.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.osgi.services_${eclipse-osgiservices.version}.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>eclipse</groupId>
 			<artifactId>eclipse-text</artifactId>
-			<version>3.1.0</version>
+			<version>${eclipse-text.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.text_${eclipse-text.version}.jar</systemPath>
 		</dependency>
 		<dependency>
-			<groupId>statcvs</groupId>
-			<artifactId>maven-statcvs-plugin</artifactId>
-			<version>2.5</version>
-			<type>plugin</type>
+			<groupId>eclipse</groupId>
+			<artifactId>eclipse-equinox-common</artifactId>
+			<version>${eclipse-equinox-common.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.equinox.common_${eclipse-equinox-common.version}.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>eclipse</groupId>
+			<artifactId>eclipse-swt-cocoa</artifactId>
+			<version>${eclipse-swt-cocoa.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.swt.cocoa.macosx.${eclipse-swt-cocoa.version}.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>eclipse</groupId>
+			<artifactId>eclipse-equinox-preferences</artifactId>
+			<version>${eclipse-equinox-preferences.version}</version>
+			<scope>system</scope>
+			<systemPath>${eclipse.home}/plugins/org.eclipse.equinox.preferences_${eclipse-equinox-preferences.version}.jar </systemPath>
 		</dependency>
 	</dependencies>
 	<build>
@@ -144,38 +244,191 @@
 				<filtering>false</filtering>
 			</resource>
 		</resources>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh</artifactId>
+				<version>${maven-wagon-ssh.version}</version>
+			</extension>
+		</extensions>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.1.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>${maven-checkstyle-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>${maven-pmd-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${maven-javadoc-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>findbugs-maven-plugin</artifactId>
+					<version>${findbugs-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.12</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.7</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.3</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>2.3</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-site-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.wagon</groupId>
+						<artifactId>wagon-ssh</artifactId>
+						<version>${maven-wagon-ssh.version}</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<inputEncoding>UTF-8</inputEncoding>
+					<outputEncoding>UTF-8</outputEncoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<preparationGoals>clean verify</preparationGoals>
+					<tagNameFormat>@{project.artifactId}-@{project.version}</tagNameFormat>
+					<!-- MGPG-9: get around a GPG plugin hanging issue -->
+					<!-- recommended on https://docs.sonatype.org/display/Repository/How+To+Generate+PGP+Signatures+With+Maven -->
+					<mavenExecutorId>forked-path</mavenExecutorId>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 	<reporting>
 		<plugins>
 			<plugin>
-				<artifactId>maven-license-plugin</artifactId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.4</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>summary</report>
+							<report>index</report>
+							<report>license</report>
+							<report>mailing-list</report>
+							<report>project-team</report>
+							<report>scm</report>
+							<report>dependencies</report>
+							<report>dependency-management</report>
+							<report>dependency-convergence</report>
+							<report>plugin-management</report>
+							<report>issue-tracking</report>
+						</reports>
+					</reportSet>
+				</reportSets>
 			</plugin>
+			<!-- 
 			<plugin>
 				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${maven-checkstyle-plugin.version}</version>
+				<configuration>
+					<configLocation>${basedir}/src/etc/checkstyle.xml</configLocation>
+				</configuration>
 			</plugin>
+			 -->
 			<plugin>
 				<artifactId>maven-changes-plugin</artifactId>
+				<version>${maven-changes-plugin.version}</version>
+				<configuration>
+					<issueLinkTemplatePerSystem>
+						<SourceForge>%URL%/%ISSUE%/</SourceForge>
+					</issueLinkTemplatePerSystem>
+				</configuration>
 			</plugin>
 			<plugin>
 				<artifactId>maven-javadoc-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<artifactId>maven-jdepend-plugin</artifactId>
+				<version>${maven-javadoc-plugin.version}</version>
+				<configuration>
+					<doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
+					<docletArtifact>
+						<groupId>org.umlgraph</groupId>
+						<artifactId>doclet</artifactId>
+						<version>5.1</version>
+					</docletArtifact>
+					<additionalparam>-views</additionalparam>
+					<useStandardDocletOptions>true</useStandardDocletOptions>
+				</configuration>
 			</plugin>
 			<plugin>
 				<artifactId>maven-pmd-plugin</artifactId>
+				<version>${maven-pmd-plugin.version}</version>
+				<configuration>
+					<targetJdk>${jdk.version}</targetJdk>
+				</configuration>
 			</plugin>
 			<plugin>
 				<artifactId>maven-jxr-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<artifactId>maven-tasklist-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<artifactId>maven-simian-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<artifactId>maven-statcvs-plugin</artifactId>
+				<version>2.3</version>
 			</plugin>
 		</plugins>
 	</reporting>
