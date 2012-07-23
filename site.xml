@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+
 <site>
-   <description url="http://commonclipse.sourceforge.net">
+   <description url="http://mnuessler.github.com/commonclipse">
       Commonclipse update site
    </description>
    <feature url="features/commonclipse-1.0.1.jar" id="net.sf.commonclipse" version="1.0.1" label="commonclipse 1.0.1 for Eclipse 2/3">
@@ -12,7 +12,7 @@
    <feature url="features/commonclipse-1.3.0.jar" id="net.sf.commonclipse" version="1.3.0" label="commonclipse 1.3.0 for Eclipse 3.1">
       <category name="commonclipse for eclipse 3.1M6 and up"/>
    </feature>
-   <feature url="features/net.sf.commonclipse_1.4.0.jar" id="net.sf.commonclipse" version="1.4.0" label="commonclipse 1.4.0-SNAPSHOT for Eclipse 3.7">
+   <feature url="features/net.sf.commonclipse_1.4.0.jar" id="net.sf.commonclipse" version="1.4.0" label="commonclipse 1.4.0 for Eclipse 3.7">
       <category name="commonclipse for eclipse 3.7 (indigo) SR2"/>
    </feature>
    <category-def name="commonclipse for eclipse 3.7 (indigo) SR2" label="Commonclipse for eclipse 3.7 (indigo) SR2">
