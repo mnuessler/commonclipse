@@ -241,12 +241,18 @@
 			<scope>system</scope>
 			<systemPath>${eclipse.home}/plugins/org.eclipse.core.commands_${eclipse-commands.version}.jar</systemPath>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.2</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<build>
-		<sourceDirectory>src/main</sourceDirectory>
+		<sourceDirectory>src/main/java</sourceDirectory>
 		<resources>
 			<resource>
-				<directory>src/main</directory>
+				<directory>src/main/java</directory>
 				<includes>
 					<include>**/*.properties</include>
 					<include>**/*.MF</include>
@@ -254,7 +260,7 @@
 				<filtering>false</filtering>
 			</resource>
 			<resource>
-				<directory>src/resources</directory>
+				<directory>src/main/resources</directory>
 				<includes>
 					<include>**/*.*</include>
 				</includes>
