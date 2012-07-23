@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="c0" href="./ToStringGenerator.html" title="net.sf.commonclipse.ToStringGenerator" alt="" coords="16,113,168,138"/>
+<area shape="rect" id="c1" href="./HashcodeGenerator.html" title="net.sf.commonclipse.HashcodeGenerator" alt="" coords="213,113,371,138"/>
+<area shape="rect" id="c2" href="./Generator.html" title="net.sf.commonclipse.Generator" alt="" coords="349,17,427,42"/>
+<area shape="rect" id="c3" href="./EqualsGenerator.html" title="net.sf.commonclipse.EqualsGenerator" alt="" coords="415,113,553,138"/>
+<area shape="rect" id="c4" href="./CompareToGenerator.html" title="net.sf.commonclipse.CompareToGenerator" alt="" coords="597,113,768,138"/>
+<area shape="rect" id="c5" href="./CCPluginPreferences.html" title="net.sf.commonclipse.CCPluginPreferences" alt="" coords="472,17,637,42"/>
+<area shape="rect" id="c6" href="./CCPlugin.html" title="net.sf.commonclipse.CCPlugin" alt="" coords="683,17,765,42"/>
+<area shape="rect" id="c7" href="./CCMessages.html" title="net.sf.commonclipse.CCMessages" alt="" coords="811,17,920,42"/>
+</map>

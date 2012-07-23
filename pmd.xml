@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2012-07-23T23:43:07.545">
+<file name="/Users/mnuessler/Documents/projects/commonclipse/src/main/java/net/sf/commonclipse/CompareToGenerator.java">
+<violation beginline="105" endline="108" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="net.sf.commonclipse" class="CompareToGenerator" method="createMethod" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/Users/mnuessler/Documents/projects/commonclipse/src/main/java/net/sf/commonclipse/Generator.java">
+<violation beginline="237" endline="249" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="net.sf.commonclipse" class="Generator" method="getIndentUsed" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/Users/mnuessler/Documents/projects/commonclipse/src/main/java/net/sf/commonclipse/ToStringGenerator.java">
+<violation beginline="170" endline="176" begincolumn="21" endcolumn="21" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="net.sf.commonclipse" class="ToStringGenerator" method="buildAppenderListFromBean" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/Users/mnuessler/Documents/projects/commonclipse/src/main/java/net/sf/commonclipse/popup/actions/JavaTypeViewerAction.java">
+<violation beginline="70" endline="73" begincolumn="17" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="net.sf.commonclipse.popup.actions" class="JavaTypeViewerAction" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="/Users/mnuessler/Documents/projects/commonclipse/src/main/java/net/sf/commonclipse/preferences/ComboFieldEditor.java">
+<violation beginline="554" endline="557" begincolumn="15" endcolumn="5" rule="UselessOverridingMethod" ruleset="Basic Rules" package="net.sf.commonclipse.preferences" class="ComboFieldEditor" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#UselessOverridingMethod" priority="3">
+Overriding method merely calls super
+</violation>
+</file>
+</pmd>

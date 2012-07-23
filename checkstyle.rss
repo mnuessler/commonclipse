@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>commonclipse - Checkstyle report</title>
+    <link>http://commonclipse.sf.net</link>
+    <description>commonclipse - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2003 - 2012 sourceforge</copyright>
+    <item>
+      <title>File: 19,
+             Errors: 0,
+             Warnings: 70,
+             Infos: 1
+      </title>
+            <link>http://commonclipse.sf.net/checkstyle.html</link>
+      <description>
+        <p>Click <a href="http://commonclipse.sf.net/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="http://commonclipse.sf.net/checkstyle.html#net.sf.commonclipse.preferences.SpacerFieldEditor.java">net/sf/commonclipse/preferences/SpacerFieldEditor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://commonclipse.sf.net/checkstyle.html#net.sf.commonclipse.preferences.CCPreferencePage.java">net/sf/commonclipse/preferences/CCPreferencePage.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://commonclipse.sf.net/checkstyle.html#net.sf.commonclipse.preferences.AddRemoveListFieldEditor.java">net/sf/commonclipse/preferences/AddRemoveListFieldEditor.java</a>
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  4
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://commonclipse.sf.net/checkstyle.html#net.sf.commonclipse.popup.actions.JavaTypeAction.java">net/sf/commonclipse/popup/actions/JavaTypeAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://commonclipse.sf.net/checkstyle.html#net.sf.commonclipse.preferences.CCPreferenceInitializer.java">net/sf/commonclipse/preferences/CCPreferenceInitializer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://commonclipse.sf.net/checkstyle.html#net.sf.commonclipse.preferences.LabelFieldEditor.java">net/sf/commonclipse/preferences/LabelFieldEditor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://commonclipse.sf.net/checkstyle.html#net.sf.commonclipse.CCPluginPreferences.java">net/sf/commonclipse/CCPluginPreferences.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://commonclipse.sf.net/checkstyle.html#net.sf.commonclipse.HashcodeGenerator.java">net/sf/commonclipse/HashcodeGenerator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  11
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://commonclipse.sf.net/checkstyle.html#net.sf.commonclipse.popup.actions.JavaTypeViewerAction.java">net/sf/commonclipse/popup/actions/JavaTypeViewerAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://commonclipse.sf.net/checkstyle.html#net.sf.commonclipse.CCPlugin.java">net/sf/commonclipse/CCPlugin.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://commonclipse.sf.net/checkstyle.html#net.sf.commonclipse.ToStringGenerator.java">net/sf/commonclipse/ToStringGenerator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  11
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://commonclipse.sf.net/checkstyle.html#net.sf.commonclipse.preferences.ClassConstantFieldEditor.java">net/sf/commonclipse/preferences/ClassConstantFieldEditor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://commonclipse.sf.net/checkstyle.html#net.sf.commonclipse.Generator.java">net/sf/commonclipse/Generator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://commonclipse.sf.net/checkstyle.html#net.sf.commonclipse.popup.actions.JavaTypeObjectAction.java">net/sf/commonclipse/popup/actions/JavaTypeObjectAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://commonclipse.sf.net/checkstyle.html#net.sf.commonclipse.preferences.TabbedFieldEditorPreferencePage.java">net/sf/commonclipse/preferences/TabbedFieldEditorPreferencePage.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://commonclipse.sf.net/checkstyle.html#net.sf.commonclipse.preferences.ComboFieldEditor.java">net/sf/commonclipse/preferences/ComboFieldEditor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://commonclipse.sf.net/checkstyle.html#net.sf.commonclipse.CCMessages.java">net/sf/commonclipse/CCMessages.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://commonclipse.sf.net/checkstyle.html#net.sf.commonclipse.CompareToGenerator.java">net/sf/commonclipse/CompareToGenerator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  11
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://commonclipse.sf.net/checkstyle.html#net.sf.commonclipse.EqualsGenerator.java">net/sf/commonclipse/EqualsGenerator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  11
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

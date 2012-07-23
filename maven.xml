@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="rebuild-all" xmlns:j="jelly:core" xmlns:u="jelly:util">
+
+	<goal name="rebuild-all">
+		<j:set var="goals" value="clean,jar:jar,eclipseplugin:zip,site:generate,updatesite" />
+		<mkdir dir="${maven.build.dir}" />
+		<u:tokenize var="goals" delim=",">${goals}</u:tokenize>
+		<j:forEach items="${goals}" var="goal" indexVar="goalNumber">
+			Now attaining goal number ${goalNumber}, which is ${goal}
+			<attainGoal name="${goal}" />
+		</j:forEach>
+	</goal>
+
+    <goal name="eclipseplugin:zip">
+
+        <mkdir dir="${maven.build.dir}/dist" />
+        <mkdir dir="${maven.build.dir}/dist/features" />
+        <mkdir dir="${maven.build.dir}/dist/plugins" />
+
+        <!-- features -->
+        <zip destfile="${maven.build.dir}/dist/features/${maven.final.name}.jar">
+            <fileset dir="${maven.src.dir}/feature"/>
+        </zip>
+
+        <!-- plugins -->
+        <copy file="${maven.build.dir}/${maven.final.name}.jar" todir="${maven.build.dir}/dist/plugins" />
+
+        <zip destfile="${maven.build.dir}/${maven.final.name}.zip">
+            <zipfileset dir="${maven.build.dir}/dist" />
+        </zip>
+    </goal>
+
+    <goal name="updatesite">
+
+	  <attainGoal name="eclipseplugin:zip" />
+
+      <!-- copy site.xml -->
+      <copy file="${maven.src.dir}/update/site.xml" todir="${maven.build.dir}/docs" />
+
+      <!-- feature -->
+      <mkdir dir="${maven.build.dir}/docs/features" />
+      <zip destfile="${maven.build.dir}/docs/features/${maven.final.name}.jar">
+            <fileset dir="${maven.src.dir}/feature"/>
+      </zip>
+
+      <!-- copy plugin -->
+      <mkdir dir="${maven.build.dir}/docs/plugins" />
+      <copy file="${maven.build.dir}/${maven.final.name}.jar" todir="${maven.build.dir}/docs/plugins" />
+
+    </goal>
+
+
+</project>
