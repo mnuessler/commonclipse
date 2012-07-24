@@ -412,13 +412,13 @@
 						</goals>
 						<configuration>
 							<target>
-								<mkdir dir="${project.build.directory}/site/features" />
-								<mkdir dir="${project.build.directory}/site/plugins" />
-								<copy file="${basedir}/src/update/site.xml" todir="${project.build.directory}/site" />
-								<zip destfile="${project.build.directory}/site/features/${project.groupId}_${project.version}.jar">
-									<fileset dir="${basedir}/src/feature" />
+								<mkdir dir="${project.build.directory}/site/update/features" />
+								<mkdir dir="${project.build.directory}/site/update/plugins" />
+								<copy file="${basedir}/src/update-site/site.xml" todir="${project.build.directory}/site/update" />
+								<zip destfile="${project.build.directory}/site/update/features/${project.groupId}_${project.version}.jar">
+									<fileset dir="${basedir}/src/update-site/feature" />
 								</zip>
-								<copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${project.build.directory}/site/plugins/${project.groupId}_${project.version}.jar" />
+								<copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${project.build.directory}/site/update/plugins/${project.groupId}_${project.version}.jar" />
 							</target>
 						</configuration>
 					</execution>

@@ -7,7 +7,7 @@
 	<includeBaseDirectory>false</includeBaseDirectory>
 	<files>
 		<file>
-			<source>${basedir}/src/feature/feature.xml</source>
+			<source>${basedir}/src/update-site/feature/feature.xml</source>
 			<outputDirectory>/features/${project.build.finalName}</outputDirectory>
 		</file>
 		<file>
