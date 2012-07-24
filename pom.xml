@@ -428,8 +428,7 @@
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
 					<descriptors>
-						<descriptor>${basedir}/src/assembly/feature-jar-assembly.xml</descriptor>
-						<descriptor>${basedir}/src/assembly/dist-zip-assembly.xml</descriptor>
+						<descriptor>${basedir}/src/assembly/dist.xml</descriptor>
 					</descriptors>
 				</configuration>
 				<executions>
