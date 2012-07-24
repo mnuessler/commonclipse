@@ -429,6 +429,7 @@
 				<configuration>
 					<descriptors>
 						<descriptor>${basedir}/src/assembly/dist.xml</descriptor>
+						<descriptor>${basedir}/src/assembly/all.xml</descriptor>
 					</descriptors>
 				</configuration>
 				<executions>
