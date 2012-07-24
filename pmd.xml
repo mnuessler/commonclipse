@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.3" timestamp="2012-07-23T23:43:07.545">
+<pmd version="4.3" timestamp="2012-07-24T23:00:44.151">
 <file name="/Users/mnuessler/Documents/projects/commonclipse/src/main/java/net/sf/commonclipse/CompareToGenerator.java">
 <violation beginline="105" endline="108" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="net.sf.commonclipse" class="CompareToGenerator" method="createMethod" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
 These nested if statements could be combined
