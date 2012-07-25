@@ -6,6 +6,8 @@ import static org.junit.Assert.assertThat;
 
 import java.util.regex.Pattern;
 
+import org.junit.Test;
+
 /**
  * Tests for CCPluginPreferences.
  * @author fgiust
@@ -17,6 +19,7 @@ public class CCPluginPreferencesTest
     /**
      * test the conversion from an array of strings to a regexp.
      */
+    @Test
     public void testRegexpConversion()
     {
         Pattern regexp = CCPluginPreferences.generateRegExp("log;test?u?;done*");
@@ -26,6 +29,7 @@ public class CCPluginPreferencesTest
     /**
      * test the conversion from an array of strings to a regexp.
      */
+    @Test
     public void testEmptyRegexpConversion()
     {
         Pattern regexp = CCPluginPreferences.generateRegExp("");
@@ -37,6 +41,7 @@ public class CCPluginPreferencesTest
     /**
      * test the conversion from an array of strings to a regexp.
      */
+    @Test
     public void testNullRegexpConversion()
     {
         Pattern regexp = CCPluginPreferences.generateRegExp(null);
