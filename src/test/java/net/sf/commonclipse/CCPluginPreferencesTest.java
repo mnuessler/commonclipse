@@ -1,26 +1,18 @@
 package net.sf.commonclipse;
 
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
+
 import java.util.regex.Pattern;
-
-import junit.framework.TestCase;
-
 
 /**
  * Tests for CCPluginPreferences.
  * @author fgiust
  * @version $Revision$ ($Author$)
  */
-public class CCPluginPreferencesTest extends TestCase
+public class CCPluginPreferencesTest
 {
-
-    /**
-     * Instantiates a new test.
-     * @param name test name
-     */
-    public CCPluginPreferencesTest(String name)
-    {
-        super(name);
-    }
 
     /**
      * test the conversion from an array of strings to a regexp.
@@ -28,7 +20,7 @@ public class CCPluginPreferencesTest extends TestCase
     public void testRegexpConversion()
     {
         Pattern regexp = CCPluginPreferences.generateRegExp("log;test?u?;done*");
-        assertEquals("(^log$)|(^test.u.$)|(^done*$)", regexp.pattern());
+        assertThat(regexp.pattern(), equalTo("(^log$)|(^test.u.$)|(^done*$)"));
     }
 
     /**
@@ -51,4 +43,5 @@ public class CCPluginPreferencesTest extends TestCase
         assertFalse(regexp.matcher("").matches());
         assertFalse(regexp.matcher("a").matches());
     }
+
 }
